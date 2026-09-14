@@ -1,0 +1,1475 @@
+{
+  "scenario": "schelling",
+  "phenomenon": "residential segregation dynamics",
+  "indicators": [
+    {
+      "id": "mean_local_similarity",
+      "semantic_name": "Mean local same-group similarity",
+      "scientific_definition": "Mean occupied-neighbour same-group fraction across agents at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Local similarity is the individual exposure primitive; its cross-agent mean captures average local segmentation pressure."
+    },
+    {
+      "id": "std_local_similarity",
+      "semantic_name": "Standard deviation of local same-group similarity",
+      "scientific_definition": "Cross-agent dispersion of occupied-neighbour same-group fraction at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Dispersion of local similarity measures individual heterogeneity in local group exposure."
+    },
+    {
+      "id": "mean_neighbour_count",
+      "semantic_name": "Mean local neighbour count",
+      "scientific_definition": "Mean occupied Moore-neighbour count across agents at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "neighbour_count"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "neighbour_count"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Mean neighbour count reflects local occupancy density experienced by individual agents."
+    },
+    {
+      "id": "unhappy_fraction",
+      "semantic_name": "Fraction of unsatisfied agents",
+      "scientific_definition": "Proportion of agents whose local same-group fraction is below tolerance at each step, computed as the boolean dissatisfaction event fraction over agents.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "unsatisfied agents",
+      "source_fields": [
+        "unhappy"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "unhappy"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "tolerance",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher tolerance raises the minimum required same-group fraction, so more agents are classified as unsatisfied."
+        }
+      ],
+      "scientific_rationale": "The unsatisfied fraction is the aggregate prevalence of the elementary dissatisfaction event."
+    },
+    {
+      "id": "unhappy_local_similarity_mean",
+      "semantic_name": "Mean local similarity among unsatisfied agents",
+      "scientific_definition": "Mean local same-group fraction among agents classified as unsatisfied at each step, excluding satisfied agents by boolean masking.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "unsatisfied agents",
+      "source_fields": [
+        "unhappy",
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "safe_ratio",
+        "left": {
+          "op": "sum",
+          "input": {
+            "op": "where",
+            "condition": {
+              "op": "field",
+              "name": "unhappy"
+            },
+            "input": {
+              "op": "field",
+              "name": "local_similarity"
+            }
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "axis": "agent"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "This observable describes the typical local context of agents currently trying to relocate."
+    },
+    {
+      "id": "moved_fraction",
+      "semantic_name": "Fraction of agents relocating",
+      "scientific_definition": "Proportion of agents that relocated during each recorded step, computed as the boolean relocation event fraction over agents.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "moving agents",
+      "source_fields": [
+        "moved"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "moved"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "move_probability",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher move_probability increases the chance an unsatisfied agent attempts relocation, raising the fraction that moves."
+        }
+      ],
+      "scientific_rationale": "The moving fraction is the aggregate prevalence of the elementary relocation event."
+    },
+    {
+      "id": "mean_move_distance",
+      "semantic_name": "Mean relocation distance among movers",
+      "scientific_definition": "Mean periodic Manhattan distance of relocation among agents that moved during each step, excluding non-movers.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "relocating agents",
+      "source_fields": [
+        "moved",
+        "move_distance"
+      ],
+      "computation": {
+        "op": "safe_ratio",
+        "left": {
+          "op": "sum",
+          "input": {
+            "op": "where",
+            "condition": {
+              "op": "field",
+              "name": "moved"
+            },
+            "input": {
+              "op": "field",
+              "name": "move_distance"
+            }
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "moved"
+          },
+          "axis": "agent"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Mean move distance captures the spatial extent of individual relocation events."
+    },
+    {
+      "id": "mean_destination_similarity_movers",
+      "semantic_name": "Mean destination similarity among movers",
+      "scientific_definition": "Mean same-group neighbour fraction at selected destinations among agents that relocated during each step, excluding non-movers.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "relocating agents",
+      "source_fields": [
+        "moved",
+        "destination_similarity"
+      ],
+      "computation": {
+        "op": "safe_ratio",
+        "left": {
+          "op": "sum",
+          "input": {
+            "op": "where",
+            "condition": {
+              "op": "field",
+              "name": "moved"
+            },
+            "input": {
+              "op": "field",
+              "name": "destination_similarity"
+            }
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "moved"
+          },
+          "axis": "agent"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "destination_preference",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher destination_preference increases the probability of selecting the most similar sampled vacancy, raising average destination similarity among movers."
+        }
+      ],
+      "scientific_rationale": "Destination similarity measures the local exposure outcome of relocation choices."
+    },
+    {
+      "id": "boundary_fraction",
+      "semantic_name": "Fraction of boundary agents",
+      "scientific_definition": "Proportion of agents with at least one occupied different-group neighbour at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "boundary_agent"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "boundary_agent"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Boundary exposure indicates how many individuals are directly adjacent to out-group members."
+    },
+    {
+      "id": "std_destination_similarity",
+      "semantic_name": "Dispersion of destination similarity",
+      "scientific_definition": "Cross-agent standard deviation of destination same-group neighbour fraction, including zero for non-movers, at each step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "agents",
+      "source_fields": [
+        "destination_similarity"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "destination_similarity"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Dispersion of destination similarity reflects heterogeneity in relocation outcomes."
+    },
+    {
+      "id": "quantile_25_local_similarity",
+      "semantic_name": "25th percentile local similarity",
+      "scientific_definition": "Lower quartile of agents' local same-group fraction at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "quantile",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent",
+        "q": 0.25
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Lower quartile tracks the most isolated fraction of individuals."
+    },
+    {
+      "id": "quantile_75_local_similarity",
+      "semantic_name": "75th percentile local similarity",
+      "scientific_definition": "Upper quartile of agents' local same-group fraction at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "quantile",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent",
+        "q": 0.75
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Upper quartile tracks the most grouped fraction of individuals."
+    },
+    {
+      "id": "local_similarity_entropy",
+      "semantic_name": "Entropy of local similarity distribution",
+      "scientific_definition": "Shannon entropy of binned local same-group similarity across agents at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent",
+        "bins": 10
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Entropy summarizes the diversity of local exposure states in the agent population."
+    },
+    {
+      "id": "move_distance_std",
+      "semantic_name": "Dispersion of relocation distance",
+      "scientific_definition": "Cross-agent standard deviation of periodic Manhattan relocation distance, including zero for non-movers, at each step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "agents",
+      "source_fields": [
+        "move_distance"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "move_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Dispersion of move distance captures variability in relocation spatial reach."
+    },
+    {
+      "id": "std_neighbour_count",
+      "semantic_name": "Dispersion of local neighbour count",
+      "scientific_definition": "Cross-agent standard deviation of occupied Moore-neighbour count at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "agents",
+      "source_fields": [
+        "neighbour_count"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "neighbour_count"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Dispersion of neighbour count reflects unevenness in local occupancy density."
+    },
+    {
+      "id": "relocation_response_fraction",
+      "semantic_name": "Relocation response fraction",
+      "scientific_definition": "Ratio of moving agents to unsatisfied agents at each step, measuring the realized relocation response among dissatisfied agents.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "unsatisfied and moving agents",
+      "source_fields": [
+        "moved",
+        "unhappy"
+      ],
+      "computation": {
+        "op": "safe_ratio",
+        "left": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "moved"
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "axis": "agent"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "move_probability",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher move_probability increases the chance that an unsatisfied agent attempts relocation, raising the ratio of movers to unsatisfied agents."
+        }
+      ],
+      "scientific_rationale": "This interaction-level observable links the dissatisfaction event to the relocation event."
+    },
+    {
+      "id": "meso_district_local_similarity_std",
+      "semantic_name": "Between-district standard deviation of mean local similarity",
+      "scientific_definition": "Cross-district dispersion of district-averaged local same-group similarity at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "local_similarity",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Uses fixed district membership to aggregate local similarity within districts and capture between-district segregation variation."
+    },
+    {
+      "id": "meso_district_unhappy_fraction_std",
+      "semantic_name": "Between-district standard deviation of unsatisfied fraction",
+      "scientific_definition": "Cross-district dispersion of district-level unsatisfied-agent fraction at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "unhappy",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district variation in dissatisfaction reveals uneven local stability pressure across public spatial districts."
+    },
+    {
+      "id": "meso_district_boundary_fraction_std",
+      "semantic_name": "Between-district standard deviation of boundary-agent fraction",
+      "scientific_definition": "Cross-district dispersion of the district-level proportion of agents with at least one different-group neighbour at each step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "boundary_agent",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "boundary_agent"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "District-level boundary exposure variation captures local intergroup contact differences across fixed public domains."
+    },
+    {
+      "id": "meso_district_move_fraction_std",
+      "semantic_name": "Between-district standard deviation of moving fraction",
+      "scientific_definition": "Cross-district dispersion of the district-level proportion of agents that relocated during each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "moved",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "moved"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district variation in relocation activity indicates uneven local adjustment pressure."
+    },
+    {
+      "id": "meso_district_destination_similarity_std",
+      "semantic_name": "Between-district standard deviation of destination similarity",
+      "scientific_definition": "Cross-district dispersion of district-averaged destination same-group neighbour fraction at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "destination_similarity",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "destination_similarity"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district dispersion of destination similarity captures local differences in relocation destination quality."
+    },
+    {
+      "id": "meso_district_neighbour_count_std",
+      "semantic_name": "Between-district standard deviation of mean neighbour count",
+      "scientific_definition": "Cross-district dispersion of district-averaged occupied Moore-neighbour count at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "neighbour_count",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "neighbour_count"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district variation in local occupancy density identifies uneven packing across fixed spatial domains."
+    },
+    {
+      "id": "meso_district_group_entropy_mean",
+      "semantic_name": "Mean district group-composition entropy",
+      "scientific_definition": "Average district-level entropy of agent group labels within each fixed public district at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "agent_group",
+        "district_id"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "agent_group"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "entropy"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Mean district composition entropy measures within-district group mixing while using supplied district membership structure."
+    },
+    {
+      "id": "meso_district_move_distance_std",
+      "semantic_name": "Between-district standard deviation of mean move distance",
+      "scientific_definition": "Cross-district dispersion of district-averaged periodic Manhattan relocation distance at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "spatial districts",
+      "source_fields": [
+        "move_distance",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "move_distance"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district variation in move distance captures distinct local spatial mobility patterns."
+    },
+    {
+      "id": "macro_global_unhappy_fraction",
+      "semantic_name": "Global unsatisfied fraction",
+      "scientific_definition": "Whole-system proportion of unsatisfied agents computed from the system aggregate unsatisfied count at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole system",
+      "source_fields": [
+        "unhappy_count",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "divide",
+        "left": {
+          "op": "field",
+          "name": "unhappy_count"
+        },
+        "right": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "tolerance",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher tolerance increases the global number of unsatisfied agents, raising the whole-system unsatisfied fraction."
+        }
+      ],
+      "scientific_rationale": "Whole-system dissatisfaction is a core collective outcome of the segregation process."
+    },
+    {
+      "id": "macro_global_moved_fraction",
+      "semantic_name": "Global relocation fraction",
+      "scientific_definition": "Whole-system proportion of agents that relocated during each recorded step, computed as the ratio of relocation-event count to agent population.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole system",
+      "source_fields": [
+        "moved",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "divide",
+        "left": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "moved"
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "move_probability",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher move_probability increases the global relocation frequency, raising the whole-system moving fraction."
+        }
+      ],
+      "scientific_rationale": "Global relocation fraction is a whole-system measure of aggregate adjustment intensity."
+    },
+    {
+      "id": "macro_global_connected_components",
+      "semantic_name": "Count of same-group spatial components",
+      "scientific_definition": "Number of contiguous occupied-cell components with identical group label in the periodic grid at each recorded step, excluding vacancies.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole system",
+      "source_fields": [
+        "state_grid"
+      ],
+      "computation": {
+        "op": "connected_component_count",
+        "input": {
+          "op": "field",
+          "name": "state_grid"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "The number of same-group contiguous components is a global structural measure of spatial sorting."
+    },
+    {
+      "id": "macro_global_spatial_neighbor_similarity",
+      "semantic_name": "Global spatial neighbour similarity",
+      "scientific_definition": "Whole-grid average same-group similarity among occupied Moore neighbours at each recorded step.",
+      "phenomenon": "residential segregation dynamics",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole system",
+      "source_fields": [
+        "state_grid"
+      ],
+      "computation": {
+        "op": "spatial_neighbor_similarity",
+        "input": {
+          "op": "field",
+          "name": "state_grid"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Global spatial neighbour similarity is a direct whole-grid metric of segregation."
+    }
+  ],
+  "interpretation_boundary": "Indicators are declarative, executable observables computed from the supplied raw fields and grammar. They do not provide statistical estimates, causal effects, temporal forecasts, or intervention contrasts; no candidate paths or predictions are asserted in this phase.",
+  "candidate_paths": [
+    {
+      "path_id": "tol_plus_unhappy_to_move_std_to_global_moved",
+      "parameter": "tolerance",
+      "intervention_direction": "plus",
+      "micro_indicator": "unhappy_fraction",
+      "meso_indicator": "meso_district_move_fraction_std",
+      "macro_indicator": "macro_global_moved_fraction",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Higher tolerance increases the fraction of unsatisfied agents, which amplifies between-district differences in relocation activity and thereby raises the whole-system moved fraction.",
+      "mechanistic_explanation": "More unsatisfied agents attempt relocation, increasing district-level dispersion of moving fractions, and this dispersed local activation raises the global relocation fraction.",
+      "falsification_condition": "Observed meso_district_move_fraction_std or macro_global_moved_fraction does not increase under tolerance plus."
+    },
+    {
+      "path_id": "tol_plus_unhappy_to_boundary_std_to_spatial_sim",
+      "parameter": "tolerance",
+      "intervention_direction": "plus",
+      "micro_indicator": "unhappy_fraction",
+      "meso_indicator": "meso_district_boundary_fraction_std",
+      "macro_indicator": "macro_global_spatial_neighbor_similarity",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Higher tolerance increases dissatisfaction, causing agents to move away from mixed-group boundaries; this reduces between-district boundary-fraction dispersion while strengthening whole-grid same-group neighbour similarity.",
+      "mechanistic_explanation": "Stronger homophilic relocation removes boundary contacts and produces more homogeneous spatial sorting, lowering district boundary variation and raising global spatial similarity.",
+      "falsification_condition": "Macro global spatial neighbour similarity does not increase under tolerance plus."
+    },
+    {
+      "path_id": "tol_plus_unhappy_to_group_entropy_to_components",
+      "parameter": "tolerance",
+      "intervention_direction": "plus",
+      "micro_indicator": "unhappy_fraction",
+      "meso_indicator": "meso_district_group_entropy_mean",
+      "macro_indicator": "macro_global_connected_components",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "decrease",
+      "scientific_rationale": "Higher tolerance intensifies segregation pressure, reducing district group-composition entropy and consolidating same-group areas into fewer contiguous components.",
+      "mechanistic_explanation": "As dissatisfaction rises, agents sort into more homogeneous districts, lowering group entropy and merging adjacent same-group clusters, which decreases the global connected-component count.",
+      "falsification_condition": "Macro global connected components does not decrease under tolerance plus."
+    },
+    {
+      "path_id": "tol_minus_unhappy_to_unhappy_std_to_components",
+      "parameter": "tolerance",
+      "intervention_direction": "minus",
+      "micro_indicator": "unhappy_fraction",
+      "meso_indicator": "meso_district_unhappy_fraction_std",
+      "macro_indicator": "macro_global_connected_components",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "decrease",
+      "expected_micro_response": "decrease",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Lower tolerance reduces the share of unsatisfied agents and district-level variation in dissatisfaction, while weaker sorting pressure allows spatial clusters to fragment into more same-group components.",
+      "mechanistic_explanation": "Fewer agents are classified as unsatisfied, so between-district dissatisfaction dispersion falls, and less homophilic relocation prevents large cluster consolidation, increasing the number of same-group components.",
+      "falsification_condition": "Macro global connected components does not increase under tolerance minus."
+    },
+    {
+      "path_id": "tol_minus_unhappy_to_move_std_to_spatial_sim",
+      "parameter": "tolerance",
+      "intervention_direction": "minus",
+      "micro_indicator": "unhappy_fraction",
+      "meso_indicator": "meso_district_move_fraction_std",
+      "macro_indicator": "macro_global_spatial_neighbor_similarity",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "decrease",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "decrease",
+      "scientific_rationale": "Lower tolerance reduces relocation pressure, lowering district-level moving-fraction dispersion and whole-grid spatial neighbour similarity as more mixed neighbourhoods persist.",
+      "mechanistic_explanation": "With fewer unsatisfied agents, relocation activity declines and becomes less spatially variable, weakening homophilic sorting and reducing global same-group adjacency.",
+      "falsification_condition": "Macro global spatial neighbour similarity does not decrease under tolerance minus."
+    },
+    {
+      "path_id": "tol_plus_unhappy_to_dest_std_to_components",
+      "parameter": "tolerance",
+      "intervention_direction": "plus",
+      "micro_indicator": "unhappy_fraction",
+      "meso_indicator": "meso_district_destination_similarity_std",
+      "macro_indicator": "macro_global_connected_components",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "decrease",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "decrease",
+      "scientific_rationale": "Higher tolerance raises dissatisfaction, leading to more variable destination-similarity outcomes across districts while consolidating same-group areas into fewer connected components.",
+      "mechanistic_explanation": "Stronger homophilic relocation increases between-district dispersion of destination similarity and merges adjacent same-group clusters, thereby decreasing the global component count.",
+      "falsification_condition": "Macro global connected components does not decrease under tolerance plus."
+    },
+    {
+      "path_id": "move_plus_response_to_move_std_to_global_moved",
+      "parameter": "move_probability",
+      "intervention_direction": "plus",
+      "micro_indicator": "relocation_response_fraction",
+      "meso_indicator": "meso_district_move_fraction_std",
+      "macro_indicator": "macro_global_moved_fraction",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Higher move probability increases the realized relocation response among unsatisfied agents, amplifies cross-district dispersion in moving rates, and raises the global relocation fraction.",
+      "mechanistic_explanation": "More dissatisfied agents act on their dissatisfaction, creating greater district-level variability in movement and increasing whole-system relocation activity.",
+      "falsification_condition": "Macro global moved fraction does not increase under move_probability plus."
+    },
+    {
+      "path_id": "move_plus_moved_to_dest_std_to_spatial_sim",
+      "parameter": "move_probability",
+      "intervention_direction": "plus",
+      "micro_indicator": "moved_fraction",
+      "meso_indicator": "meso_district_destination_similarity_std",
+      "macro_indicator": "macro_global_spatial_neighbor_similarity",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Higher move probability increases relocation frequency, producing more variable destination-similarity outcomes across districts and raising global spatial neighbour similarity through repeated homophilic sorting.",
+      "mechanistic_explanation": "More moves allow more agents to enter high-similarity destinations, increasing district-level destination-similarity dispersion and whole-grid same-group adjacency.",
+      "falsification_condition": "Macro global spatial neighbour similarity does not increase under move_probability plus."
+    },
+    {
+      "path_id": "move_minus_response_to_unhappy_std_to_global_unhappy",
+      "parameter": "move_probability",
+      "intervention_direction": "minus",
+      "micro_indicator": "relocation_response_fraction",
+      "meso_indicator": "meso_district_unhappy_fraction_std",
+      "macro_indicator": "macro_global_unhappy_fraction",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "decrease",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Lower move probability weakens the relocation response of unsatisfied agents, increasing between-district dissatisfaction dispersion and raising the whole-system unsatisfied fraction because fewer agents escape poor local conditions.",
+      "mechanistic_explanation": "When unsatisfied agents are less likely to move, dissatisfaction persists unevenly across districts and globally, leading to higher global unsatisfied fraction.",
+      "falsification_condition": "Macro global unhappy fraction does not increase under move_probability minus."
+    },
+    {
+      "path_id": "move_minus_moved_to_boundary_std_to_components",
+      "parameter": "move_probability",
+      "intervention_direction": "minus",
+      "micro_indicator": "moved_fraction",
+      "meso_indicator": "meso_district_boundary_fraction_std",
+      "macro_indicator": "macro_global_connected_components",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "decrease",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Lower move probability reduces relocation frequency, allowing boundary contacts to persist unevenly across districts and preventing same-group cluster consolidation, which increases the number of spatial components.",
+      "mechanistic_explanation": "Less movement preserves heterogeneous boundary patterns and spatial fragmentation, raising district boundary-fraction dispersion and global connected-component count.",
+      "falsification_condition": "Macro global connected components does not increase under move_probability minus."
+    },
+    {
+      "path_id": "move_plus_moved_to_neighbour_std_to_global_unhappy",
+      "parameter": "move_probability",
+      "intervention_direction": "plus",
+      "micro_indicator": "moved_fraction",
+      "meso_indicator": "meso_district_neighbour_count_std",
+      "macro_indicator": "macro_global_unhappy_fraction",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "decrease",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "decrease",
+      "scientific_rationale": "Higher move probability increases relocation frequency, producing greater between-district variation in local neighbour counts, but more movement resolves dissatisfaction and lowers the global unsatisfied fraction.",
+      "mechanistic_explanation": "Relocation disperses agents and alters local occupancy, increasing district neighbour-count dispersion while moving more unsatisfied agents to acceptable neighbourhoods, thereby reducing global dissatisfaction.",
+      "falsification_condition": "Macro global unhappy fraction does not decrease under move_probability plus."
+    },
+    {
+      "path_id": "dest_plus_dest_sim_to_dest_std_to_spatial_sim",
+      "parameter": "destination_preference",
+      "intervention_direction": "plus",
+      "micro_indicator": "mean_destination_similarity_movers",
+      "meso_indicator": "meso_district_destination_similarity_std",
+      "macro_indicator": "macro_global_spatial_neighbor_similarity",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Higher destination preference makes movers select more similar destinations, increasing average destination similarity and district-level destination-similarity dispersion, and raising whole-grid spatial neighbour similarity.",
+      "mechanistic_explanation": "Selective relocation concentrates agents in high-similarity locations, increasing cross-district variation in destination quality and strengthening global segregation.",
+      "falsification_condition": "Macro global spatial neighbour similarity does not increase under destination_preference plus."
+    },
+    {
+      "path_id": "dest_plus_dest_sim_to_boundary_std_to_global_unhappy",
+      "parameter": "destination_preference",
+      "intervention_direction": "plus",
+      "micro_indicator": "mean_destination_similarity_movers",
+      "meso_indicator": "meso_district_boundary_fraction_std",
+      "macro_indicator": "macro_global_unhappy_fraction",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "decrease",
+      "scientific_rationale": "Higher destination preference moves agents away from mixed boundaries, reducing boundary-fraction dispersion and lowering global dissatisfaction as more agents reach satisfying neighbourhoods.",
+      "mechanistic_explanation": "Stronger preference for similar destinations removes agents from boundary contact and reduces the share of unsatisfied agents system-wide.",
+      "falsification_condition": "Macro global unhappy fraction does not decrease under destination_preference plus."
+    },
+    {
+      "path_id": "dest_plus_dest_sim_to_group_entropy_to_components",
+      "parameter": "destination_preference",
+      "intervention_direction": "plus",
+      "micro_indicator": "mean_destination_similarity_movers",
+      "meso_indicator": "meso_district_group_entropy_mean",
+      "macro_indicator": "macro_global_connected_components",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "increase",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "decrease",
+      "scientific_rationale": "Higher destination preference increases destination similarity, reduces district group-composition entropy, and consolidates same-group areas into fewer connected components.",
+      "mechanistic_explanation": "Preferential homophilic moves create more homogeneous districts and merge adjacent same-group clusters, lowering both district entropy and global component count.",
+      "falsification_condition": "Macro global connected components does not decrease under destination_preference plus."
+    },
+    {
+      "path_id": "dest_minus_dest_sim_to_dest_std_to_global_unhappy",
+      "parameter": "destination_preference",
+      "intervention_direction": "minus",
+      "micro_indicator": "mean_destination_similarity_movers",
+      "meso_indicator": "meso_district_destination_similarity_std",
+      "macro_indicator": "macro_global_unhappy_fraction",
+      "micro_to_meso_expected_direction": "increase",
+      "meso_to_macro_expected_direction": "decrease",
+      "expected_micro_response": "decrease",
+      "expected_meso_response": "decrease",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Lower destination preference reduces average destination similarity and district-level destination-similarity dispersion, but less selective sorting leaves more agents unsatisfied globally.",
+      "mechanistic_explanation": "Weaker preference lowers destination quality and spatial differentiation while preventing dissatisfied agents from reaching satisfying neighbourhoods, raising global dissatisfaction.",
+      "falsification_condition": "Macro global unhappy fraction does not increase under destination_preference minus."
+    },
+    {
+      "path_id": "dest_minus_dest_sim_to_move_std_to_components",
+      "parameter": "destination_preference",
+      "intervention_direction": "minus",
+      "micro_indicator": "mean_destination_similarity_movers",
+      "meso_indicator": "meso_district_move_distance_std",
+      "macro_indicator": "macro_global_connected_components",
+      "micro_to_meso_expected_direction": "decrease",
+      "meso_to_macro_expected_direction": "increase",
+      "expected_micro_response": "decrease",
+      "expected_meso_response": "increase",
+      "expected_macro_response": "increase",
+      "scientific_rationale": "Lower destination preference produces less directed moves, increasing district-level dispersion of relocation distances and fragmenting spatial clusters, which raises the count of connected components.",
+      "mechanistic_explanation": "Random destination choices lead to longer, more variable relocation distances and prevent same-group cluster consolidation, increasing the global component count.",
+      "falsification_condition": "Macro global connected components does not increase under destination_preference minus."
+    }
+  ],
+  "candidate_edges": [
+    {
+      "source": "mean_destination_similarity_movers",
+      "target": "meso_district_boundary_fraction_std",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "dest_plus_dest_sim_to_boundary_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "mean_destination_similarity_movers",
+      "target": "meso_district_destination_similarity_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_spatial_neighbor_similarity",
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "dest_minus_dest_sim_to_dest_std_to_global_unhappy",
+        "dest_plus_dest_sim_to_dest_std_to_spatial_sim"
+      ]
+    },
+    {
+      "source": "mean_destination_similarity_movers",
+      "target": "meso_district_group_entropy_mean",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "dest_plus_dest_sim_to_group_entropy_to_components"
+      ]
+    },
+    {
+      "source": "mean_destination_similarity_movers",
+      "target": "meso_district_move_distance_std",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "dest_minus_dest_sim_to_move_std_to_components"
+      ]
+    },
+    {
+      "source": "meso_district_boundary_fraction_std",
+      "target": "macro_global_connected_components",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "move_minus_moved_to_boundary_std_to_components"
+      ]
+    },
+    {
+      "source": "meso_district_boundary_fraction_std",
+      "target": "macro_global_spatial_neighbor_similarity",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_spatial_neighbor_similarity"
+      ],
+      "path_ids": [
+        "tol_plus_unhappy_to_boundary_std_to_spatial_sim"
+      ]
+    },
+    {
+      "source": "meso_district_boundary_fraction_std",
+      "target": "macro_global_unhappy_fraction",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "dest_plus_dest_sim_to_boundary_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "meso_district_destination_similarity_std",
+      "target": "macro_global_connected_components",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "tol_plus_unhappy_to_dest_std_to_components"
+      ]
+    },
+    {
+      "source": "meso_district_destination_similarity_std",
+      "target": "macro_global_spatial_neighbor_similarity",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_spatial_neighbor_similarity"
+      ],
+      "path_ids": [
+        "dest_plus_dest_sim_to_dest_std_to_spatial_sim",
+        "move_plus_moved_to_dest_std_to_spatial_sim"
+      ]
+    },
+    {
+      "source": "meso_district_destination_similarity_std",
+      "target": "macro_global_unhappy_fraction",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "dest_minus_dest_sim_to_dest_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "meso_district_group_entropy_mean",
+      "target": "macro_global_connected_components",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "dest_plus_dest_sim_to_group_entropy_to_components",
+        "tol_plus_unhappy_to_group_entropy_to_components"
+      ]
+    },
+    {
+      "source": "meso_district_move_distance_std",
+      "target": "macro_global_connected_components",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "dest_minus_dest_sim_to_move_std_to_components"
+      ]
+    },
+    {
+      "source": "meso_district_move_fraction_std",
+      "target": "macro_global_moved_fraction",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_moved_fraction"
+      ],
+      "path_ids": [
+        "move_plus_response_to_move_std_to_global_moved",
+        "tol_plus_unhappy_to_move_std_to_global_moved"
+      ]
+    },
+    {
+      "source": "meso_district_move_fraction_std",
+      "target": "macro_global_spatial_neighbor_similarity",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_spatial_neighbor_similarity"
+      ],
+      "path_ids": [
+        "tol_minus_unhappy_to_move_std_to_spatial_sim"
+      ]
+    },
+    {
+      "source": "meso_district_neighbour_count_std",
+      "target": "macro_global_unhappy_fraction",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "move_plus_moved_to_neighbour_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "meso_district_unhappy_fraction_std",
+      "target": "macro_global_connected_components",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "tol_minus_unhappy_to_unhappy_std_to_components"
+      ]
+    },
+    {
+      "source": "meso_district_unhappy_fraction_std",
+      "target": "macro_global_unhappy_fraction",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "move_minus_response_to_unhappy_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "moved_fraction",
+      "target": "meso_district_boundary_fraction_std",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "move_minus_moved_to_boundary_std_to_components"
+      ]
+    },
+    {
+      "source": "moved_fraction",
+      "target": "meso_district_destination_similarity_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_spatial_neighbor_similarity"
+      ],
+      "path_ids": [
+        "move_plus_moved_to_dest_std_to_spatial_sim"
+      ]
+    },
+    {
+      "source": "moved_fraction",
+      "target": "meso_district_neighbour_count_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "move_plus_moved_to_neighbour_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "relocation_response_fraction",
+      "target": "meso_district_move_fraction_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_moved_fraction"
+      ],
+      "path_ids": [
+        "move_plus_response_to_move_std_to_global_moved"
+      ]
+    },
+    {
+      "source": "relocation_response_fraction",
+      "target": "meso_district_unhappy_fraction_std",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_unhappy_fraction"
+      ],
+      "path_ids": [
+        "move_minus_response_to_unhappy_std_to_global_unhappy"
+      ]
+    },
+    {
+      "source": "unhappy_fraction",
+      "target": "meso_district_boundary_fraction_std",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_spatial_neighbor_similarity"
+      ],
+      "path_ids": [
+        "tol_plus_unhappy_to_boundary_std_to_spatial_sim"
+      ]
+    },
+    {
+      "source": "unhappy_fraction",
+      "target": "meso_district_destination_similarity_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "tol_plus_unhappy_to_dest_std_to_components"
+      ]
+    },
+    {
+      "source": "unhappy_fraction",
+      "target": "meso_district_group_entropy_mean",
+      "expected_direction": "decrease",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "tol_plus_unhappy_to_group_entropy_to_components"
+      ]
+    },
+    {
+      "source": "unhappy_fraction",
+      "target": "meso_district_move_fraction_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_moved_fraction",
+        "macro_outcome_macro_global_spatial_neighbor_similarity"
+      ],
+      "path_ids": [
+        "tol_minus_unhappy_to_move_std_to_spatial_sim",
+        "tol_plus_unhappy_to_move_std_to_global_moved"
+      ]
+    },
+    {
+      "source": "unhappy_fraction",
+      "target": "meso_district_unhappy_fraction_std",
+      "expected_direction": "increase",
+      "hypothesis_group_ids": [
+        "macro_outcome_macro_global_connected_components"
+      ],
+      "path_ids": [
+        "tol_minus_unhappy_to_unhappy_std_to_components"
+      ]
+    }
+  ]
+}

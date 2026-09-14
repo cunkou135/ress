@@ -1,0 +1,630 @@
+{
+  "schema_version": "1.0",
+  "derivation": "deterministic projection of frozen candidate paths",
+  "scenarios": {
+    "deffuant": [
+      {
+        "source": "meso_neighborhood_abs_opinion_std",
+        "target": "macro_network_assortativity",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "bt_minus_backfire_absostd_assort"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_abs_opinion_std",
+        "target": "macro_opinion_global_mean",
+        "expected_direction": "mixed",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_mean"
+        ],
+        "path_ids": [
+          "as_minus_shift_absostd_gmean",
+          "cb_plus_accept_absostd_gmean"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_abs_opinion_variance",
+        "target": "macro_network_assortativity",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "cb_minus_accept_absovar_assort"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_abs_opinion_variance",
+        "target": "macro_network_largest_component_fraction",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "as_minus_shift_absovar_lcc"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_agent_shift_std",
+        "target": "macro_opinion_global_mean",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_mean"
+        ],
+        "path_ids": [
+          "as_plus_shift_shiftstd_gmean",
+          "bt_plus_backfire_shiftstd_gmean"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_interaction_distance_std",
+        "target": "macro_network_assortativity",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "as_plus_shift_diststd_assort",
+          "bt_minus_backfire_diststd_assort"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_interaction_distance_std",
+        "target": "macro_network_largest_component_fraction",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "cb_minus_accept_diststd_lcc"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_interaction_distance_variance",
+        "target": "macro_network_largest_component_fraction",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "bt_plus_backfire_distvar_lcc",
+          "cb_plus_accept_distvar_lcc"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_opinion_std",
+        "target": "macro_opinion_global_variance",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "as_plus_shift_ostd_gvar",
+          "bt_minus_backfire_ostd_gvar",
+          "cb_plus_accept_ostd_gvar"
+        ]
+      },
+      {
+        "source": "meso_neighborhood_opinion_variance",
+        "target": "macro_opinion_global_variance",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "as_minus_shift_ovar_gvar",
+          "bt_plus_backfire_ovar_gvar",
+          "cb_minus_accept_ovar_gvar"
+        ]
+      },
+      {
+        "source": "micro_accepted_fraction",
+        "target": "meso_neighborhood_abs_opinion_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_mean"
+        ],
+        "path_ids": [
+          "cb_plus_accept_absostd_gmean"
+        ]
+      },
+      {
+        "source": "micro_accepted_fraction",
+        "target": "meso_neighborhood_abs_opinion_variance",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "cb_minus_accept_absovar_assort"
+        ]
+      },
+      {
+        "source": "micro_accepted_fraction",
+        "target": "meso_neighborhood_interaction_distance_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "cb_minus_accept_diststd_lcc"
+        ]
+      },
+      {
+        "source": "micro_accepted_fraction",
+        "target": "meso_neighborhood_interaction_distance_variance",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "cb_plus_accept_distvar_lcc"
+        ]
+      },
+      {
+        "source": "micro_accepted_fraction",
+        "target": "meso_neighborhood_opinion_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "cb_plus_accept_ostd_gvar"
+        ]
+      },
+      {
+        "source": "micro_accepted_fraction",
+        "target": "meso_neighborhood_opinion_variance",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "cb_minus_accept_ovar_gvar"
+        ]
+      },
+      {
+        "source": "micro_backfire_fraction",
+        "target": "meso_neighborhood_abs_opinion_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "bt_minus_backfire_absostd_assort"
+        ]
+      },
+      {
+        "source": "micro_backfire_fraction",
+        "target": "meso_neighborhood_agent_shift_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_mean"
+        ],
+        "path_ids": [
+          "bt_plus_backfire_shiftstd_gmean"
+        ]
+      },
+      {
+        "source": "micro_backfire_fraction",
+        "target": "meso_neighborhood_interaction_distance_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "bt_minus_backfire_diststd_assort"
+        ]
+      },
+      {
+        "source": "micro_backfire_fraction",
+        "target": "meso_neighborhood_interaction_distance_variance",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "bt_plus_backfire_distvar_lcc"
+        ]
+      },
+      {
+        "source": "micro_backfire_fraction",
+        "target": "meso_neighborhood_opinion_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "bt_minus_backfire_ostd_gvar"
+        ]
+      },
+      {
+        "source": "micro_backfire_fraction",
+        "target": "meso_neighborhood_opinion_variance",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "bt_plus_backfire_ovar_gvar"
+        ]
+      },
+      {
+        "source": "micro_mean_abs_agent_shift",
+        "target": "meso_neighborhood_abs_opinion_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_mean"
+        ],
+        "path_ids": [
+          "as_minus_shift_absostd_gmean"
+        ]
+      },
+      {
+        "source": "micro_mean_abs_agent_shift",
+        "target": "meso_neighborhood_abs_opinion_variance",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_largest_component_fraction"
+        ],
+        "path_ids": [
+          "as_minus_shift_absovar_lcc"
+        ]
+      },
+      {
+        "source": "micro_mean_abs_agent_shift",
+        "target": "meso_neighborhood_agent_shift_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_mean"
+        ],
+        "path_ids": [
+          "as_plus_shift_shiftstd_gmean"
+        ]
+      },
+      {
+        "source": "micro_mean_abs_agent_shift",
+        "target": "meso_neighborhood_interaction_distance_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_network_assortativity"
+        ],
+        "path_ids": [
+          "as_plus_shift_diststd_assort"
+        ]
+      },
+      {
+        "source": "micro_mean_abs_agent_shift",
+        "target": "meso_neighborhood_opinion_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "as_plus_shift_ostd_gvar"
+        ]
+      },
+      {
+        "source": "micro_mean_abs_agent_shift",
+        "target": "meso_neighborhood_opinion_variance",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_opinion_global_variance"
+        ],
+        "path_ids": [
+          "as_minus_shift_ovar_gvar"
+        ]
+      }
+    ],
+    "schelling": [
+      {
+        "source": "mean_destination_similarity_movers",
+        "target": "meso_district_boundary_fraction_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "dest_plus_dest_sim_to_boundary_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "mean_destination_similarity_movers",
+        "target": "meso_district_destination_similarity_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_spatial_neighbor_similarity",
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "dest_minus_dest_sim_to_dest_std_to_global_unhappy",
+          "dest_plus_dest_sim_to_dest_std_to_spatial_sim"
+        ]
+      },
+      {
+        "source": "mean_destination_similarity_movers",
+        "target": "meso_district_group_entropy_mean",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "dest_plus_dest_sim_to_group_entropy_to_components"
+        ]
+      },
+      {
+        "source": "mean_destination_similarity_movers",
+        "target": "meso_district_move_distance_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "dest_minus_dest_sim_to_move_std_to_components"
+        ]
+      },
+      {
+        "source": "meso_district_boundary_fraction_std",
+        "target": "macro_global_connected_components",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "move_minus_moved_to_boundary_std_to_components"
+        ]
+      },
+      {
+        "source": "meso_district_boundary_fraction_std",
+        "target": "macro_global_spatial_neighbor_similarity",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_spatial_neighbor_similarity"
+        ],
+        "path_ids": [
+          "tol_plus_unhappy_to_boundary_std_to_spatial_sim"
+        ]
+      },
+      {
+        "source": "meso_district_boundary_fraction_std",
+        "target": "macro_global_unhappy_fraction",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "dest_plus_dest_sim_to_boundary_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "meso_district_destination_similarity_std",
+        "target": "macro_global_connected_components",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "tol_plus_unhappy_to_dest_std_to_components"
+        ]
+      },
+      {
+        "source": "meso_district_destination_similarity_std",
+        "target": "macro_global_spatial_neighbor_similarity",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_spatial_neighbor_similarity"
+        ],
+        "path_ids": [
+          "dest_plus_dest_sim_to_dest_std_to_spatial_sim",
+          "move_plus_moved_to_dest_std_to_spatial_sim"
+        ]
+      },
+      {
+        "source": "meso_district_destination_similarity_std",
+        "target": "macro_global_unhappy_fraction",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "dest_minus_dest_sim_to_dest_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "meso_district_group_entropy_mean",
+        "target": "macro_global_connected_components",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "dest_plus_dest_sim_to_group_entropy_to_components",
+          "tol_plus_unhappy_to_group_entropy_to_components"
+        ]
+      },
+      {
+        "source": "meso_district_move_distance_std",
+        "target": "macro_global_connected_components",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "dest_minus_dest_sim_to_move_std_to_components"
+        ]
+      },
+      {
+        "source": "meso_district_move_fraction_std",
+        "target": "macro_global_moved_fraction",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_moved_fraction"
+        ],
+        "path_ids": [
+          "move_plus_response_to_move_std_to_global_moved",
+          "tol_plus_unhappy_to_move_std_to_global_moved"
+        ]
+      },
+      {
+        "source": "meso_district_move_fraction_std",
+        "target": "macro_global_spatial_neighbor_similarity",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_spatial_neighbor_similarity"
+        ],
+        "path_ids": [
+          "tol_minus_unhappy_to_move_std_to_spatial_sim"
+        ]
+      },
+      {
+        "source": "meso_district_neighbour_count_std",
+        "target": "macro_global_unhappy_fraction",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "move_plus_moved_to_neighbour_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "meso_district_unhappy_fraction_std",
+        "target": "macro_global_connected_components",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "tol_minus_unhappy_to_unhappy_std_to_components"
+        ]
+      },
+      {
+        "source": "meso_district_unhappy_fraction_std",
+        "target": "macro_global_unhappy_fraction",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "move_minus_response_to_unhappy_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "moved_fraction",
+        "target": "meso_district_boundary_fraction_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "move_minus_moved_to_boundary_std_to_components"
+        ]
+      },
+      {
+        "source": "moved_fraction",
+        "target": "meso_district_destination_similarity_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_spatial_neighbor_similarity"
+        ],
+        "path_ids": [
+          "move_plus_moved_to_dest_std_to_spatial_sim"
+        ]
+      },
+      {
+        "source": "moved_fraction",
+        "target": "meso_district_neighbour_count_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "move_plus_moved_to_neighbour_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "relocation_response_fraction",
+        "target": "meso_district_move_fraction_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_moved_fraction"
+        ],
+        "path_ids": [
+          "move_plus_response_to_move_std_to_global_moved"
+        ]
+      },
+      {
+        "source": "relocation_response_fraction",
+        "target": "meso_district_unhappy_fraction_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_unhappy_fraction"
+        ],
+        "path_ids": [
+          "move_minus_response_to_unhappy_std_to_global_unhappy"
+        ]
+      },
+      {
+        "source": "unhappy_fraction",
+        "target": "meso_district_boundary_fraction_std",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_spatial_neighbor_similarity"
+        ],
+        "path_ids": [
+          "tol_plus_unhappy_to_boundary_std_to_spatial_sim"
+        ]
+      },
+      {
+        "source": "unhappy_fraction",
+        "target": "meso_district_destination_similarity_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "tol_plus_unhappy_to_dest_std_to_components"
+        ]
+      },
+      {
+        "source": "unhappy_fraction",
+        "target": "meso_district_group_entropy_mean",
+        "expected_direction": "decrease",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "tol_plus_unhappy_to_group_entropy_to_components"
+        ]
+      },
+      {
+        "source": "unhappy_fraction",
+        "target": "meso_district_move_fraction_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_moved_fraction",
+          "macro_outcome_macro_global_spatial_neighbor_similarity"
+        ],
+        "path_ids": [
+          "tol_minus_unhappy_to_move_std_to_spatial_sim",
+          "tol_plus_unhappy_to_move_std_to_global_moved"
+        ]
+      },
+      {
+        "source": "unhappy_fraction",
+        "target": "meso_district_unhappy_fraction_std",
+        "expected_direction": "increase",
+        "hypothesis_group_ids": [
+          "macro_outcome_macro_global_connected_components"
+        ],
+        "path_ids": [
+          "tol_minus_unhappy_to_unhappy_std_to_components"
+        ]
+      }
+    ]
+  }
+}

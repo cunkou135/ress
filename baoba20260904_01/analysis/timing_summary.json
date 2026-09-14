@@ -1,0 +1,144 @@
+{
+  "stage_seconds": {
+    "baseline_simulation": 22.199951800001145,
+    "dose_response": 4.620582200001081,
+    "export": 0.3138176000011299,
+    "holdout_confirmation": 123.78305030000047,
+    "holdout_simulation": 66.42158870000094,
+    "indicator_freeze": 0.014234299998861388,
+    "indicator_generation": 5794.048296700001,
+    "intervention": 409.48936719999983,
+    "intervention_simulation": 156.1426062999999,
+    "path_generation": 2352.6540932000007,
+    "path_intervention_classification": 0.19858579999890935,
+    "path_temporal_qualification": 0.023892899998827488,
+    "primary_freeze": 0.021304300000338117,
+    "prospective": 0.022003599999152357,
+    "render": 11.470283100001325,
+    "robustness": 596.3293475999999,
+    "semantic_freeze": 0.016678300000421586,
+    "temporal": 508.4546059000004,
+    "temporal_negative_control": 2034.5310761
+  },
+  "total_stage_seconds": 12080.755365900004,
+  "method_runtime_seconds": [
+    {
+      "scenario": "deffuant",
+      "method": "llm_semantic_proposal",
+      "runtime_seconds": "0.0",
+      "runtime_scope": "semantic_generation"
+    },
+    {
+      "scenario": "deffuant",
+      "method": "full_method",
+      "runtime_seconds": "48.52812679999988",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "deffuant",
+      "method": "single_trajectory",
+      "runtime_seconds": "0.008268100000350387",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "deffuant",
+      "method": "trajectory_vote",
+      "runtime_seconds": "0.23143720000007306",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "deffuant",
+      "method": "unrestricted_temporal_search",
+      "runtime_seconds": "81.32157390000066",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "schelling",
+      "method": "llm_semantic_proposal",
+      "runtime_seconds": "0.0",
+      "runtime_scope": "semantic_generation"
+    },
+    {
+      "scenario": "schelling",
+      "method": "full_method",
+      "runtime_seconds": "48.6935169999997",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "schelling",
+      "method": "single_trajectory",
+      "runtime_seconds": "0.009973600001103478",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "schelling",
+      "method": "trajectory_vote",
+      "runtime_seconds": "0.24244790000011562",
+      "runtime_scope": "temporal_analysis"
+    },
+    {
+      "scenario": "schelling",
+      "method": "unrestricted_temporal_search",
+      "runtime_seconds": "87.25681689999874",
+      "runtime_scope": "temporal_analysis"
+    }
+  ],
+  "speedup_vs_full": [
+    {
+      "scenario": "deffuant",
+      "method": "full_method",
+      "runtime_seconds": "48.52812679999988",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 1.0
+    },
+    {
+      "scenario": "deffuant",
+      "method": "single_trajectory",
+      "runtime_seconds": "0.008268100000350387",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 5869.320254707049
+    },
+    {
+      "scenario": "deffuant",
+      "method": "trajectory_vote",
+      "runtime_seconds": "0.23143720000007306",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 209.68161903092744
+    },
+    {
+      "scenario": "deffuant",
+      "method": "unrestricted_temporal_search",
+      "runtime_seconds": "81.32157390000066",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 0.5967435758151195
+    },
+    {
+      "scenario": "schelling",
+      "method": "full_method",
+      "runtime_seconds": "48.6935169999997",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 1.0
+    },
+    {
+      "scenario": "schelling",
+      "method": "single_trajectory",
+      "runtime_seconds": "0.009973600001103478",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 4882.240815213389
+    },
+    {
+      "scenario": "schelling",
+      "method": "trajectory_vote",
+      "runtime_seconds": "0.24244790000011562",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 200.8411580383929
+    },
+    {
+      "scenario": "schelling",
+      "method": "unrestricted_temporal_search",
+      "runtime_seconds": "87.25681689999874",
+      "runtime_scope": "temporal_analysis",
+      "speedup": 0.5580482847065718
+    }
+  ]
+}

@@ -1,0 +1,1753 @@
+{
+  "schema_version": "1.0",
+  "capacity_control": {
+    "micro": 16,
+    "meso": 8,
+    "macro": 4
+  },
+  "scenarios": {
+    "deffuant": {
+      "scenario": "deffuant",
+      "phenomenon": "Opinion dynamics on an adaptive network with assimilation, repulsion, and rewiring",
+      "indicators": [
+        {
+          "id": "micro_opinion_p25",
+          "semantic_name": "25th percentile agent opinion",
+          "scientific_definition": "Time series of the 25th percentile of pre-step agent opinions at each simulation step.",
+          "phenomenon": "Opinion distribution lower quartile",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "quantile",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "axis": "agent",
+            "q": 0.25
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Captures the lower-tail individual opinion state over time while remaining an across-agent aggregate of a micro-level primitive."
+        },
+        {
+          "id": "micro_opinion_std",
+          "semantic_name": "Agent opinion standard deviation",
+          "scientific_definition": "Time series of the across-agent standard deviation of pre-step opinion values.",
+          "phenomenon": "Opinion heterogeneity",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures dispersion of individual opinions at each step, aggregating only over the agent dimension to retain a micro-level dispersion observable."
+        },
+        {
+          "id": "micro_median_opinion",
+          "semantic_name": "Median agent opinion",
+          "scientific_definition": "Time series of the across-agent median of pre-step opinion values.",
+          "phenomenon": "Opinion central tendency",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "quantile",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "axis": "agent",
+            "q": 0.5
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Provides a robust location estimate for individual opinions at each step without imposing arbitrary opinion bins."
+        },
+        {
+          "id": "micro_mean_interaction_distance",
+          "semantic_name": "Mean sampled interaction opinion distance",
+          "scientific_definition": "Time series of the across-agent mean absolute opinion distance in sampled interactions at each step.",
+          "phenomenon": "Encounter distance level",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "interaction_distance"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "field",
+              "name": "interaction_distance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Summarizes the typical opinion distance in sampled interactions, a direct micro-level encounter primitive."
+        },
+        {
+          "id": "micro_interaction_distance_std",
+          "semantic_name": "Sampled interaction distance standard deviation",
+          "scientific_definition": "Time series of the across-agent standard deviation of sampled interaction opinion distances.",
+          "phenomenon": "Encounter distance heterogeneity",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "interaction_distance"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "interaction_distance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Tracks dispersion of interaction distances across sampled pairs, indicating variability in local encounter conditions."
+        },
+        {
+          "id": "micro_accepted_fraction",
+          "semantic_name": "Assimilation encounter fraction",
+          "scientific_definition": "Time series of the fraction of sampled interactions that satisfy the closeness condition for assimilation.",
+          "phenomenon": "Assimilation trigger prevalence",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "interaction_accepted"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "interaction_accepted"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "confidence_bound",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "A larger confidence bound permits assimilation at greater opinion distance, so the per-step fraction of accepted encounters should rise."
+            }
+          ],
+          "scientific_rationale": "Measures the prevalence of assimilation-triggering local interaction events as a direct micro-level observable of the confidence criterion."
+        },
+        {
+          "id": "micro_backfire_fraction",
+          "semantic_name": "Backfire encounter fraction",
+          "scientific_definition": "Time series of the fraction of sampled interactions that trigger repulsive updating at each step.",
+          "phenomenon": "Repulsion trigger prevalence",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "interaction_backfire"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "interaction_backfire"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "backfire_threshold",
+              "relationship": "direct",
+              "expected_indicator_direction": "decrease",
+              "rationale": "Raising the backfire threshold makes it harder for sampled opinion distances to qualify as sufficiently distant, reducing the expected backfire fraction."
+            }
+          ],
+          "scientific_rationale": "Captures the per-step prevalence of repulsion-triggering interactions as a direct micro-level observable of the backfire threshold."
+        },
+        {
+          "id": "micro_rejected_fraction",
+          "semantic_name": "Rejected encounter fraction",
+          "scientific_definition": "Time series of the fraction of sampled interactions that produce neither assimilation nor repulsion.",
+          "phenomenon": "Rejection prevalence",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "interaction_rejected"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "interaction_rejected"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures the prevalence of no-update rejection events in sampled micro-level interactions."
+        },
+        {
+          "id": "micro_rewiring_fraction",
+          "semantic_name": "Tie rewiring fraction",
+          "scientific_definition": "Time series of the fraction of sampled interactions in which the focal agent successfully replaced the sampled tie.",
+          "phenomenon": "Adaptive tie replacement",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "edge_rewired"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "edge_rewired"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Quantifies how often a sampled rejected or backfire tie is successfully rewired, a local adaptive-network primitive."
+        },
+        {
+          "id": "micro_mean_abs_agent_shift",
+          "semantic_name": "Mean absolute opinion update",
+          "scientific_definition": "Time series of the across-agent mean absolute signed opinion update applied at each step.",
+          "phenomenon": "Opinion update magnitude",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "agent_shift"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "abs",
+              "input": {
+                "op": "field",
+                "name": "agent_shift"
+              }
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "assimilation_strength",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher assimilation strength increases the magnitude of opinion shifts in accepted encounters, thereby increasing the mean absolute update."
+            }
+          ],
+          "scientific_rationale": "Summarizes individual update intensity as a direct micro-level observable of the assimilation strength parameter."
+        },
+        {
+          "id": "micro_agent_shift_std",
+          "semantic_name": "Opinion update standard deviation",
+          "scientific_definition": "Time series of the across-agent standard deviation of signed opinion updates.",
+          "phenomenon": "Update heterogeneity",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "agent_shift"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "agent_shift"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Captures variability in individual opinion updates and is sensitive to mixed assimilation and repulsion regimes."
+        },
+        {
+          "id": "micro_sign_flip_fraction",
+          "semantic_name": "Opinion sign-flip fraction",
+          "scientific_definition": "Time series of the fraction of agents whose opinion update crosses zero at each step.",
+          "phenomenon": "Zero-crossing prevalence",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "agents",
+          "source_fields": [
+            "sign_flip"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "sign_flip"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures the per-step prevalence of sign-crossing elementary events, reflecting jumps in individual ideological direction."
+        },
+        {
+          "id": "micro_extreme_agent_fraction",
+          "semantic_name": "Extreme opinion fraction",
+          "scientific_definition": "Time series of the fraction of agents with absolute pre-step opinion at least 0.75.",
+          "phenomenon": "Polarized individual opinions",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "greater_equal",
+              "left": {
+                "op": "abs",
+                "input": {
+                  "op": "field",
+                  "name": "state_opinion"
+                }
+              },
+              "right": {
+                "op": "constant",
+                "value": 0.75
+              }
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Tracks the prevalence of strongly polarized individual opinion positions without using an arbitrary external grouping."
+        },
+        {
+          "id": "micro_mean_abs_opinion",
+          "semantic_name": "Mean absolute agent opinion",
+          "scientific_definition": "Time series of the across-agent mean of absolute pre-step opinion values.",
+          "phenomenon": "Individual opinion polarization",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "abs",
+              "input": {
+                "op": "field",
+                "name": "state_opinion"
+              }
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures average distance of individual opinions from the neutral midpoint, providing a micro-level polarization signal."
+        },
+        {
+          "id": "micro_accepted_count",
+          "semantic_name": "Accepted interaction count",
+          "scientific_definition": "Time series of the total number of accepted sampled interactions across agents at each step.",
+          "phenomenon": "Assimilation event volume",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "interaction_accepted"
+          ],
+          "computation": {
+            "op": "count",
+            "input": {
+              "op": "field",
+              "name": "interaction_accepted"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Counts assimilation events as a direct interaction-level volume observable, complementing the fraction-based accepted encounter indicator."
+        },
+        {
+          "id": "micro_edge_rewired_count",
+          "semantic_name": "Rewired tie count",
+          "scientific_definition": "Time series of the total number of successful focal-agent tie replacements at each step.",
+          "phenomenon": "Adaptive rewiring volume",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "sampled agent-partner interactions",
+          "source_fields": [
+            "edge_rewired"
+          ],
+          "computation": {
+            "op": "count",
+            "input": {
+              "op": "field",
+              "name": "edge_rewired"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Counts adaptive rewiring events at the micro interaction level, complementing the rewired fraction indicator."
+        },
+        {
+          "id": "meso_neighborhood_opinion_std",
+          "semantic_name": "Mean neighborhood opinion standard deviation",
+          "scientific_definition": "Time series of the across-agent mean of the standard deviation of opinions within each agent's current network neighborhood.",
+          "phenomenon": "Local opinion diversity",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "state_opinion",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "field",
+                "name": "state_opinion"
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "std"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures typical within-neighborhood opinion heterogeneity using a genuine neighborhood structural operation, then summarizes across local domains."
+        },
+        {
+          "id": "meso_neighborhood_opinion_variance",
+          "semantic_name": "Mean neighborhood opinion variance",
+          "scientific_definition": "Time series of the across-agent mean of the variance of opinions within each agent's current network neighborhood.",
+          "phenomenon": "Local opinion variance",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "state_opinion",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "field",
+                "name": "state_opinion"
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "variance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Provides a variance-based local-domain measure of opinion heterogeneity, relying on explicit network-neighborhood aggregation."
+        },
+        {
+          "id": "meso_neighborhood_abs_opinion_std",
+          "semantic_name": "Mean neighborhood absolute opinion standard deviation",
+          "scientific_definition": "Time series of the across-agent mean of the standard deviation of absolute opinions within each agent's current network neighborhood.",
+          "phenomenon": "Local polarized opinion dispersion",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "state_opinion",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "abs",
+                "input": {
+                  "op": "field",
+                  "name": "state_opinion"
+                }
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "std"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Captures how polarized positions vary within local network neighborhoods, using a genuine neighborhood structural operation before system-wide averaging."
+        },
+        {
+          "id": "meso_neighborhood_abs_opinion_variance",
+          "semantic_name": "Mean neighborhood absolute opinion variance",
+          "scientific_definition": "Time series of the across-agent mean of the variance of absolute opinions within each agent's current network neighborhood.",
+          "phenomenon": "Local polarized opinion variance",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "state_opinion",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "abs",
+                "input": {
+                  "op": "field",
+                  "name": "state_opinion"
+                }
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "variance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures variance in polarized positions within network-defined local domains, preserving the required meso-level structural organization."
+        },
+        {
+          "id": "meso_neighborhood_interaction_distance_std",
+          "semantic_name": "Mean neighborhood interaction distance standard deviation",
+          "scientific_definition": "Time series of the across-agent mean of the standard deviation of sampled interaction distances within each agent's network neighborhood.",
+          "phenomenon": "Local encounter distance dispersion",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "interaction_distance",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "field",
+                "name": "interaction_distance"
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "std"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Uses network-defined neighborhoods to measure local dispersion of encounter distances, then summarizes across local domains."
+        },
+        {
+          "id": "meso_neighborhood_interaction_distance_variance",
+          "semantic_name": "Mean neighborhood interaction distance variance",
+          "scientific_definition": "Time series of the across-agent mean of the variance of sampled interaction distances within each agent's network neighborhood.",
+          "phenomenon": "Local encounter distance variance",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "interaction_distance",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "field",
+                "name": "interaction_distance"
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "variance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Provides a variance-based structural neighborhood measure of sampled encounter distances, retaining real local-domain organization."
+        },
+        {
+          "id": "meso_neighborhood_agent_shift_std",
+          "semantic_name": "Mean neighborhood opinion shift standard deviation",
+          "scientific_definition": "Time series of the across-agent mean of the standard deviation of signed opinion shifts within each agent's network neighborhood.",
+          "phenomenon": "Local update dispersion",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "agent_shift",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "field",
+                "name": "agent_shift"
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "std"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures typical heterogeneity of opinion updates inside network-defined neighborhoods, preserving the necessary meso structural reduction."
+        },
+        {
+          "id": "meso_neighborhood_agent_shift_variance",
+          "semantic_name": "Mean neighborhood opinion shift variance",
+          "scientific_definition": "Time series of the across-agent mean of the variance of signed opinion shifts within each agent's network neighborhood.",
+          "phenomenon": "Local update variance",
+          "scale": "meso",
+          "entity_scope": "neighborhood",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "agent_shift",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "network_neighborhood_reduce",
+              "values": {
+                "op": "field",
+                "name": "agent_shift"
+              },
+              "edges": {
+                "op": "field",
+                "name": "network_edges"
+              },
+              "reducer": "variance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Provides a variance-based local-domain measure of opinion update heterogeneity using explicit network-neighborhood aggregation."
+        },
+        {
+          "id": "macro_opinion_global_mean",
+          "semantic_name": "Whole-system mean opinion",
+          "scientific_definition": "Time series of the whole-system arithmetic mean of pre-step agent opinions.",
+          "phenomenon": "System consensus level",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "all agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Represents the collective opinion state of the entire agent population at each step, a whole-system macro observable."
+        },
+        {
+          "id": "macro_opinion_global_variance",
+          "semantic_name": "Whole-system opinion variance",
+          "scientific_definition": "Time series of the whole-system variance of pre-step agent opinions.",
+          "phenomenon": "System opinion polarization",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "all agents",
+          "source_fields": [
+            "state_opinion"
+          ],
+          "computation": {
+            "op": "variance",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Measures global opinion heterogeneity across the entire system, capturing macro-level collective differentiation."
+        },
+        {
+          "id": "macro_network_largest_component_fraction",
+          "semantic_name": "Largest network component fraction",
+          "scientific_definition": "Time series of the fraction of agents in the largest connected component of the current interaction network.",
+          "phenomenon": "System structural cohesion",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "network_edges",
+            "agent_count"
+          ],
+          "computation": {
+            "op": "network_largest_component_fraction",
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "node_count": {
+              "op": "field",
+              "name": "agent_count"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Uses the global interaction network structure to track whole-system connectivity and diffusion potential as a macro property."
+        },
+        {
+          "id": "macro_network_assortativity",
+          "semantic_name": "Network opinion assortativity",
+          "scientific_definition": "Time series of degree-weighted opinion assortativity across the current interaction network.",
+          "phenomenon": "System opinion homophily",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "agents and network edges",
+          "source_fields": [
+            "state_opinion",
+            "network_edges"
+          ],
+          "computation": {
+            "op": "network_assortativity",
+            "values": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Quantifies global network-level opinion homophily as a whole-system structural macro indicator."
+        }
+      ],
+      "interpretation_boundary": "These indicators are pre-registered executable observables only. They defer all temporal-order, lagged-dependence, causal, and intervention-effect interpretation to later phases; no path, edge, prediction, statistical claim, or simulation result is asserted here."
+    },
+    "schelling": {
+      "scenario": "schelling",
+      "phenomenon": "residential segregation dynamics",
+      "indicators": [
+        {
+          "id": "mean_local_similarity",
+          "semantic_name": "Mean local same-group similarity",
+          "scientific_definition": "Mean occupied-neighbour same-group fraction across agents at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "local_similarity"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Local similarity is the individual exposure primitive; its cross-agent mean captures average local segmentation pressure."
+        },
+        {
+          "id": "std_local_similarity",
+          "semantic_name": "Standard deviation of local same-group similarity",
+          "scientific_definition": "Cross-agent dispersion of occupied-neighbour same-group fraction at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "local_similarity"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Dispersion of local similarity measures individual heterogeneity in local group exposure."
+        },
+        {
+          "id": "mean_neighbour_count",
+          "semantic_name": "Mean local neighbour count",
+          "scientific_definition": "Mean occupied Moore-neighbour count across agents at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "neighbour_count"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "field",
+              "name": "neighbour_count"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Mean neighbour count reflects local occupancy density experienced by individual agents."
+        },
+        {
+          "id": "unhappy_fraction",
+          "semantic_name": "Fraction of unsatisfied agents",
+          "scientific_definition": "Proportion of agents whose local same-group fraction is below tolerance at each step, computed as the boolean dissatisfaction event fraction over agents.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "unsatisfied agents",
+          "source_fields": [
+            "unhappy"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "unhappy"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "tolerance",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher tolerance raises the minimum required same-group fraction, so more agents are classified as unsatisfied."
+            }
+          ],
+          "scientific_rationale": "The unsatisfied fraction is the aggregate prevalence of the elementary dissatisfaction event."
+        },
+        {
+          "id": "unhappy_local_similarity_mean",
+          "semantic_name": "Mean local similarity among unsatisfied agents",
+          "scientific_definition": "Mean local same-group fraction among agents classified as unsatisfied at each step, excluding satisfied agents by boolean masking.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "unsatisfied agents",
+          "source_fields": [
+            "unhappy",
+            "local_similarity"
+          ],
+          "computation": {
+            "op": "safe_ratio",
+            "left": {
+              "op": "sum",
+              "input": {
+                "op": "where",
+                "condition": {
+                  "op": "field",
+                  "name": "unhappy"
+                },
+                "input": {
+                  "op": "field",
+                  "name": "local_similarity"
+                }
+              },
+              "axis": "agent"
+            },
+            "right": {
+              "op": "count",
+              "input": {
+                "op": "field",
+                "name": "unhappy"
+              },
+              "axis": "agent"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "This observable describes the typical local context of agents currently trying to relocate."
+        },
+        {
+          "id": "moved_fraction",
+          "semantic_name": "Fraction of agents relocating",
+          "scientific_definition": "Proportion of agents that relocated during each recorded step, computed as the boolean relocation event fraction over agents.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "moving agents",
+          "source_fields": [
+            "moved"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "moved"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "move_probability",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher move_probability increases the chance an unsatisfied agent attempts relocation, raising the fraction that moves."
+            }
+          ],
+          "scientific_rationale": "The moving fraction is the aggregate prevalence of the elementary relocation event."
+        },
+        {
+          "id": "mean_move_distance",
+          "semantic_name": "Mean relocation distance among movers",
+          "scientific_definition": "Mean periodic Manhattan distance of relocation among agents that moved during each step, excluding non-movers.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "relocating agents",
+          "source_fields": [
+            "moved",
+            "move_distance"
+          ],
+          "computation": {
+            "op": "safe_ratio",
+            "left": {
+              "op": "sum",
+              "input": {
+                "op": "where",
+                "condition": {
+                  "op": "field",
+                  "name": "moved"
+                },
+                "input": {
+                  "op": "field",
+                  "name": "move_distance"
+                }
+              },
+              "axis": "agent"
+            },
+            "right": {
+              "op": "count",
+              "input": {
+                "op": "field",
+                "name": "moved"
+              },
+              "axis": "agent"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Mean move distance captures the spatial extent of individual relocation events."
+        },
+        {
+          "id": "mean_destination_similarity_movers",
+          "semantic_name": "Mean destination similarity among movers",
+          "scientific_definition": "Mean same-group neighbour fraction at selected destinations among agents that relocated during each step, excluding non-movers.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "relocating agents",
+          "source_fields": [
+            "moved",
+            "destination_similarity"
+          ],
+          "computation": {
+            "op": "safe_ratio",
+            "left": {
+              "op": "sum",
+              "input": {
+                "op": "where",
+                "condition": {
+                  "op": "field",
+                  "name": "moved"
+                },
+                "input": {
+                  "op": "field",
+                  "name": "destination_similarity"
+                }
+              },
+              "axis": "agent"
+            },
+            "right": {
+              "op": "count",
+              "input": {
+                "op": "field",
+                "name": "moved"
+              },
+              "axis": "agent"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "destination_preference",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher destination_preference increases the probability of selecting the most similar sampled vacancy, raising average destination similarity among movers."
+            }
+          ],
+          "scientific_rationale": "Destination similarity measures the local exposure outcome of relocation choices."
+        },
+        {
+          "id": "boundary_fraction",
+          "semantic_name": "Fraction of boundary agents",
+          "scientific_definition": "Proportion of agents with at least one occupied different-group neighbour at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "boundary_agent"
+          ],
+          "computation": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "boundary_agent"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Boundary exposure indicates how many individuals are directly adjacent to out-group members."
+        },
+        {
+          "id": "std_destination_similarity",
+          "semantic_name": "Dispersion of destination similarity",
+          "scientific_definition": "Cross-agent standard deviation of destination same-group neighbour fraction, including zero for non-movers, at each step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "agents",
+          "source_fields": [
+            "destination_similarity"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "destination_similarity"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Dispersion of destination similarity reflects heterogeneity in relocation outcomes."
+        },
+        {
+          "id": "quantile_25_local_similarity",
+          "semantic_name": "25th percentile local similarity",
+          "scientific_definition": "Lower quartile of agents' local same-group fraction at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "local_similarity"
+          ],
+          "computation": {
+            "op": "quantile",
+            "input": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "axis": "agent",
+            "q": 0.25
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Lower quartile tracks the most isolated fraction of individuals."
+        },
+        {
+          "id": "quantile_75_local_similarity",
+          "semantic_name": "75th percentile local similarity",
+          "scientific_definition": "Upper quartile of agents' local same-group fraction at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "local_similarity"
+          ],
+          "computation": {
+            "op": "quantile",
+            "input": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "axis": "agent",
+            "q": 0.75
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Upper quartile tracks the most grouped fraction of individuals."
+        },
+        {
+          "id": "local_similarity_entropy",
+          "semantic_name": "Entropy of local similarity distribution",
+          "scientific_definition": "Shannon entropy of binned local same-group similarity across agents at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "local_similarity"
+          ],
+          "computation": {
+            "op": "binned_entropy",
+            "input": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "axis": "agent",
+            "bins": 10
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Entropy summarizes the diversity of local exposure states in the agent population."
+        },
+        {
+          "id": "move_distance_std",
+          "semantic_name": "Dispersion of relocation distance",
+          "scientific_definition": "Cross-agent standard deviation of periodic Manhattan relocation distance, including zero for non-movers, at each step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "elementary_event",
+          "entities": "agents",
+          "source_fields": [
+            "move_distance"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "move_distance"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Dispersion of move distance captures variability in relocation spatial reach."
+        },
+        {
+          "id": "std_neighbour_count",
+          "semantic_name": "Dispersion of local neighbour count",
+          "scientific_definition": "Cross-agent standard deviation of occupied Moore-neighbour count at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "individual",
+          "entities": "agents",
+          "source_fields": [
+            "neighbour_count"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "field",
+              "name": "neighbour_count"
+            },
+            "axis": "agent"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Dispersion of neighbour count reflects unevenness in local occupancy density."
+        },
+        {
+          "id": "relocation_response_fraction",
+          "semantic_name": "Relocation response fraction",
+          "scientific_definition": "Ratio of moving agents to unsatisfied agents at each step, measuring the realized relocation response among dissatisfied agents.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "micro",
+          "entity_scope": "interaction",
+          "entities": "unsatisfied and moving agents",
+          "source_fields": [
+            "moved",
+            "unhappy"
+          ],
+          "computation": {
+            "op": "safe_ratio",
+            "left": {
+              "op": "count",
+              "input": {
+                "op": "field",
+                "name": "moved"
+              },
+              "axis": "agent"
+            },
+            "right": {
+              "op": "count",
+              "input": {
+                "op": "field",
+                "name": "unhappy"
+              },
+              "axis": "agent"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "move_probability",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher move_probability increases the chance that an unsatisfied agent attempts relocation, raising the ratio of movers to unsatisfied agents."
+            }
+          ],
+          "scientific_rationale": "This interaction-level observable links the dissatisfaction event to the relocation event."
+        },
+        {
+          "id": "meso_district_local_similarity_std",
+          "semantic_name": "Between-district standard deviation of mean local similarity",
+          "scientific_definition": "Cross-district dispersion of district-averaged local same-group similarity at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "local_similarity",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "local_similarity"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "mean"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Uses fixed district membership to aggregate local similarity within districts and capture between-district segregation variation."
+        },
+        {
+          "id": "meso_district_unhappy_fraction_std",
+          "semantic_name": "Between-district standard deviation of unsatisfied fraction",
+          "scientific_definition": "Cross-district dispersion of district-level unsatisfied-agent fraction at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "unhappy",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "unhappy"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "fraction"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Between-district variation in dissatisfaction reveals uneven local stability pressure across public spatial districts."
+        },
+        {
+          "id": "meso_district_boundary_fraction_std",
+          "semantic_name": "Between-district standard deviation of boundary-agent fraction",
+          "scientific_definition": "Cross-district dispersion of the district-level proportion of agents with at least one different-group neighbour at each step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "boundary_agent",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "boundary_agent"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "fraction"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "District-level boundary exposure variation captures local intergroup contact differences across fixed public domains."
+        },
+        {
+          "id": "meso_district_move_fraction_std",
+          "semantic_name": "Between-district standard deviation of moving fraction",
+          "scientific_definition": "Cross-district dispersion of the district-level proportion of agents that relocated during each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "moved",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "moved"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "fraction"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Between-district variation in relocation activity indicates uneven local adjustment pressure."
+        },
+        {
+          "id": "meso_district_destination_similarity_std",
+          "semantic_name": "Between-district standard deviation of destination similarity",
+          "scientific_definition": "Cross-district dispersion of district-averaged destination same-group neighbour fraction at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "destination_similarity",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "destination_similarity"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "mean"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Between-district dispersion of destination similarity captures local differences in relocation destination quality."
+        },
+        {
+          "id": "meso_district_neighbour_count_std",
+          "semantic_name": "Between-district standard deviation of mean neighbour count",
+          "scientific_definition": "Cross-district dispersion of district-averaged occupied Moore-neighbour count at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "neighbour_count",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "neighbour_count"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "mean"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Between-district variation in local occupancy density identifies uneven packing across fixed spatial domains."
+        },
+        {
+          "id": "meso_district_group_entropy_mean",
+          "semantic_name": "Mean district group-composition entropy",
+          "scientific_definition": "Average district-level entropy of agent group labels within each fixed public district at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "agent_group",
+            "district_id"
+          ],
+          "computation": {
+            "op": "mean",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "agent_group"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "entropy"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Mean district composition entropy measures within-district group mixing while using supplied district membership structure."
+        },
+        {
+          "id": "meso_district_move_distance_std",
+          "semantic_name": "Between-district standard deviation of mean move distance",
+          "scientific_definition": "Cross-district dispersion of district-averaged periodic Manhattan relocation distance at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "meso",
+          "entity_scope": "district",
+          "entities": "spatial districts",
+          "source_fields": [
+            "move_distance",
+            "district_id"
+          ],
+          "computation": {
+            "op": "std",
+            "input": {
+              "op": "group_reduce",
+              "values": {
+                "op": "field",
+                "name": "move_distance"
+              },
+              "groups": {
+                "op": "field",
+                "name": "district_id"
+              },
+              "axis": "agent",
+              "reducer": "mean"
+            },
+            "axis": "group"
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Between-district variation in move distance captures distinct local spatial mobility patterns."
+        },
+        {
+          "id": "macro_global_unhappy_fraction",
+          "semantic_name": "Global unsatisfied fraction",
+          "scientific_definition": "Whole-system proportion of unsatisfied agents computed from the system aggregate unsatisfied count at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "whole system",
+          "source_fields": [
+            "unhappy_count",
+            "agent_count"
+          ],
+          "computation": {
+            "op": "divide",
+            "left": {
+              "op": "field",
+              "name": "unhappy_count"
+            },
+            "right": {
+              "op": "field",
+              "name": "agent_count"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "tolerance",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher tolerance increases the global number of unsatisfied agents, raising the whole-system unsatisfied fraction."
+            }
+          ],
+          "scientific_rationale": "Whole-system dissatisfaction is a core collective outcome of the segregation process."
+        },
+        {
+          "id": "macro_global_moved_fraction",
+          "semantic_name": "Global relocation fraction",
+          "scientific_definition": "Whole-system proportion of agents that relocated during each recorded step, computed as the ratio of relocation-event count to agent population.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "whole system",
+          "source_fields": [
+            "moved",
+            "agent_count"
+          ],
+          "computation": {
+            "op": "divide",
+            "left": {
+              "op": "count",
+              "input": {
+                "op": "field",
+                "name": "moved"
+              },
+              "axis": "agent"
+            },
+            "right": {
+              "op": "field",
+              "name": "agent_count"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [
+            {
+              "parameter": "move_probability",
+              "relationship": "direct",
+              "expected_indicator_direction": "increase",
+              "rationale": "Higher move_probability increases the global relocation frequency, raising the whole-system moving fraction."
+            }
+          ],
+          "scientific_rationale": "Global relocation fraction is a whole-system measure of aggregate adjustment intensity."
+        },
+        {
+          "id": "macro_global_connected_components",
+          "semantic_name": "Count of same-group spatial components",
+          "scientific_definition": "Number of contiguous occupied-cell components with identical group label in the periodic grid at each recorded step, excluding vacancies.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "whole system",
+          "source_fields": [
+            "state_grid"
+          ],
+          "computation": {
+            "op": "connected_component_count",
+            "input": {
+              "op": "field",
+              "name": "state_grid"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "The number of same-group contiguous components is a global structural measure of spatial sorting."
+        },
+        {
+          "id": "macro_global_spatial_neighbor_similarity",
+          "semantic_name": "Global spatial neighbour similarity",
+          "scientific_definition": "Whole-grid average same-group similarity among occupied Moore neighbours at each recorded step.",
+          "phenomenon": "residential segregation dynamics",
+          "scale": "macro",
+          "entity_scope": "whole_system",
+          "entities": "whole system",
+          "source_fields": [
+            "state_grid"
+          ],
+          "computation": {
+            "op": "spatial_neighbor_similarity",
+            "input": {
+              "op": "field",
+              "name": "state_grid"
+            }
+          },
+          "temporal_aggregation": {
+            "op": "identity"
+          },
+          "parameter_associations": [],
+          "scientific_rationale": "Global spatial neighbour similarity is a direct whole-grid metric of segregation."
+        }
+      ],
+      "interpretation_boundary": "Indicators are declarative, executable observables computed from the supplied raw fields and grammar. They do not provide statistical estimates, causal effects, temporal forecasts, or intervention contrasts; no candidate paths or predictions are asserted in this phase."
+    }
+  }
+}

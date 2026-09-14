@@ -1,0 +1,12 @@
+{
+  "stage": "primary_freeze",
+  "status": "completed",
+  "duration_seconds": 0.021304300000338117,
+  "outputs": {
+    "provenance/PRIMARY_DISCOVERY_FROZEN.json": "68c059e361f33743bea8f7ea8aa9c867e351019daa65a5230236177c36025861"
+  },
+  "details": {
+    "primary_discovery_frozen": true,
+    "holdout_used_for_primary": false
+  }
+}

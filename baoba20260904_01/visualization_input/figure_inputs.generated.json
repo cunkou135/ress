@@ -1,0 +1,314 @@
+{
+  "schema_version": "2.0",
+  "source_run": "baoba20260904_01",
+  "render_backend": "dynamic Python/matplotlib adapter",
+  "dynamic_row_counts": true,
+  "figures": {
+    "02": {
+      "paper_pdf_figure": 2,
+      "output": "figure_2_simulation_dynamics.png",
+      "inputs": [
+        {
+          "path": "data/raw_logs/deffuant/baseline/seed_3101.npz",
+          "format": "npz",
+          "arrays": {
+            "state_opinion": [
+              120,
+              240
+            ],
+            "network_edges": [
+              120,
+              960,
+              2
+            ],
+            "partner_id": [
+              120,
+              240
+            ],
+            "interaction_distance": [
+              120,
+              240
+            ],
+            "interaction_accepted": [
+              120,
+              240
+            ],
+            "interaction_backfire": [
+              120,
+              240
+            ],
+            "interaction_rejected": [
+              120,
+              240
+            ],
+            "edge_rewired": [
+              120,
+              240
+            ],
+            "agent_shift": [
+              120,
+              240
+            ],
+            "sign_flip": [
+              120,
+              240
+            ],
+            "extreme_agent_count": [
+              120
+            ],
+            "num_steps": [
+              1
+            ],
+            "agent_count": [
+              1
+            ]
+          }
+        },
+        {
+          "path": "data/raw_logs/schelling/baseline/seed_3101.npz",
+          "format": "npz",
+          "arrays": {
+            "state_grid": [
+              160,
+              30,
+              30
+            ],
+            "agent_id": [
+              720
+            ],
+            "agent_group": [
+              720
+            ],
+            "agent_position": [
+              160,
+              720,
+              2
+            ],
+            "district_id": [
+              160,
+              720
+            ],
+            "local_similarity": [
+              160,
+              720
+            ],
+            "neighbour_count": [
+              160,
+              720
+            ],
+            "unhappy": [
+              160,
+              720
+            ],
+            "unhappy_count": [
+              160
+            ],
+            "moved": [
+              160,
+              720
+            ],
+            "move_distance": [
+              160,
+              720
+            ],
+            "destination_similarity": [
+              160,
+              720
+            ],
+            "boundary_agent": [
+              160,
+              720
+            ],
+            "num_steps": [
+              1
+            ],
+            "agent_count": [
+              1
+            ]
+          }
+        }
+      ]
+    },
+    "03": {
+      "paper_pdf_figure": 3,
+      "output": "figure_3_graph_recovery.png",
+      "inputs": [
+        {
+          "path": "analysis/controlled_recovery_graphs.jsonl",
+          "format": "jsonl",
+          "records": 8
+        },
+        {
+          "path": "analysis/controlled_recovery_results.csv",
+          "format": "csv",
+          "records": 8,
+          "required_columns": [
+            "evaluation_track",
+            "scenario",
+            "method",
+            "edge_f1",
+            "shd",
+            "stability",
+            "lag_mae"
+          ]
+        }
+      ]
+    },
+    "04": {
+      "paper_pdf_figure": 4,
+      "output": "figure_4_data_efficiency.png",
+      "inputs": [
+        {
+          "path": "analysis/data_efficiency_repeated_subsampling.csv",
+          "format": "csv",
+          "records": 384,
+          "required_columns": [
+            "scenario",
+            "method",
+            "trajectory_count",
+            "repetition",
+            "temporal_qualification_rate",
+            "stability",
+            "temporal_qualification_rate_ci_low",
+            "temporal_qualification_rate_ci_high",
+            "stability_ci_low",
+            "stability_ci_high"
+          ]
+        }
+      ]
+    },
+    "05": {
+      "paper_pdf_figure": 5,
+      "output": "figure_5_intervention_timing.png",
+      "inputs": [
+        {
+          "path": "analysis/effect_curves.parquet",
+          "format": "parquet",
+          "records": 47040,
+          "required_columns": [
+            "scenario",
+            "parameter",
+            "direction",
+            "node_id",
+            "time",
+            "mean",
+            "ci_low",
+            "ci_high"
+          ]
+        },
+        {
+          "path": "analysis/path_timing_summary.csv",
+          "format": "csv",
+          "records": 66,
+          "required_columns": [
+            "scenario",
+            "path_id",
+            "scale",
+            "onset_time",
+            "observational_lag",
+            "lag_difference",
+            "cumulative_effect",
+            "significant"
+          ]
+        },
+        {
+          "path": "analysis/representative_path_selection.json",
+          "format": "json"
+        }
+      ]
+    },
+    "06": {
+      "paper_pdf_figure": 6,
+      "output": "figure_6_effect_matrix.png",
+      "inputs": [
+        {
+          "path": "analysis/paired_effects.parquet",
+          "format": "parquet",
+          "records": 336,
+          "required_columns": [
+            "scenario",
+            "parameter",
+            "direction",
+            "node_id",
+            "scale",
+            "cumulative_effect",
+            "significant"
+          ]
+        }
+      ]
+    },
+    "07": {
+      "paper_pdf_figure": 7,
+      "output": "figure_7_multiscale_propagation.png",
+      "inputs": [
+        {
+          "path": "analysis/path_timing_summary.csv",
+          "format": "csv",
+          "records": 66,
+          "required_columns": [
+            "scenario",
+            "path_id",
+            "parameter",
+            "direction",
+            "source",
+            "meso",
+            "macro",
+            "scale",
+            "onset_time",
+            "cumulative_effect",
+            "significant"
+          ]
+        },
+        {
+          "path": "analysis/intervention_classifications.csv",
+          "format": "csv",
+          "records": 1079,
+          "required_columns": [
+            "scenario",
+            "source",
+            "target",
+            "parameter",
+            "direction",
+            "manipulation_success",
+            "primary_class",
+            "underlying_class"
+          ]
+        }
+      ]
+    },
+    "08": {
+      "paper_pdf_figure": 8,
+      "output": "figure_8_robustness_efficiency.png",
+      "inputs": [
+        {
+          "path": "analysis/observation_robustness.csv",
+          "format": "csv",
+          "records": 208,
+          "required_columns": [
+            "scenario",
+            "factor",
+            "noise_level",
+            "missing_fraction",
+            "support_threshold",
+            "repetition",
+            "temporal_qualification_rate",
+            "stability",
+            "retained_edge_count"
+          ]
+        },
+        {
+          "path": "analysis/causal_scalability.csv",
+          "format": "csv",
+          "records": 40,
+          "required_columns": [
+            "scenario",
+            "candidate_indicator_count",
+            "repetition",
+            "runtime_seconds",
+            "discovered_edge_count"
+          ]
+        }
+      ]
+    }
+  }
+}

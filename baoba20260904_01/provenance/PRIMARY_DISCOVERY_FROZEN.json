@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "status": "frozen",
+  "holdout_used_for_primary": false,
+  "files": {
+    "analysis/edge_intervention_classifications.csv": "e0c5f1c21da9f6a7d0703671e947e1445dff150f47c0b5367209b143a98baf32",
+    "analysis/intervention_classifications.csv": "e33eca88f38f8edc3162470e1f31b49c40bbd4548d77790ce75f957bfbfa140c",
+    "analysis/main_graphs.jsonl": "1f3aeb1c085b4de636d0a3c5d7bdbaf6edc1bad6040fd466033c5b30b9f04e83",
+    "analysis/mechanism_bidirectional_summary.csv": "57e3b22a4c9bdbfa5b0de1c08ef6f5775730a338204fe037cacd04b35db6e668",
+    "analysis/paired_effects.parquet": "fffdebf6152bd4c4705cdd4a196f4ae07033910cfd4ac413136cc07ac61c3ae9",
+    "analysis/path_intervention_classification.csv": "ab2fcc5c6b3a7d065d8dba5c193a368b7da9dc1781dc2ce6c9724086c1a7c440",
+    "analysis/path_temporal_qualification.csv": "a1c7439ec18c9b895a9006690b0330260e8f9a1d25065c2ba714d8e724eb5409",
+    "analysis/path_timing_concordance.csv": "7b4bd27e58e2692f8fc4d077444413990cf512a7e6b24c64c6d4ee7cc6f8f116",
+    "analysis/path_timing_summary.csv": "b35961ed6b2921b643af5f078da8a681003ff7a08e5a968e28b1ba2c740e4ea2",
+    "analysis/prospective_validation.csv": "e05dc8822d09697dff0c38defbf1b14fe46d4599ee065a080d6a8b4ac5e128a6",
+    "representation/candidate_paths.json": "786a08db66d5c18428800774dca1e2240f3e5ae9adc94e2ee0310bb15db2dad4",
+    "representation/CANDIDATE_PATHS_FROZEN.sha256": "de5402c1ea166df4cec1c8684d680a6ee5b76fe0e7f4ec5404229d59d0c10934",
+    "representation/deffuant_representation.json": "7647960e393651dc26b0f608560ca9ec918bd1aa884b54c5955bfbd828254ead",
+    "representation/derived_candidate_edges.json": "f5d6880131932424cd5f31a8bc5086a45a0b153dbdac9147a0573b827895909e",
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333",
+    "representation/INDICATORS_FROZEN.sha256": "00c45a31ddfd81085c0cfbdccf9f515ee0417e07fc49b6331d02c5130da00b6f",
+    "representation/prospective_predictions.json": "ddb3e4d0a3980408c7dc843824b0c8b468d27a25e128cd7ec7fdd83b95167253",
+    "representation/PROSPECTIVE_PREDICTIONS_FROZEN.sha256": "89c64455a9153ed2cc1ce335a4cc5f0592b00e6f93be60cf65ad8d9dbeb00dfb",
+    "representation/representation_validation.json": "f4f37df9e738a506b0ea5242ef874add43f960f6c8cda128623ec888d6d816bf",
+    "representation/schelling_representation.json": "29665fe8e9880c007944409a49580c700fb62316b363a8fdecd16baea66b3736"
+  }
+}

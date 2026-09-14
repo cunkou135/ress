@@ -1,0 +1,13 @@
+{
+  "selection_rule": "supported_and_holdout_confirmed_then_lexical_path_id_else_primary_supported_then_lexical_path_id",
+  "scenarios": {
+    "deffuant": {
+      "path_id": "cb_minus_accept_absovar_assort",
+      "evidence_scope": "holdout_confirmed"
+    },
+    "schelling": {
+      "path_id": "tol_minus_unhappy_to_move_std_to_spatial_sim",
+      "evidence_scope": "holdout_confirmed"
+    }
+  }
+}

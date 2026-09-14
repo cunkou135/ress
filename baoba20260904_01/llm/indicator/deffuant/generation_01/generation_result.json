@@ -1,0 +1,956 @@
+{
+  "status": "accepted",
+  "repair_rounds": 1,
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "scale_counts": {
+      "micro": 16,
+      "meso": 8,
+      "macro": 4
+    },
+    "indicator_count": 28,
+    "source_field_diversity": 10,
+    "direct_micro_parameter_sources": {
+      "confidence_bound": [
+        "micro_accepted_fraction"
+      ],
+      "assimilation_strength": [
+        "micro_mean_abs_agent_shift"
+      ],
+      "backfire_threshold": [
+        "micro_backfire_fraction"
+      ]
+    },
+    "source_families": {
+      "micro_opinion_p25": [
+        "opinion_state"
+      ],
+      "micro_opinion_std": [
+        "opinion_state"
+      ],
+      "micro_median_opinion": [
+        "opinion_state"
+      ],
+      "micro_mean_interaction_distance": [
+        "encounter_distance"
+      ],
+      "micro_interaction_distance_std": [
+        "encounter_distance"
+      ],
+      "micro_accepted_fraction": [
+        "assimilation_event"
+      ],
+      "micro_backfire_fraction": [
+        "repulsion_event"
+      ],
+      "micro_rejected_fraction": [
+        "rejection_event"
+      ],
+      "micro_rewiring_fraction": [
+        "rewiring_event"
+      ],
+      "micro_mean_abs_agent_shift": [
+        "opinion_update"
+      ],
+      "micro_agent_shift_std": [
+        "opinion_update"
+      ],
+      "micro_sign_flip_fraction": [
+        "sign_crossing_event"
+      ],
+      "micro_extreme_agent_fraction": [
+        "opinion_state"
+      ],
+      "micro_mean_abs_opinion": [
+        "opinion_state"
+      ],
+      "micro_accepted_count": [
+        "assimilation_event"
+      ],
+      "micro_edge_rewired_count": [
+        "rewiring_event"
+      ],
+      "meso_neighborhood_opinion_std": [
+        "network_topology",
+        "opinion_state"
+      ],
+      "meso_neighborhood_opinion_variance": [
+        "network_topology",
+        "opinion_state"
+      ],
+      "meso_neighborhood_abs_opinion_std": [
+        "network_topology",
+        "opinion_state"
+      ],
+      "meso_neighborhood_abs_opinion_variance": [
+        "network_topology",
+        "opinion_state"
+      ],
+      "meso_neighborhood_interaction_distance_std": [
+        "encounter_distance",
+        "network_topology"
+      ],
+      "meso_neighborhood_interaction_distance_variance": [
+        "encounter_distance",
+        "network_topology"
+      ],
+      "meso_neighborhood_agent_shift_std": [
+        "network_topology",
+        "opinion_update"
+      ],
+      "meso_neighborhood_agent_shift_variance": [
+        "network_topology",
+        "opinion_update"
+      ],
+      "macro_opinion_global_mean": [
+        "opinion_state"
+      ],
+      "macro_opinion_global_variance": [
+        "opinion_state"
+      ],
+      "macro_network_largest_component_fraction": [
+        "network_topology"
+      ],
+      "macro_network_assortativity": [
+        "network_topology",
+        "opinion_state"
+      ]
+    },
+    "meso_structural_diversity": 8,
+    "macro_concept_diversity": 4
+  },
+  "accepted_generation": {
+    "scenario": "deffuant",
+    "phenomenon": "Opinion dynamics on an adaptive network with assimilation, repulsion, and rewiring",
+    "indicators": [
+      {
+        "id": "micro_opinion_p25",
+        "semantic_name": "25th percentile agent opinion",
+        "scientific_definition": "Time series of the 25th percentile of pre-step agent opinions at each simulation step.",
+        "phenomenon": "Opinion distribution lower quartile",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent",
+          "q": 0.25
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Captures the lower-tail individual opinion state over time while remaining an across-agent aggregate of a micro-level primitive."
+      },
+      {
+        "id": "micro_opinion_std",
+        "semantic_name": "Agent opinion standard deviation",
+        "scientific_definition": "Time series of the across-agent standard deviation of pre-step opinion values.",
+        "phenomenon": "Opinion heterogeneity",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures dispersion of individual opinions at each step, aggregating only over the agent dimension to retain a micro-level dispersion observable."
+      },
+      {
+        "id": "micro_median_opinion",
+        "semantic_name": "Median agent opinion",
+        "scientific_definition": "Time series of the across-agent median of pre-step opinion values.",
+        "phenomenon": "Opinion central tendency",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent",
+          "q": 0.5
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Provides a robust location estimate for individual opinions at each step without imposing arbitrary opinion bins."
+      },
+      {
+        "id": "micro_mean_interaction_distance",
+        "semantic_name": "Mean sampled interaction opinion distance",
+        "scientific_definition": "Time series of the across-agent mean absolute opinion distance in sampled interactions at each step.",
+        "phenomenon": "Encounter distance level",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "interaction_distance"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "interaction_distance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Summarizes the typical opinion distance in sampled interactions, a direct micro-level encounter primitive."
+      },
+      {
+        "id": "micro_interaction_distance_std",
+        "semantic_name": "Sampled interaction distance standard deviation",
+        "scientific_definition": "Time series of the across-agent standard deviation of sampled interaction opinion distances.",
+        "phenomenon": "Encounter distance heterogeneity",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "interaction_distance"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "interaction_distance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Tracks dispersion of interaction distances across sampled pairs, indicating variability in local encounter conditions."
+      },
+      {
+        "id": "micro_accepted_fraction",
+        "semantic_name": "Assimilation encounter fraction",
+        "scientific_definition": "Time series of the fraction of sampled interactions that satisfy the closeness condition for assimilation.",
+        "phenomenon": "Assimilation trigger prevalence",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "interaction_accepted"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "interaction_accepted"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "confidence_bound",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "A larger confidence bound permits assimilation at greater opinion distance, so the per-step fraction of accepted encounters should rise."
+          }
+        ],
+        "scientific_rationale": "Measures the prevalence of assimilation-triggering local interaction events as a direct micro-level observable of the confidence criterion."
+      },
+      {
+        "id": "micro_backfire_fraction",
+        "semantic_name": "Backfire encounter fraction",
+        "scientific_definition": "Time series of the fraction of sampled interactions that trigger repulsive updating at each step.",
+        "phenomenon": "Repulsion trigger prevalence",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "interaction_backfire"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "interaction_backfire"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "backfire_threshold",
+            "relationship": "direct",
+            "expected_indicator_direction": "decrease",
+            "rationale": "Raising the backfire threshold makes it harder for sampled opinion distances to qualify as sufficiently distant, reducing the expected backfire fraction."
+          }
+        ],
+        "scientific_rationale": "Captures the per-step prevalence of repulsion-triggering interactions as a direct micro-level observable of the backfire threshold."
+      },
+      {
+        "id": "micro_rejected_fraction",
+        "semantic_name": "Rejected encounter fraction",
+        "scientific_definition": "Time series of the fraction of sampled interactions that produce neither assimilation nor repulsion.",
+        "phenomenon": "Rejection prevalence",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "interaction_rejected"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "interaction_rejected"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures the prevalence of no-update rejection events in sampled micro-level interactions."
+      },
+      {
+        "id": "micro_rewiring_fraction",
+        "semantic_name": "Tie rewiring fraction",
+        "scientific_definition": "Time series of the fraction of sampled interactions in which the focal agent successfully replaced the sampled tie.",
+        "phenomenon": "Adaptive tie replacement",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "edge_rewired"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "edge_rewired"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Quantifies how often a sampled rejected or backfire tie is successfully rewired, a local adaptive-network primitive."
+      },
+      {
+        "id": "micro_mean_abs_agent_shift",
+        "semantic_name": "Mean absolute opinion update",
+        "scientific_definition": "Time series of the across-agent mean absolute signed opinion update applied at each step.",
+        "phenomenon": "Opinion update magnitude",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "agent_shift"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "abs",
+            "input": {
+              "op": "field",
+              "name": "agent_shift"
+            }
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "assimilation_strength",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "Higher assimilation strength increases the magnitude of opinion shifts in accepted encounters, thereby increasing the mean absolute update."
+          }
+        ],
+        "scientific_rationale": "Summarizes individual update intensity as a direct micro-level observable of the assimilation strength parameter."
+      },
+      {
+        "id": "micro_agent_shift_std",
+        "semantic_name": "Opinion update standard deviation",
+        "scientific_definition": "Time series of the across-agent standard deviation of signed opinion updates.",
+        "phenomenon": "Update heterogeneity",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "agent_shift"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "agent_shift"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Captures variability in individual opinion updates and is sensitive to mixed assimilation and repulsion regimes."
+      },
+      {
+        "id": "micro_sign_flip_fraction",
+        "semantic_name": "Opinion sign-flip fraction",
+        "scientific_definition": "Time series of the fraction of agents whose opinion update crosses zero at each step.",
+        "phenomenon": "Zero-crossing prevalence",
+        "scale": "micro",
+        "entity_scope": "elementary_event",
+        "entities": "agents",
+        "source_fields": [
+          "sign_flip"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "sign_flip"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures the per-step prevalence of sign-crossing elementary events, reflecting jumps in individual ideological direction."
+      },
+      {
+        "id": "micro_extreme_agent_fraction",
+        "semantic_name": "Extreme opinion fraction",
+        "scientific_definition": "Time series of the fraction of agents with absolute pre-step opinion at least 0.75.",
+        "phenomenon": "Polarized individual opinions",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "greater_equal",
+            "left": {
+              "op": "abs",
+              "input": {
+                "op": "field",
+                "name": "state_opinion"
+              }
+            },
+            "right": {
+              "op": "constant",
+              "value": 0.75
+            }
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Tracks the prevalence of strongly polarized individual opinion positions without using an arbitrary external grouping."
+      },
+      {
+        "id": "micro_mean_abs_opinion",
+        "semantic_name": "Mean absolute agent opinion",
+        "scientific_definition": "Time series of the across-agent mean of absolute pre-step opinion values.",
+        "phenomenon": "Individual opinion polarization",
+        "scale": "micro",
+        "entity_scope": "individual",
+        "entities": "agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "abs",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            }
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures average distance of individual opinions from the neutral midpoint, providing a micro-level polarization signal."
+      },
+      {
+        "id": "micro_accepted_count",
+        "semantic_name": "Accepted interaction count",
+        "scientific_definition": "Time series of the total number of accepted sampled interactions across agents at each step.",
+        "phenomenon": "Assimilation event volume",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "interaction_accepted"
+        ],
+        "computation": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "interaction_accepted"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Counts assimilation events as a direct interaction-level volume observable, complementing the fraction-based accepted encounter indicator."
+      },
+      {
+        "id": "micro_edge_rewired_count",
+        "semantic_name": "Rewired tie count",
+        "scientific_definition": "Time series of the total number of successful focal-agent tie replacements at each step.",
+        "phenomenon": "Adaptive rewiring volume",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "sampled agent-partner interactions",
+        "source_fields": [
+          "edge_rewired"
+        ],
+        "computation": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "edge_rewired"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Counts adaptive rewiring events at the micro interaction level, complementing the rewired fraction indicator."
+      },
+      {
+        "id": "meso_neighborhood_opinion_std",
+        "semantic_name": "Mean neighborhood opinion standard deviation",
+        "scientific_definition": "Time series of the across-agent mean of the standard deviation of opinions within each agent's current network neighborhood.",
+        "phenomenon": "Local opinion diversity",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "state_opinion",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "std"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures typical within-neighborhood opinion heterogeneity using a genuine neighborhood structural operation, then summarizes across local domains."
+      },
+      {
+        "id": "meso_neighborhood_opinion_variance",
+        "semantic_name": "Mean neighborhood opinion variance",
+        "scientific_definition": "Time series of the across-agent mean of the variance of opinions within each agent's current network neighborhood.",
+        "phenomenon": "Local opinion variance",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "state_opinion",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "state_opinion"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "variance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Provides a variance-based local-domain measure of opinion heterogeneity, relying on explicit network-neighborhood aggregation."
+      },
+      {
+        "id": "meso_neighborhood_abs_opinion_std",
+        "semantic_name": "Mean neighborhood absolute opinion standard deviation",
+        "scientific_definition": "Time series of the across-agent mean of the standard deviation of absolute opinions within each agent's current network neighborhood.",
+        "phenomenon": "Local polarized opinion dispersion",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "state_opinion",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "abs",
+              "input": {
+                "op": "field",
+                "name": "state_opinion"
+              }
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "std"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Captures how polarized positions vary within local network neighborhoods, using a genuine neighborhood structural operation before system-wide averaging."
+      },
+      {
+        "id": "meso_neighborhood_abs_opinion_variance",
+        "semantic_name": "Mean neighborhood absolute opinion variance",
+        "scientific_definition": "Time series of the across-agent mean of the variance of absolute opinions within each agent's current network neighborhood.",
+        "phenomenon": "Local polarized opinion variance",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "state_opinion",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "abs",
+              "input": {
+                "op": "field",
+                "name": "state_opinion"
+              }
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "variance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures variance in polarized positions within network-defined local domains, preserving the required meso-level structural organization."
+      },
+      {
+        "id": "meso_neighborhood_interaction_distance_std",
+        "semantic_name": "Mean neighborhood interaction distance standard deviation",
+        "scientific_definition": "Time series of the across-agent mean of the standard deviation of sampled interaction distances within each agent's network neighborhood.",
+        "phenomenon": "Local encounter distance dispersion",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "interaction_distance",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "interaction_distance"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "std"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Uses network-defined neighborhoods to measure local dispersion of encounter distances, then summarizes across local domains."
+      },
+      {
+        "id": "meso_neighborhood_interaction_distance_variance",
+        "semantic_name": "Mean neighborhood interaction distance variance",
+        "scientific_definition": "Time series of the across-agent mean of the variance of sampled interaction distances within each agent's network neighborhood.",
+        "phenomenon": "Local encounter distance variance",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "interaction_distance",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "interaction_distance"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "variance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Provides a variance-based structural neighborhood measure of sampled encounter distances, retaining real local-domain organization."
+      },
+      {
+        "id": "meso_neighborhood_agent_shift_std",
+        "semantic_name": "Mean neighborhood opinion shift standard deviation",
+        "scientific_definition": "Time series of the across-agent mean of the standard deviation of signed opinion shifts within each agent's network neighborhood.",
+        "phenomenon": "Local update dispersion",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "agent_shift",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "agent_shift"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "std"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures typical heterogeneity of opinion updates inside network-defined neighborhoods, preserving the necessary meso structural reduction."
+      },
+      {
+        "id": "meso_neighborhood_agent_shift_variance",
+        "semantic_name": "Mean neighborhood opinion shift variance",
+        "scientific_definition": "Time series of the across-agent mean of the variance of signed opinion shifts within each agent's network neighborhood.",
+        "phenomenon": "Local update variance",
+        "scale": "meso",
+        "entity_scope": "neighborhood",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "agent_shift",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "agent_shift"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "variance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Provides a variance-based local-domain measure of opinion update heterogeneity using explicit network-neighborhood aggregation."
+      },
+      {
+        "id": "macro_opinion_global_mean",
+        "semantic_name": "Whole-system mean opinion",
+        "scientific_definition": "Time series of the whole-system arithmetic mean of pre-step agent opinions.",
+        "phenomenon": "System consensus level",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "all agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Represents the collective opinion state of the entire agent population at each step, a whole-system macro observable."
+      },
+      {
+        "id": "macro_opinion_global_variance",
+        "semantic_name": "Whole-system opinion variance",
+        "scientific_definition": "Time series of the whole-system variance of pre-step agent opinions.",
+        "phenomenon": "System opinion polarization",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "all agents",
+        "source_fields": [
+          "state_opinion"
+        ],
+        "computation": {
+          "op": "variance",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Measures global opinion heterogeneity across the entire system, capturing macro-level collective differentiation."
+      },
+      {
+        "id": "macro_network_largest_component_fraction",
+        "semantic_name": "Largest network component fraction",
+        "scientific_definition": "Time series of the fraction of agents in the largest connected component of the current interaction network.",
+        "phenomenon": "System structural cohesion",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "network_edges",
+          "agent_count"
+        ],
+        "computation": {
+          "op": "network_largest_component_fraction",
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "node_count": {
+            "op": "field",
+            "name": "agent_count"
+          }
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Uses the global interaction network structure to track whole-system connectivity and diffusion potential as a macro property."
+      },
+      {
+        "id": "macro_network_assortativity",
+        "semantic_name": "Network opinion assortativity",
+        "scientific_definition": "Time series of degree-weighted opinion assortativity across the current interaction network.",
+        "phenomenon": "System opinion homophily",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "agents and network edges",
+        "source_fields": [
+          "state_opinion",
+          "network_edges"
+        ],
+        "computation": {
+          "op": "network_assortativity",
+          "values": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          }
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Quantifies global network-level opinion homophily as a whole-system structural macro indicator."
+      }
+    ],
+    "interpretation_boundary": "These indicators are pre-registered executable observables only. They defer all temporal-order, lagged-dependence, causal, and intervention-effect interpretation to later phases; no path, edge, prediction, statistical claim, or simulation result is asserted here."
+  },
+  "elapsed_seconds": 390.52396940000017
+}

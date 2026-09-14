@@ -1,0 +1,12 @@
+{
+  "stage": "path_temporal_qualification",
+  "status": "completed",
+  "duration_seconds": 0.023892899998827488,
+  "outputs": {
+    "analysis/path_temporal_qualification.csv": "a1c7439ec18c9b895a9006690b0330260e8f9a1d25065c2ba714d8e724eb5409"
+  },
+  "details": {
+    "candidate_paths": 34,
+    "temporally_qualified_paths": 22
+  }
+}

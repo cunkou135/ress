@@ -1,0 +1,18 @@
+{
+  "stage": "temporal_negative_control",
+  "status": "completed",
+  "duration_seconds": 2034.5310761,
+  "outputs": {
+    "analysis/path_mechanism_attenuation.csv": "43772a2aae4da8642fb41619e2b42a7791e00fb28923e426d205985282457a9e",
+    "analysis/path_temporal_negative_control.csv": "e7726be04aeca94f8c909c85451d7a8ce5892cdd6a06c1fa21bd326d16b7c7e9",
+    "analysis/temporal_negative_control.csv": "927d35e8ab90886cc60e75d9ca993e20ea1b9631a558873de0bc158fdfbc90f8"
+  },
+  "details": {
+    "evaluation_track": "falsification_control",
+    "negative_control_rows": 40,
+    "path_negative_control_rows": 40,
+    "path_attenuation_rows": 18,
+    "primary_data_overwritten": false,
+    "hidden_truth_used_for_path_attenuation": false
+  }
+}

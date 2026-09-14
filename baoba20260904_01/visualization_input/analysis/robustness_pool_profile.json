@@ -1,0 +1,11 @@
+{
+  "scientific_evidence": false,
+  "architecture": "one reusable outer robustness process pool; bootstrap workers=1 inside jobs",
+  "workers": 12,
+  "outer_job_count": 880,
+  "legacy_estimated_pool_creations": 880,
+  "actual_pool_creations": 1,
+  "nested_pool_creations": 0,
+  "pool_creation_reduction": 879,
+  "robustness_sweep_wall_time_seconds": 207.76744510000026
+}

@@ -1,0 +1,12 @@
+{
+  "stage": "prospective",
+  "status": "completed",
+  "duration_seconds": 0.022003599999152357,
+  "outputs": {
+    "analysis/prospective_validation.csv": "e05dc8822d09697dff0c38defbf1b14fe46d4599ee065a080d6a8b4ac5e128a6"
+  },
+  "details": {
+    "prospective_validation_rows": 12,
+    "holdout_used_for_primary": false
+  }
+}

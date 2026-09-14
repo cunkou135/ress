@@ -1,0 +1,41 @@
+{
+  "stage": "intervention",
+  "status": "completed",
+  "duration_seconds": 409.48936719999983,
+  "outputs": {
+    "analysis/controlled_recovery_edge_intervention_classifications.csv": "f322d9bc80645a6fb13a13444b4954eeea013ccd87c27386a839ff4617de2e3d",
+    "analysis/controlled_recovery_effect_curves.parquet": "01b935c9e07a7d49b7d1b0ed360c6e7ee52f809ce8418a48aa18b1a65100f6b8",
+    "analysis/controlled_recovery_graph_evaluation.json": "ed6704ed02bc376f864a0732e692e226669b465d1b9e62f4f80f62600a1ec554",
+    "analysis/controlled_recovery_graphs.jsonl": "725f27bb40e1db3dce0f05efab0230431607a0362dbfe44b44b095d9de7db064",
+    "analysis/controlled_recovery_intervention_classifications.csv": "fc977b0fd50115b736999061a0a93507a470c0faffdff5a1ca2255ebeda086bb",
+    "analysis/controlled_recovery_paired_effects.parquet": "eb1d3e99519bc7d7f27b4212416dad1304cfdfc5fb645c573b5aea9d7f6d3104",
+    "analysis/controlled_recovery_results.csv": "4c47c8b22bdb2024b1c2701e87bc190f215c905c57f317b2ee30b46ff5e29201",
+    "analysis/controlled_recovery_runtime.csv": "311c6713dc4e0589370f8ff563ee592905859d4df90b96ee4d4a892056bb118d",
+    "analysis/edge_intervention_classifications.csv": "e0c5f1c21da9f6a7d0703671e947e1445dff150f47c0b5367209b143a98baf32",
+    "analysis/effect_curves.parquet": "2f660319cfd342a63d1ae06adb1a94cc2ef6067fbcedadd54711ea5cffc30b56",
+    "analysis/intervention_classifications.csv": "e33eca88f38f8edc3162470e1f31b49c40bbd4548d77790ce75f957bfbfa140c",
+    "analysis/main_results.csv": "18f03870598905b2b8c739f7e67e6196ee5483b3c742d65f761764dfef92a037",
+    "analysis/mechanism_bidirectional_summary.csv": "57e3b22a4c9bdbfa5b0de1c08ef6f5775730a338204fe037cacd04b35db6e668",
+    "analysis/paired_effects.parquet": "fffdebf6152bd4c4705cdd4a196f4ae07033910cfd4ac413136cc07ac61c3ae9",
+    "analysis/path_timing_concordance.csv": "7b4bd27e58e2692f8fc4d077444413990cf512a7e6b24c64c6d4ee7cc6f8f116",
+    "analysis/path_timing_summary.csv": "b35961ed6b2921b643af5f078da8a681003ff7a08e5a968e28b1ba2c740e4ea2",
+    "data/controlled_recovery_trajectories_complete.manifest.json": "add456a7dfa3ebfb5e59d1640c3eee87b7e505fa47ab18f16840e1895f9d0571",
+    "data/controlled_recovery_trajectories_complete.parquet": "11c6ec93c76e01690d624a78e2a800f1d01e0e78cdd0209061fd22cc7c08e84b",
+    "data/indicator_trajectories_complete.manifest.json": "c040b9ec5d9c61c647918e32c29ed053afd4d656299601727ee7e3577e65cbda",
+    "data/indicator_trajectories_complete.parquet": "4240816a78a82564c7c88166c4d61f7c9682958b477ddfe191d4643f3832945a"
+  },
+  "details": {
+    "effect_rows": 336,
+    "curve_rows": 47040,
+    "classification_rows": 1079,
+    "path_rows": 66,
+    "path_classification_rows": 34,
+    "path_timing_concordance_rows": 22,
+    "stage3_method_version": "intervention_path_classification_v2",
+    "controlled_recovery": {
+      "effect_rows": 144,
+      "curve_rows": 20160,
+      "classification_rows": 180
+    }
+  }
+}

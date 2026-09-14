@@ -1,0 +1,874 @@
+{
+  "scenario": "schelling",
+  "phenomenon": "segregation",
+  "indicators": [
+    {
+      "id": "micro_mean_local_similarity",
+      "semantic_name": "Mean local same-group similarity",
+      "scientific_definition": "Time series of the average across agents of each agent's same-group fraction among occupied Moore neighbours.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Local similarity is an individual-level primitive measuring each agent's immediate social environment."
+    },
+    {
+      "id": "micro_std_local_similarity",
+      "semantic_name": "Std of local same-group similarity",
+      "scientific_definition": "Time series of the standard deviation across agents of local same-group similarity, capturing variability in individual local exposure.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-individual variation in local context is an individual-level primitive that can reveal uneven segregation pressure."
+    },
+    {
+      "id": "micro_median_local_similarity",
+      "semantic_name": "Median local same-group similarity",
+      "scientific_definition": "Time series of the median across agents of local same-group similarity, providing a robust individual-level central tendency.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "quantile",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent",
+        "q": 0.5
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "The median local similarity summarises the typical individual neighbourhood experience without assuming a normal distribution."
+    },
+    {
+      "id": "micro_frac_unhappy",
+      "semantic_name": "Fraction of unsatisfied agents",
+      "scientific_definition": "Time series of the fraction of agents whose local same-group similarity is below tolerance, recorded by the unhappy primitive.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual dissatisfaction events",
+      "source_fields": [
+        "unhappy"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "unhappy"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "tolerance",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher tolerance raises the minimum local similarity required for satisfaction, so more agents fall below the threshold and become unhappy."
+        }
+      ],
+      "scientific_rationale": "The unhappy field is a primitive dissatisfaction event recording whether local similarity is below tolerance, and its prevalence is a micro-level observable."
+    },
+    {
+      "id": "micro_count_unhappy",
+      "semantic_name": "Count of unsatisfied agents",
+      "scientific_definition": "Time series of the number of agents with unhappy true, recomputed from individual dissatisfaction events.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual dissatisfaction events",
+      "source_fields": [
+        "unhappy"
+      ],
+      "computation": {
+        "op": "count",
+        "input": {
+          "op": "field",
+          "name": "unhappy"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Aggregate count of individual dissatisfaction events preserved as a micro time series for comparison with system log aggregates."
+    },
+    {
+      "id": "micro_mean_neighbour_count",
+      "semantic_name": "Mean occupied neighbour count",
+      "scientific_definition": "Time series of the average across agents of the number of occupied Moore neighbours.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "neighbour_count"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "neighbour_count"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Neighbour count is an individual-level local occupancy primitive that affects the information an agent has about its surroundings."
+    },
+    {
+      "id": "micro_frac_boundary_agents",
+      "semantic_name": "Fraction of boundary agents",
+      "scientific_definition": "Time series of the fraction of agents that have at least one occupied different-group neighbour.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "agents with different-group neighbours",
+      "source_fields": [
+        "boundary_agent"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "boundary_agent"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Boundary exposure is a binary individual-level interaction primitive that marks local contact between groups."
+    },
+    {
+      "id": "micro_frac_moved",
+      "semantic_name": "Fraction of agents that relocated",
+      "scientific_definition": "Time series of the fraction of agents that relocated during each recorded step.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual relocation events",
+      "source_fields": [
+        "moved"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "moved"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "The moved field is a primitive relocation event; its prevalence captures the overall micro-level relocation activity."
+    },
+    {
+      "id": "micro_frac_moved_among_unhappy",
+      "semantic_name": "Fraction of unsatisfied agents that moved",
+      "scientific_definition": "Time series of the proportion of unhappy agents that relocated during each step.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "unhappy agents that attempted relocation",
+      "source_fields": [
+        "unhappy",
+        "moved"
+      ],
+      "computation": {
+        "op": "safe_ratio",
+        "left": {
+          "op": "count",
+          "input": {
+            "op": "where",
+            "condition": {
+              "op": "field",
+              "name": "unhappy"
+            },
+            "input": {
+              "op": "field",
+              "name": "moved"
+            }
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "axis": "agent"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "move_probability",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher move_probability increases the chance an unsatisfied agent attempts relocation, raising the proportion of unhappy agents that move."
+        }
+      ],
+      "scientific_rationale": "This conditional relocation rate directly connects individual dissatisfaction events to subsequent relocation events."
+    },
+    {
+      "id": "micro_mean_move_distance",
+      "semantic_name": "Mean periodic Manhattan relocation distance",
+      "scientific_definition": "Time series of the mean move_distance across all agents, including zeros for non-movers.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual relocation events",
+      "source_fields": [
+        "move_distance"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "move_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Move distance is an event measure of relocation magnitude and is primitive at the individual relocation-event level."
+    },
+    {
+      "id": "micro_mean_destination_similarity_movers",
+      "semantic_name": "Mean destination similarity among movers",
+      "scientific_definition": "Time series of the average destination_similarity across agents that moved during the step; non-movers are excluded.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "agents that relocated",
+      "source_fields": [
+        "moved",
+        "destination_similarity"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "where",
+          "condition": {
+            "op": "field",
+            "name": "moved"
+          },
+          "input": {
+            "op": "field",
+            "name": "destination_similarity"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "destination_preference",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher destination_preference makes agents more likely to select the most similar sampled vacancy, raising average destination similarity among movers."
+        }
+      ],
+      "scientific_rationale": "Destination similarity is an event measure only meaningful for relocation events; computing it conditional on moved captures the effect of destination choice."
+    },
+    {
+      "id": "micro_std_move_distance",
+      "semantic_name": "Std of relocation distance",
+      "scientific_definition": "Time series of the standard deviation across agents of move_distance, including zeros for non-movers.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual relocation events",
+      "source_fields": [
+        "move_distance"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "move_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Variability in relocation distance is an individual-level event-measure observable that can reveal heterogeneous movement responses."
+    },
+    {
+      "id": "micro_corr_local_similarity_move_distance",
+      "semantic_name": "Cross-agent correlation between local similarity and move distance",
+      "scientific_definition": "Time series of the across-agent correlation between each agent's current local_similarity and move_distance within each recorded step.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "individual agents' local context and movement",
+      "source_fields": [
+        "local_similarity",
+        "move_distance"
+      ],
+      "computation": {
+        "op": "correlation",
+        "left": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "right": {
+          "op": "field",
+          "name": "move_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Correlation between an individual's local similarity and its relocation distance is an interaction-level micro observable linking dissatisfaction context to movement behaviour."
+    },
+    {
+      "id": "micro_var_local_similarity",
+      "semantic_name": "Variance of local same-group similarity",
+      "scientific_definition": "Time series of the variance across agents of local same-group similarity.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "variance",
+        "input": {
+          "op": "field",
+          "name": "local_similarity"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Variance of the individual primitive local_similarity captures the spread of individual-level local contexts."
+    },
+    {
+      "id": "micro_mean_local_similarity_unhappy",
+      "semantic_name": "Mean local similarity among unsatisfied agents",
+      "scientific_definition": "Time series of the mean local_similarity across agents that are currently unhappy.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "unsatisfied agents",
+      "source_fields": [
+        "unhappy",
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "where",
+          "condition": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Conditioning on the unhappy primitive isolates the local exposure of dissatisfied agents, a micro-level descriptor of dissatisfaction context."
+    },
+    {
+      "id": "micro_frac_unhappy_boundary_agents",
+      "semantic_name": "Fraction of boundary agents that are unhappy",
+      "scientific_definition": "Time series of the fraction of boundary agents that are also unhappy.",
+      "phenomenon": "segregation",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "boundary agents with dissatisfaction",
+      "source_fields": [
+        "boundary_agent",
+        "unhappy"
+      ],
+      "computation": {
+        "op": "safe_ratio",
+        "left": {
+          "op": "count",
+          "input": {
+            "op": "where",
+            "condition": {
+              "op": "field",
+              "name": "boundary_agent"
+            },
+            "input": {
+              "op": "field",
+              "name": "unhappy"
+            }
+          },
+          "axis": "agent"
+        },
+        "right": {
+          "op": "count",
+          "input": {
+            "op": "field",
+            "name": "boundary_agent"
+          },
+          "axis": "agent"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Combining boundary exposure with dissatisfaction captures an interaction-level micro observable linking local group contact to individual discontent."
+    },
+    {
+      "id": "meso_std_district_local_similarity",
+      "semantic_name": "Between-district variation in local similarity",
+      "scientific_definition": "Time series of the standard deviation across districts of district-level mean local same-group similarity.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "local_similarity",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Disparities across fixed public districts in mean local similarity are genuine meso-level segregation structure."
+    },
+    {
+      "id": "meso_binned_entropy_district_local_similarity",
+      "semantic_name": "Binned entropy of district mean local similarity",
+      "scientific_definition": "Time series of the binned entropy across fixed public districts of district-level mean local same-group similarity.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "local_similarity",
+        "district_id"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group",
+        "bins": 5
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "The binned entropy of district means captures the diversity of local similarity regimes across fixed public spatial districts without collapsing them to a simple average."
+    },
+    {
+      "id": "meso_std_district_unhappy_frac",
+      "semantic_name": "Between-district variation in unhappy fraction",
+      "scientific_definition": "Time series of the standard deviation across districts of district-level fraction of unsatisfied agents.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "unhappy",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district variation in dissatisfaction is a meso-level indicator of uneven local social tension."
+    },
+    {
+      "id": "meso_binned_entropy_district_unhappy_frac",
+      "semantic_name": "Binned entropy of district unhappy fractions",
+      "scientific_definition": "Time series of the binned entropy across fixed public districts of district-level fraction of unsatisfied agents.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "unhappy",
+        "district_id"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group",
+        "bins": 5
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Binned entropy across district unhappy fractions measures how variously dissatisfaction is distributed across fixed public spatial districts without assuming a continuous entropy operator."
+    },
+    {
+      "id": "meso_std_district_moved_frac",
+      "semantic_name": "Between-district variation in relocation fraction",
+      "scientific_definition": "Time series of the standard deviation across districts of district-level fraction of agents that relocated.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "moved",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "moved"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Differences in relocation activity across fixed districts expose local-domain heterogeneity in movement pressure."
+    },
+    {
+      "id": "meso_binned_entropy_district_moved_frac",
+      "semantic_name": "Binned entropy of district relocation fractions",
+      "scientific_definition": "Time series of the binned entropy across fixed public districts of district-level fraction of agents that relocated.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "moved",
+        "district_id"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "moved"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group",
+        "bins": 5
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Binned entropy of district relocation rates captures the diversity of movement activity across fixed public districts, preserving genuine district organization."
+    },
+    {
+      "id": "meso_std_district_destination_similarity",
+      "semantic_name": "Between-district variation in mean destination similarity",
+      "scientific_definition": "Time series of the standard deviation across districts of district-level mean destination similarity among agents, including non-movers.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "destination_similarity",
+        "district_id"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "destination_similarity"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "mean"
+        },
+        "axis": "group"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Between-district variation in destination exposure captures local-domain heterogeneity in relocation outcomes."
+    },
+    {
+      "id": "meso_binned_entropy_district_boundary_frac",
+      "semantic_name": "Binned entropy of district boundary agent fractions",
+      "scientific_definition": "Time series of the binned entropy across fixed public districts of district-level fraction of boundary agents.",
+      "phenomenon": "segregation",
+      "scale": "meso",
+      "entity_scope": "district",
+      "entities": "fixed spatial districts",
+      "source_fields": [
+        "boundary_agent",
+        "district_id"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "group_reduce",
+          "values": {
+            "op": "field",
+            "name": "boundary_agent"
+          },
+          "groups": {
+            "op": "field",
+            "name": "district_id"
+          },
+          "axis": "agent",
+          "reducer": "fraction"
+        },
+        "axis": "group",
+        "bins": 5
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Binned entropy across district boundary fractions captures how uniformly intergroup contact is spread across fixed public spatial districts, using a valid continuous entropy approximation."
+    },
+    {
+      "id": "macro_mean_local_similarity",
+      "semantic_name": "Whole-system mean local similarity",
+      "scientific_definition": "Time series of the whole-system average across all agents of local same-group similarity, clipped to its valid range.",
+      "phenomenon": "segregation",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "all agents as a system",
+      "source_fields": [
+        "local_similarity"
+      ],
+      "computation": {
+        "op": "clip",
+        "input": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent"
+        },
+        "minimum": 0.0,
+        "maximum": 1.0
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "A whole-system collective average of local exposure over all individuals represents the system-wide segregation tendency."
+    },
+    {
+      "id": "macro_spatial_neighbor_similarity",
+      "semantic_name": "Whole-grid spatial neighbor similarity",
+      "scientific_definition": "Time series of the average same-group similarity between neighbouring occupied cells computed directly from the occupancy grid.",
+      "phenomenon": "segregation",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "periodic grid system",
+      "source_fields": [
+        "state_grid"
+      ],
+      "computation": {
+        "op": "spatial_neighbor_similarity",
+        "input": {
+          "op": "field",
+          "name": "state_grid"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "This global spatial structure operator summarises same-group clustering across the entire grid as a whole-system segregation outcome."
+    },
+    {
+      "id": "macro_largest_component_fraction",
+      "semantic_name": "Largest same-group component fraction",
+      "scientific_definition": "Time series of the fraction of occupied cells belonging to the largest connected component of same-group agents.",
+      "phenomenon": "segregation",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "grid connectivity system",
+      "source_fields": [
+        "state_grid"
+      ],
+      "computation": {
+        "op": "largest_component_fraction",
+        "input": {
+          "op": "field",
+          "name": "state_grid"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "The dominance of the largest contiguous same-group region is a collective segregation outcome measurable only at the whole-system level."
+    },
+    {
+      "id": "macro_connected_component_count",
+      "semantic_name": "Count of same-group connected components",
+      "scientific_definition": "Time series of the number of connected components of occupied cells with the same group label.",
+      "phenomenon": "segregation",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "grid connectivity system",
+      "source_fields": [
+        "state_grid"
+      ],
+      "computation": {
+        "op": "connected_component_count",
+        "input": {
+          "op": "field",
+          "name": "state_grid"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "A global structural count of spatially separated same-group clusters captures whole-system fragmentation."
+    }
+  ],
+  "interpretation_boundary": "Indicators are observational descriptors computed from the provided raw logs; they do not infer causal effects, support intervention claims, or draw prospective conclusions without simulation outcome evidence. Temporal aggregation is restricted to recorded-step summaries, so the indicators cannot establish temporal precedence or causal direction."
+}

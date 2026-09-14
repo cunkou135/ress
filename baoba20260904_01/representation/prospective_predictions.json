@@ -1,0 +1,93 @@
+{
+  "schema_version": "2.0",
+  "scenarios": {
+    "deffuant": [
+      {
+        "prediction_id": "pred_cb_plus_gvar_lower",
+        "candidate_path_id": "cb_plus_accept_ostd_gvar",
+        "prospective_priority": 0,
+        "scientific_rationale": "Under plus confidence_bound, accepted fraction should increase, homogenize neighborhoods, and lower global opinion variance relative to baseline.",
+        "falsification_condition": "If macro_opinion_global_variance under plus confidence_bound is not lower than baseline in the final 20 percent of steps, this prediction is falsified."
+      },
+      {
+        "prediction_id": "pred_as_plus_gvar_lower",
+        "candidate_path_id": "as_plus_shift_ostd_gvar",
+        "prospective_priority": 0,
+        "scientific_rationale": "Higher assimilation strength should increase shift magnitudes, accelerate local convergence, and reduce global opinion variance.",
+        "falsification_condition": "If macro_opinion_global_variance under plus assimilation_strength is not lower than baseline in the final 20 percent of steps, this prediction is falsified."
+      },
+      {
+        "prediction_id": "pred_bt_plus_lcc_higher",
+        "candidate_path_id": "bt_plus_backfire_distvar_lcc",
+        "prospective_priority": 0,
+        "scientific_rationale": "Increasing backfire threshold should reduce repulsive encounters, stabilize network structure, and increase the largest component fraction.",
+        "falsification_condition": "If macro_network_largest_component_fraction under plus backfire_threshold is not higher than baseline in the final 20 percent of steps, this prediction is falsified."
+      },
+      {
+        "prediction_id": "pred_cb_minus_assort_lower",
+        "candidate_path_id": "cb_minus_accept_absovar_assort",
+        "prospective_priority": 0,
+        "scientific_rationale": "Reducing confidence_bound should lower accepted encounters, increase local absolute opinion variance, and reduce network opinion assortativity.",
+        "falsification_condition": "If macro_network_assortativity under minus confidence_bound is not lower than baseline in the final 20 percent of steps, this prediction is falsified."
+      },
+      {
+        "prediction_id": "pred_bt_minus_gvar_higher",
+        "candidate_path_id": "bt_minus_backfire_ostd_gvar",
+        "prospective_priority": 0,
+        "scientific_rationale": "Lowering backfire threshold should raise backfire frequency, increase local opinion dispersion, and raise global opinion variance.",
+        "falsification_condition": "If macro_opinion_global_variance under minus backfire_threshold is not higher than baseline in the final 20 percent of steps, this prediction is falsified."
+      },
+      {
+        "prediction_id": "pred_as_plus_gmean_higher",
+        "candidate_path_id": "as_plus_shift_shiftstd_gmean",
+        "prospective_priority": 0,
+        "scientific_rationale": "Higher assimilation strength should increase variability in opinion shifts, enlarge local shift dispersion, and push the global mean upward under the initial opinion distribution.",
+        "falsification_condition": "If macro_opinion_global_mean under plus assimilation_strength is not higher than baseline in the final 20 percent of steps, this prediction is falsified."
+      }
+    ],
+    "schelling": [
+      {
+        "prediction_id": "pred_tol_plus_moved_fraction",
+        "candidate_path_id": "tol_plus_unhappy_to_move_std_to_global_moved",
+        "prospective_priority": 0,
+        "scientific_rationale": "If the tolerance-to-moving chain holds, increasing tolerance should raise the global moved fraction through district-level relocation dispersion.",
+        "falsification_condition": "Macro global moved fraction does not increase under tolerance plus."
+      },
+      {
+        "prediction_id": "pred_tol_plus_spatial_similarity",
+        "candidate_path_id": "tol_plus_unhappy_to_boundary_std_to_spatial_sim",
+        "prospective_priority": 0,
+        "scientific_rationale": "Higher tolerance is expected to increase whole-grid same-group neighbour similarity via stronger sorting and reduced boundary mixing.",
+        "falsification_condition": "Macro global spatial neighbour similarity does not increase under tolerance plus."
+      },
+      {
+        "prediction_id": "pred_move_plus_moved_fraction",
+        "candidate_path_id": "move_plus_response_to_move_std_to_global_moved",
+        "prospective_priority": 0,
+        "scientific_rationale": "Higher move probability should produce a higher global relocation fraction through increased realized relocation response.",
+        "falsification_condition": "Macro global moved fraction does not increase under move_probability plus."
+      },
+      {
+        "prediction_id": "pred_move_minus_unhappy_fraction",
+        "candidate_path_id": "move_minus_response_to_unhappy_std_to_global_unhappy",
+        "prospective_priority": 0,
+        "scientific_rationale": "Lower move probability is expected to raise global dissatisfaction because fewer unsatisfied agents relocate to better neighbourhoods.",
+        "falsification_condition": "Macro global unhappy fraction does not increase under move_probability minus."
+      },
+      {
+        "prediction_id": "pred_dest_plus_spatial_similarity",
+        "candidate_path_id": "dest_plus_dest_sim_to_dest_std_to_spatial_sim",
+        "prospective_priority": 0,
+        "scientific_rationale": "Higher destination preference should increase global spatial neighbour similarity through selective relocation.",
+        "falsification_condition": "Macro global spatial neighbour similarity does not increase under destination_preference plus."
+      },
+      {
+        "prediction_id": "pred_dest_plus_components",
+        "candidate_path_id": "dest_plus_dest_sim_to_group_entropy_to_components",
+        "prospective_priority": 0,
+        "scientific_rationale": "Higher destination preference is expected to consolidate same-group clusters, reducing the count of global connected components.",
+        "falsification_condition": "Macro global connected components does not decrease under destination_preference plus."
+      }
+    ]
+  }
+}

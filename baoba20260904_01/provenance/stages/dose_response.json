@@ -1,0 +1,17 @@
+{
+  "stage": "dose_response",
+  "status": "completed",
+  "duration_seconds": 4.620582200001081,
+  "outputs": {
+    "analysis/dose_response_effects.csv": "e4aeec31bc7486c7f9185844c3ad202c2a0480bc43d27db88c6417c213eca134",
+    "analysis/dose_response_summary.csv": "9c0e95ff31b37cb4ce12f069e22b5da90c285d0303c310bb75b262b3f2af8824",
+    "analysis/path_dose_response_summary.csv": "cef4794231bb567296ac2c0c597d2b8867ebfc186d8651b0e37155a1476ee7e4"
+  },
+  "details": {
+    "evaluation_track": "secondary_dose_response",
+    "effect_rows": 310,
+    "summary_rows": 62,
+    "path_summary_rows": 22,
+    "primary_classification_changed": false
+  }
+}

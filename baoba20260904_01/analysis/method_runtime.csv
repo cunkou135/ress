@@ -1,0 +1,11 @@
+scenario,method,runtime_seconds,runtime_scope
+deffuant,llm_semantic_proposal,0.0,semantic_generation
+deffuant,full_method,48.52812679999988,temporal_analysis
+deffuant,single_trajectory,0.008268100000350387,temporal_analysis
+deffuant,trajectory_vote,0.23143720000007306,temporal_analysis
+deffuant,unrestricted_temporal_search,81.32157390000066,temporal_analysis
+schelling,llm_semantic_proposal,0.0,semantic_generation
+schelling,full_method,48.6935169999997,temporal_analysis
+schelling,single_trajectory,0.009973600001103478,temporal_analysis
+schelling,trajectory_vote,0.24244790000011562,temporal_analysis
+schelling,unrestricted_temporal_search,87.25681689999874,temporal_analysis

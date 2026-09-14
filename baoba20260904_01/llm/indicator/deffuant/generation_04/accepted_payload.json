@@ -1,0 +1,926 @@
+{
+  "scenario": "deffuant",
+  "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+  "indicators": [
+    {
+      "id": "micro_mean_opinion",
+      "semantic_name": "Mean opinion across agents",
+      "scientific_definition": "Time series of the average opinion state across all agents before each step update.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "assimilation_strength",
+          "relationship": "direct",
+          "expected_indicator_direction": "mixed",
+          "rationale": "Assimilation strength affects how much opinions move toward sampled partners, but the direction of the mean depends on the full opinion configuration."
+        }
+      ],
+      "scientific_rationale": "Tracks the central tendency of individual opinion states, a basic micro-level observable for bounded-confidence dynamics."
+    },
+    {
+      "id": "micro_opinion_std",
+      "semantic_name": "Opinion standard deviation",
+      "scientific_definition": "Time series of the standard deviation of opinion states across agents before each update.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures the dispersion of individual opinions, reflecting the current heterogeneity of the agent population."
+    },
+    {
+      "id": "micro_opinion_iqr",
+      "semantic_name": "Opinion interquartile range",
+      "scientific_definition": "Time series of the difference between the 75th and 25th percentiles of agent opinions.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "subtract",
+        "left": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent",
+          "q": 0.75
+        },
+        "right": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "axis": "agent",
+          "q": 0.25
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures the spread of the central mass of individual opinions without being dominated by extreme values."
+    },
+    {
+      "id": "micro_extreme_opinion_fraction",
+      "semantic_name": "Extreme opinion fraction",
+      "scientific_definition": "Time series of the fraction of agents whose absolute opinion is at least 0.75.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "greater_equal",
+          "left": {
+            "op": "abs",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            }
+          },
+          "right": {
+            "op": "constant",
+            "value": 0.75
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Tracks the prevalence of strongly polarized individual opinions, which can be influenced by repulsive and adaptive rewiring mechanisms."
+    },
+    {
+      "id": "micro_opinion_binned_entropy",
+      "semantic_name": "Binned opinion entropy",
+      "scientific_definition": "Time series of binned entropy of opinion values across agents using ten bins.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "axis": "agent",
+        "bins": 10
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Quantifies the diversity of the individual opinion distribution using a discretized entropy measure."
+    },
+    {
+      "id": "micro_mean_interaction_distance",
+      "semantic_name": "Mean sampled interaction distance",
+      "scientific_definition": "Time series of the average absolute opinion distance across sampled interactions in each step.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_distance"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "interaction_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "confidence_bound",
+          "relationship": "indirect",
+          "expected_indicator_direction": "unknown",
+          "rationale": "Interaction distance is sampled before the acceptance test and can be influenced by the confidence bound through prior rewiring and opinion movement."
+        }
+      ],
+      "scientific_rationale": "Summarizes the typical local opinion contrast encountered by agents in their interaction network."
+    },
+    {
+      "id": "micro_interaction_distance_std",
+      "semantic_name": "Interaction distance standard deviation",
+      "scientific_definition": "Time series of the standard deviation of sampled interaction opinion distances across agents.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_distance"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "interaction_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures variability in local opinion contrast across sampled interactions, relevant to which encounters assimilate, reject, or backfire."
+    },
+    {
+      "id": "micro_assimilation_fraction",
+      "semantic_name": "Assimilation interaction fraction",
+      "scientific_definition": "Time series of the fraction of sampled interactions where opinion distance permits assimilation.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_accepted"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "interaction_accepted"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "confidence_bound",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "A larger confidence bound permits assimilation over a wider range of opinion distances, increasing the acceptance fraction."
+        }
+      ],
+      "scientific_rationale": "Measures the prevalence of assimilation events as a micro-level interaction process."
+    },
+    {
+      "id": "micro_backfire_fraction",
+      "semantic_name": "Backfire interaction fraction",
+      "scientific_definition": "Time series of the fraction of sampled interactions that trigger repulsive updating.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_backfire"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "interaction_backfire"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "backfire_threshold",
+          "relationship": "direct",
+          "expected_indicator_direction": "decrease",
+          "rationale": "Raising the backfire threshold makes it harder for an interaction distance to qualify for repulsion, reducing the backfire interaction fraction."
+        }
+      ],
+      "scientific_rationale": "Tracks the frequency of repulsive encounters as a micro-level event rate."
+    },
+    {
+      "id": "micro_rejection_fraction",
+      "semantic_name": "Rejection interaction fraction",
+      "scientific_definition": "Time series of the fraction of sampled interactions that produce neither assimilation nor repulsion.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_rejected"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "interaction_rejected"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures the share of rejected local encounters, which can drive adaptive network rewiring."
+    },
+    {
+      "id": "micro_rewiring_fraction",
+      "semantic_name": "Adaptive rewiring fraction",
+      "scientific_definition": "Time series of the fraction of sampled interactions where the tie was successfully rewired.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "edge_rewired"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "edge_rewired"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures the rate of successful tie replacement following rejected or backfire encounters."
+    },
+    {
+      "id": "micro_mean_agent_shift",
+      "semantic_name": "Mean signed opinion update",
+      "scientific_definition": "Time series of the average signed opinion update applied to agents after each sampled interaction.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "per-agent elementary updates",
+      "source_fields": [
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "agent_shift"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Summarizes the average direction and magnitude of elementary opinion update events across the population."
+    },
+    {
+      "id": "micro_mean_abs_agent_shift",
+      "semantic_name": "Mean absolute opinion update",
+      "scientific_definition": "Time series of the average absolute signed opinion update across agents.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "per-agent elementary updates",
+      "source_fields": [
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "abs",
+          "input": {
+            "op": "field",
+            "name": "agent_shift"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "assimilation_strength",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Higher assimilation strength increases the magnitude of accepted opinion updates, thereby raising the mean absolute shift."
+        }
+      ],
+      "scientific_rationale": "Measures the typical intensity of individual opinion update events, regardless of sign."
+    },
+    {
+      "id": "micro_agent_shift_std",
+      "semantic_name": "Opinion update standard deviation",
+      "scientific_definition": "Time series of the standard deviation of signed opinion updates across agents.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "per-agent elementary updates",
+      "source_fields": [
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "agent_shift"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures heterogeneity in individual opinion update events across the agent population."
+    },
+    {
+      "id": "micro_sign_flip_fraction",
+      "semantic_name": "Sign crossing fraction",
+      "scientific_definition": "Time series of the fraction of agents whose update crosses opinion zero.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "per-agent sign crossing events",
+      "source_fields": [
+        "sign_flip"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "sign_flip"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Tracks the occurrence of zero-crossing opinion updates as an elementary event marker of directional change."
+    },
+    {
+      "id": "micro_opinion_shift_correlation",
+      "semantic_name": "Opinion-shift agent correlation",
+      "scientific_definition": "Time series of the across-agent correlation between current opinion and signed opinion update in each step.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "micro",
+      "entity_scope": "local_process",
+      "entities": "individual opinion-update associations",
+      "source_fields": [
+        "state_opinion",
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "correlation",
+        "left": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "right": {
+          "op": "field",
+          "name": "agent_shift"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "assimilation_strength",
+          "relationship": "indirect",
+          "expected_indicator_direction": "mixed",
+          "rationale": "Assimilation strength alters update direction and magnitude, potentially changing the correlation between opinion and shift without a uniform directional expectation."
+        }
+      ],
+      "scientific_rationale": "Captures the micro-level relation between current opinion location and update direction, reflecting local response patterns to interactions."
+    },
+    {
+      "id": "meso_neighborhood_mean_opinion_std",
+      "semantic_name": "Standard deviation of neighborhood mean opinion",
+      "scientific_definition": "Time series of the standard deviation across network neighborhoods of the local mean opinion.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "mean"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Uses network neighborhood reduction to summarize variation in local opinion centers across meso-level domains."
+    },
+    {
+      "id": "meso_neighborhood_opinion_std_variance",
+      "semantic_name": "Variance of within-neighborhood opinion variability",
+      "scientific_definition": "Time series of the variance across network neighborhoods of within-neighborhood opinion standard deviation.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "variance",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "std"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures how local opinion heterogeneity is distributed across network neighborhoods, a meso-scale organizational property."
+    },
+    {
+      "id": "meso_neighborhood_assimilation_iqr",
+      "semantic_name": "Interquartile range of neighborhood assimilation fraction",
+      "scientific_definition": "Time series of the difference between the 75th and 25th percentiles across network neighborhoods of the assimilation interaction fraction within each neighborhood.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "interaction_accepted",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "subtract",
+        "left": {
+          "op": "quantile",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "interaction_accepted"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "fraction"
+          },
+          "axis": "agent",
+          "q": 0.75
+        },
+        "right": {
+          "op": "quantile",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "interaction_accepted"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "fraction"
+          },
+          "axis": "agent",
+          "q": 0.25
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures the spread of local assimilation activity across network neighborhoods, indicating meso-level heterogeneity in opinion convergence."
+    },
+    {
+      "id": "meso_neighborhood_backfire_entropy",
+      "semantic_name": "Binned entropy of neighborhood backfire fraction",
+      "scientific_definition": "Time series of binned entropy across network neighborhoods of the backfire interaction fraction within each neighborhood.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "interaction_backfire",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "interaction_backfire"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "fraction"
+        },
+        "axis": "agent",
+        "bins": 10
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Quantifies the diversity of repulsive interaction prevalence across network neighborhoods as a meso-scale organizational pattern."
+    },
+    {
+      "id": "meso_neighborhood_rejection_variance",
+      "semantic_name": "Variance of neighborhood rejection fraction",
+      "scientific_definition": "Time series of the variance across network neighborhoods of the rejected interaction fraction within each neighborhood.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "interaction_rejected",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "variance",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "interaction_rejected"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "fraction"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures meso-level variation in rejection prevalence across network neighborhoods, relevant for adaptive rewiring pressure."
+    },
+    {
+      "id": "meso_neighborhood_rewiring_iqr",
+      "semantic_name": "Interquartile range of neighborhood rewiring fraction",
+      "scientific_definition": "Time series of the difference between the 75th and 25th percentiles across network neighborhoods of the rewired tie fraction within each neighborhood.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "edge_rewired",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "subtract",
+        "left": {
+          "op": "quantile",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "edge_rewired"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "fraction"
+          },
+          "axis": "agent",
+          "q": 0.75
+        },
+        "right": {
+          "op": "quantile",
+          "input": {
+            "op": "network_neighborhood_reduce",
+            "values": {
+              "op": "field",
+              "name": "edge_rewired"
+            },
+            "edges": {
+              "op": "field",
+              "name": "network_edges"
+            },
+            "reducer": "fraction"
+          },
+          "axis": "agent",
+          "q": 0.25
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures meso-level spread of adaptive rewiring activity across network neighborhoods, indicating localized topological change."
+    },
+    {
+      "id": "meso_neighborhood_shift_entropy",
+      "semantic_name": "Binned entropy of neighborhood mean absolute update",
+      "scientific_definition": "Time series of binned entropy across network neighborhoods of the local mean absolute opinion update.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "agent_shift",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "abs",
+            "input": {
+              "op": "field",
+              "name": "agent_shift"
+            }
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "mean"
+        },
+        "axis": "agent",
+        "bins": 10
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Quantifies the diversity of local update intensities across network neighborhoods, revealing meso-scale variation in opinion dynamics."
+    },
+    {
+      "id": "meso_neighborhood_extreme_std",
+      "semantic_name": "Standard deviation of neighborhood extreme opinion fraction",
+      "scientific_definition": "Time series of the standard deviation across network neighborhoods of the fraction of extreme opinions within each neighborhood.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "local network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "greater_equal",
+            "left": {
+              "op": "abs",
+              "input": {
+                "op": "field",
+                "name": "state_opinion"
+              }
+            },
+            "right": {
+              "op": "constant",
+              "value": 0.75
+            }
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "fraction"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures meso-level variation in local polarization across network neighborhoods, indicating uneven spatial organization of extreme opinions."
+    },
+    {
+      "id": "macro_network_density",
+      "semantic_name": "Global network density",
+      "scientific_definition": "Time series of the density of the undirected interaction network at the start of each step.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole interaction network",
+      "source_fields": [
+        "network_edges",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "network_density",
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        },
+        "node_count": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Provides a whole-system topological summary of the interaction network, useful for tracking global structural change."
+    },
+    {
+      "id": "macro_largest_component_fraction",
+      "semantic_name": "Largest network component fraction",
+      "scientific_definition": "Time series of the fraction of agents in the largest connected component of the interaction network.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole interaction network",
+      "source_fields": [
+        "network_edges",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "network_largest_component_fraction",
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        },
+        "node_count": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures global connectivity by the size of the dominant connected component, a macro-level network outcome."
+    },
+    {
+      "id": "macro_network_component_count",
+      "semantic_name": "Connected component count",
+      "scientific_definition": "Time series of the number of connected components in the interaction network.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole interaction network",
+      "source_fields": [
+        "network_edges",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "network_component_count",
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        },
+        "node_count": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Tracks whole-system fragmentation or integration through the number of connected components in the adaptive network."
+    },
+    {
+      "id": "macro_network_assortativity",
+      "semantic_name": "Opinion-based network assortativity",
+      "scientific_definition": "Time series of network assortativity with respect to agent opinion values on the current interaction network.",
+      "phenomenon": "Opinion assimilation and adaptive network rewiring under bounded confidence",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "whole interaction network",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "network_assortativity",
+        "values": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Quantifies global opinion-tie correlation in the interaction network, a collective structure-attribute relationship."
+    }
+  ],
+  "interpretation_boundary": "Indicators are descriptive observables only; no causal, statistical, predictive, or intervention claims are made. Scale follows the scientific entity contract and is not a time-window label. Temporal and intervention evidence are outside the scope of this phase and are deferred to later path-generation analysis."
+}

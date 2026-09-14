@@ -1,0 +1,3 @@
+scenario,candidate_path_count,temporally_qualified_path_count,temporally_qualified_path_rate,intervention_supported_path_count,intervention_supported_path_rate,contradicted_path_count,inconclusive_path_count,manipulation_failure_path_count,holdout_confirmed_path_count,holdout_confirmation_rate,prospective_supported_path_count
+deffuant,18,7,0.3888888888888889,3,0.1666666666666666,0,14,1,2,0.6666666666666666,2
+schelling,16,15,0.9375,3,0.1875,3,5,5,2,0.6666666666666666,1

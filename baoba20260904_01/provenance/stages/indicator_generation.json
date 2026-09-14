@@ -1,0 +1,1580 @@
+{
+  "stage": "indicator_generation",
+  "status": "completed",
+  "duration_seconds": 5794.048296700001,
+  "outputs": {
+    "llm/indicator/deffuant/generation_00/accepted_payload.json": "ebd7a1c5029d2cd2e2125675406a06c8c41ad0fea4fa2c66c8e949ba5b821ad8",
+    "llm/indicator/deffuant/generation_00/accepted_payload.sha256": "ea67647da826c40015ecb0cbea86ad28c297a73bb2d27e6c3d8a07c30e0fa32c",
+    "llm/indicator/deffuant/generation_00/generation_result.json": "726f62c165f8838e8872f42ee10017314288a50691650c878bd573fc3482d579",
+    "llm/indicator/deffuant/generation_00/prompt.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_00/request_round_00.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_00/request_round_01.md": "e497b85270b994a6fad69370d4f3e8515ef556d693be246d058f337eec4fbeb5",
+    "llm/indicator/deffuant/generation_00/request_round_02.md": "340651f70c28dfce8e2151fe03d4c8447cc93b0bb8ff28095dd177651236b489",
+    "llm/indicator/deffuant/generation_00/response_round_00.json": "f7fec74f04f6061a41b246146cbc0b19549d9f73a9b7b689c77a2c37dd6e9535",
+    "llm/indicator/deffuant/generation_00/response_round_01.json": "3e5b68807e8025d662a69a1de7e3ef9f26cb0d6c3be4875fb39561d29c350eb8",
+    "llm/indicator/deffuant/generation_00/response_round_02.json": "9d187d7008f66e1e2007f4c1729bd88d2ea95a566714f9b2a6955bae57f2b607",
+    "llm/indicator/deffuant/generation_01/accepted_payload.json": "84a11b5d09c0fdc46aa1b8593c2033df8987d70c01eb3ad1b81bb65f70ee9e49",
+    "llm/indicator/deffuant/generation_01/accepted_payload.sha256": "942be307be633804875276330b5e5a96d5f8432be854416d0df5f4f5edc94c09",
+    "llm/indicator/deffuant/generation_01/generation_result.json": "c0414a61888d5dbfadd115c038f851fef3cf3297b0c5005624cd4904ba985a3a",
+    "llm/indicator/deffuant/generation_01/prompt.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_01/request_round_00.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_01/request_round_01.md": "026a24ef326b71c7224029b91b4f60027fd609c1e0708faa047ad45df95c8794",
+    "llm/indicator/deffuant/generation_01/response_round_00.json": "27f3433752889c20c82cdf0cbc0f81a2a253ca2243fdba8578f284a5c01cd033",
+    "llm/indicator/deffuant/generation_01/response_round_01.json": "43a59939f46140d4fc887bf81100421ae4f078934e218b98eca40eb0f92046b0",
+    "llm/indicator/deffuant/generation_02/accepted_payload.json": "41dc5c63c332d829d28e48e741fe458d82052ce807c89792f1e91e30b6bf3e98",
+    "llm/indicator/deffuant/generation_02/accepted_payload.sha256": "5c4a1e14ab44ae35ca468a1b597a85cf5c41165d8b98eb283f479042f7b668b2",
+    "llm/indicator/deffuant/generation_02/generation_result.json": "5900e65cff1ef94b6e0c62a40cfa7adc8a29fe6ddbac65462b1778f2e1bcd7c4",
+    "llm/indicator/deffuant/generation_02/prompt.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_02/request_round_00.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_02/request_round_01.md": "d59364e8c798d996ac59ced04fc2951880a1112c4956279fe34d23ee086e4374",
+    "llm/indicator/deffuant/generation_02/response_round_00.json": "0fd43fe6a6546c93c33c39d74e2d4f0058a1f0d1f068a5bd73dfccbd1e19cd2a",
+    "llm/indicator/deffuant/generation_02/response_round_01.json": "9f05f978bf02f6fe531e5c4cb296dfcf3679265e7ed70f707923cbc20fa8112e",
+    "llm/indicator/deffuant/generation_03/accepted_payload.json": "f207d4ec13c38179883788f6896a2607cee92f2eb7fbb62ea84e82afc5991421",
+    "llm/indicator/deffuant/generation_03/accepted_payload.sha256": "b44812b09b79caae9d85ce530c6525f82e9f93998162a45916928feaca3fe4e0",
+    "llm/indicator/deffuant/generation_03/generation_result.json": "edc76ea98f8575f9519b16f32fce4ad4804a35fd5915f930920c58a9d83c27fb",
+    "llm/indicator/deffuant/generation_03/prompt.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_03/request_round_00.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_03/request_round_01.md": "7205d29502b1645fb425318a544ade810fbb5b5c5f19f8ca5b1a6ea148771c0a",
+    "llm/indicator/deffuant/generation_03/request_round_02.md": "26477684f8eb659a57f291f522e4d1d5bcbb5dfbd78259f54a768038dc50dcc1",
+    "llm/indicator/deffuant/generation_03/request_round_03.md": "94289a135c4dfaff6dca01bc8261b44bd791126ce0e8ea24d999d524cf5716ac",
+    "llm/indicator/deffuant/generation_03/response_round_00.json": "60bd784fe74d5c4a679ce70ff36a33188fb8e6dd1bfebafc4b2e03f28648f38a",
+    "llm/indicator/deffuant/generation_03/response_round_01.json": "1c386a5247a33f38789eac5984759825fd20059d92bc821946b14f40ebd830c7",
+    "llm/indicator/deffuant/generation_03/response_round_02.json": "48e4337bd79ffe3d576840972bed6d634ba5d67c47a6dc82eeabf1e5ca4adfb7",
+    "llm/indicator/deffuant/generation_03/response_round_03.json": "90267226e428a5d4973008a73110686d5679527e470c61706451c63d3b2fd5fd",
+    "llm/indicator/deffuant/generation_04/accepted_payload.json": "07fc3aebf4a33986fb386592f31b195d1222d277c6f5c3a737e4483cfbdfef0c",
+    "llm/indicator/deffuant/generation_04/accepted_payload.sha256": "a52516769023443c83be1e6b81c157127111ca39d833440617225a5c7f887cd9",
+    "llm/indicator/deffuant/generation_04/generation_result.json": "4b5070f5a0275f79d502ded8038140ea865282e03b089088d45d8269ae023de7",
+    "llm/indicator/deffuant/generation_04/prompt.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_04/request_round_00.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_04/request_round_01.md": "6494d097097d2912c08a019ecde67941277405877339fceba4180648afb1e37d",
+    "llm/indicator/deffuant/generation_04/response_round_00.json": "f252b2099eed2a7f109836a82ed85afe1a1bc99cbc6588c48e79ed270311e13a",
+    "llm/indicator/deffuant/generation_04/response_round_01.json": "612ea39a86dbf3a25e02ddc564b7f99bd01d1e194157b9665c0f3fc3cbcaf18e",
+    "llm/indicator/deffuant/generation_05/accepted_payload.json": "2fff140037b51d0521dd312e754e26f14a67d6ee5d3a43838908c42c26ee35ab",
+    "llm/indicator/deffuant/generation_05/accepted_payload.sha256": "9dd42d2855faf3a1b02e700ac00e88692b50da98dd5948698a7184b62812bbf5",
+    "llm/indicator/deffuant/generation_05/generation_result.json": "9712599e70b2f21e591c9e7c577af422f7f4736d2a0018de4f12cb074652faf0",
+    "llm/indicator/deffuant/generation_05/prompt.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_05/request_round_00.md": "3ddb0e13bef779e5efdd9b24cc6ca6ef54fc7175182d622f5162c70d271d6ec9",
+    "llm/indicator/deffuant/generation_05/request_round_01.md": "0145f12915413e6aad25c73a36bbe19a920acecef1579124abad90484d43b3ee",
+    "llm/indicator/deffuant/generation_05/response_round_00.json": "f372ec770b0f1a7bc9719d984b7ea63fef99245e798f883215fb7bc5c12b9009",
+    "llm/indicator/deffuant/generation_05/response_round_01.json": "efad03c401f18643f9253b107d53c6e957a9de494826040f1f909a4005539164",
+    "llm/indicator/schelling/generation_00/generation_result.json": "7cf36e407616b41cb3e9a3abbb0816dbd39ceae7124e7063d139a97ed93b5a95",
+    "llm/indicator/schelling/generation_00/prompt.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_00/request_round_00.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_00/request_round_01.md": "b71ad0cc08c9528215fafa14b6c62625b527a45f3237379e475af56c7bbc8003",
+    "llm/indicator/schelling/generation_00/request_round_02.md": "572efdf2bddfdc4cb7d33d8bff666d428d03ddaa15f31d5617951cf154301562",
+    "llm/indicator/schelling/generation_00/request_round_03.md": "d3bd93db2c00a07b14d6c6ceec912ae3b7f6c64b8e39b4626ed03d426fb2adf9",
+    "llm/indicator/schelling/generation_00/response_round_00.json": "82af6a940cfb8e98dab255e95d608e84f070cc5ebc5f01709da7e0cdb7792894",
+    "llm/indicator/schelling/generation_00/response_round_01.json": "1f4f802dbd4e3609b54c72305a168924cdf7243c2855b5634a032873c1c4b841",
+    "llm/indicator/schelling/generation_00/response_round_02.json": "432b8638ffde4443f83c206ecf8d73b6ca87c5d7eb39f150310f3534a10356bc",
+    "llm/indicator/schelling/generation_00/response_round_03.json": "e8ee3356734800e8d8b0b172fc81c16b86f72d9e0dc917aba2f8787fb7dd810a",
+    "llm/indicator/schelling/generation_01/accepted_payload.json": "c427db798148342c6f4a3016f6b0b5cffbb6db297798cee14da9e6b52a631835",
+    "llm/indicator/schelling/generation_01/accepted_payload.sha256": "21d3977ecccb09a47962200bcffc3c66ad0fa28b283313172452a4e19ef53145",
+    "llm/indicator/schelling/generation_01/generation_result.json": "db151cd4dd17dd7c4340d7e32d6df6c0b06ef3af64c83438ae723898659946dd",
+    "llm/indicator/schelling/generation_01/prompt.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_01/request_round_00.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_01/request_round_01.md": "5605040cc9efe59b91f7214019694faa931ee90fb62d1e5a009e2893013943a0",
+    "llm/indicator/schelling/generation_01/response_round_00.json": "5faddbe580559b1d963dfab050549c7640939dfe4b79894abb4edd9433d41986",
+    "llm/indicator/schelling/generation_01/response_round_01.json": "0a8e729744ca0ac37cf8c9f27e3e74585ae1152483fd2f530c2766063c8ec072",
+    "llm/indicator/schelling/generation_02/accepted_payload.json": "000ceeb967b1590b3abd581122785db57686cdc750e288a65e8137cefadf313e",
+    "llm/indicator/schelling/generation_02/accepted_payload.sha256": "eb41c23e48bcc1dd4aad93118db2b0b00fc06aa775b2a0d7cef5e70df9c2159e",
+    "llm/indicator/schelling/generation_02/generation_result.json": "5aaa37a8c4a11d664562939b74c7460f2cf7825db4c2bd877b37619c0f7724f9",
+    "llm/indicator/schelling/generation_02/prompt.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_02/request_round_00.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_02/request_round_01.md": "605edca705864b5ec7d3af5b771efbecf8a0a881de34045b560f8176c1e2da8a",
+    "llm/indicator/schelling/generation_02/request_round_02.md": "a8de8bdac2f3b05d4fc1a8e7dd39f1df45a83d6551d5bd043e2e168d5d0d1122",
+    "llm/indicator/schelling/generation_02/request_round_03.md": "4666b637bd626447c6c522ada40e62a2e24fe6e4669bf88181779f15f2d438e6",
+    "llm/indicator/schelling/generation_02/response_round_00.json": "d964f897f42a5b34392209903588601c6fb73005b9a08cd7a528a67045be0d45",
+    "llm/indicator/schelling/generation_02/response_round_01.json": "402a90d01e800a0843bafa690bc2e681a6c5c5534c986c21a6ed0c59ba7ed103",
+    "llm/indicator/schelling/generation_02/response_round_02.json": "ea34b6c744929bdc3d9bf3d3dc187bda036e7393f2b33be0c908f940bc450f68",
+    "llm/indicator/schelling/generation_02/response_round_03.json": "697059f91646dd9b32cf77b1d3cbef8cb6c309eb7b1ab45f6fd6d7487cc1c0d7",
+    "llm/indicator/schelling/generation_03/accepted_payload.json": "ab692ca335e66c5cb253114d05653a4938a8992b6a73c3c6c8cc02a75ddf27c0",
+    "llm/indicator/schelling/generation_03/accepted_payload.sha256": "70e5045cea3e2945b9d6e15bcbe2cd31d5a49abd503f09172b599ade8ce38e87",
+    "llm/indicator/schelling/generation_03/generation_result.json": "6d2558a7edfa94bc5484aa82924cb28b2c791757cc4528f04dd254de1f02d303",
+    "llm/indicator/schelling/generation_03/prompt.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_03/request_round_00.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_03/request_round_01.md": "f51eced36dceeb904d4c76f262e6e781b6689e728084dd2a80cc6b2420fbe94f",
+    "llm/indicator/schelling/generation_03/request_round_02.md": "4ddc64f1b086ac6ecd1eb9421348314e9103a83afebf542c7b31a2229e6ea213",
+    "llm/indicator/schelling/generation_03/request_round_03.md": "be4c67d913afb5eed6a616577686a6b2b2601d1eaf102fb8d5dd5715ab80b1de",
+    "llm/indicator/schelling/generation_03/response_round_00.json": "47e2ce2a1db0ec6c2ecc79a64e142e74c1df952736ec2beb161873806134ebed",
+    "llm/indicator/schelling/generation_03/response_round_01.json": "d7783b8068d63edf7a05b9898a2f48a699fd2d12e503ec8eef914c4c4268f116",
+    "llm/indicator/schelling/generation_03/response_round_02.json": "0ff61c84d581edebc1227d06838e0081a3eebd6bd56fe45b3062852d0946e272",
+    "llm/indicator/schelling/generation_03/response_round_03.json": "8b96508e0112c7623671416fb322d8271ab5bd2aff45638ac70615c9551dc395",
+    "llm/indicator/schelling/generation_04/accepted_payload.json": "9daf202e92be0b8cf7d738a15b5c1d788ad88abbc842d28f575a1392346496e7",
+    "llm/indicator/schelling/generation_04/accepted_payload.sha256": "2a71f6e6702838235ed2e33647f138a85eb1eabeb0c83608addde621f6a2f628",
+    "llm/indicator/schelling/generation_04/generation_result.json": "50fe6700674a84d99f12947069a47368ec0c7b3fb3b4d91faaa1305f98c14a8f",
+    "llm/indicator/schelling/generation_04/prompt.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_04/request_round_00.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_04/request_round_01.md": "5dc4ae133d8637c80b8a233406062863bc664c59ee662f53e753fe9205ecf75c",
+    "llm/indicator/schelling/generation_04/response_round_00.json": "6228cb8974f4926885fe195f3be2a4d30a58f608ad107b2e3aaf0bb2009701e6",
+    "llm/indicator/schelling/generation_04/response_round_01.json": "29b709747d3c3c80bb39ff6d30fc9f9f2ac74aa20bf1d3458c9bff0ced718967",
+    "llm/indicator/schelling/generation_05/accepted_payload.json": "e3ace02dece58e3082b81fb6f398cb84e2cf34c7207090f5605b02e36600a775",
+    "llm/indicator/schelling/generation_05/accepted_payload.sha256": "7a308281164c603ce3276290562179d78bf740dac31121a31bc3ae7d5f9bdf79",
+    "llm/indicator/schelling/generation_05/generation_result.json": "46958d8fbea602ade5745b1693163e6d3f084a5bea276e7adcd6762880e3e2d0",
+    "llm/indicator/schelling/generation_05/prompt.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_05/request_round_00.md": "b3967555319941b5965e22ce93e1ee03f5b7e35d88b9fa2516a3f81d422989f5",
+    "llm/indicator/schelling/generation_05/request_round_01.md": "45c8a0bcbf2ebfa9e3e609952b7a37980a5707358770c22eec2ef16207c8eaa8",
+    "llm/indicator/schelling/generation_05/request_round_02.md": "ab9ef56de3466e6f4f7fab50c8999b18a655484d785635d58227d24ac5055b3d",
+    "llm/indicator/schelling/generation_05/response_round_00.json": "9a0800ba3f45257e339d6e6921aebc5bb99de9d09eaca64baef8456a81c46224",
+    "llm/indicator/schelling/generation_05/response_round_01.json": "29fadb4c3be9bf432fb175b62e38099ced8ff3ed1373fae0db3d15f0df142574",
+    "llm/indicator/schelling/generation_05/response_round_02.json": "1667ad1f5b17cf099d295c39382c1423465d1af8e9e230408a0cf9f003396998",
+    "representation/indicator_generation_validation.json": "7ae62a861dacbba97a0ee9b24e1eb983aadc175e82c27d6d07cfcf8f792658e0",
+    "representation/indicator_replication_pairwise.csv": "a1043e6128f4b92e5acf459049ff58bf8c939fd1a376e1038e574b0cf276394d",
+    "representation/indicator_selection.json": "21ad0c10779da0df481b25d8c616ba61a92bb0da05ba8c743c9c841ea64f58a7",
+    "representation/representation_agreement.json": "4e2fd9dc1fccd324c4e8101e3b8e020cdc6e17490f499d3b5008d6bafd6c2a14"
+  },
+  "details": {
+    "schema_version": "4.0-two-phase-path-centered",
+    "phase": "indicator_generation",
+    "deffuant": {
+      "selected_indicator_generation": 1,
+      "indicator_selection_rule": "validity_then_source_field_diversity_then_parameter_micro_coverage_then_meso_structural_diversity_then_macro_concept_diversity_then_fewer_repairs_then_canonical_hash",
+      "indicator_selection_key": [
+        -10,
+        -3,
+        -8,
+        -4,
+        1,
+        "2bdcf2ab4711e8df29c32538341445f9ed4ca6cad90e57cb0d4f48dd6b49aa15"
+      ],
+      "selection_used_simulation_data": false,
+      "indicator_generations": [
+        {
+          "generation": 0,
+          "generation_role": "selection_eligible",
+          "status": "accepted",
+          "repair_rounds": 2,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 10,
+            "direct_micro_parameter_sources": {
+              "confidence_bound": [
+                "micro_interaction_accepted_fraction"
+              ],
+              "assimilation_strength": [
+                "micro_accepted_shift_abs_mean"
+              ],
+              "backfire_threshold": [
+                "micro_backfire_shift_abs_mean"
+              ]
+            },
+            "source_families": {
+              "micro_mean_opinion": [
+                "opinion_state"
+              ],
+              "micro_opinion_std": [
+                "opinion_state"
+              ],
+              "micro_opinion_abs_mean": [
+                "opinion_state"
+              ],
+              "micro_opinion_binned_entropy": [
+                "opinion_state"
+              ],
+              "micro_extreme_opinion_fraction": [
+                "opinion_state"
+              ],
+              "micro_interaction_distance_mean": [
+                "encounter_distance"
+              ],
+              "micro_interaction_distance_std": [
+                "encounter_distance"
+              ],
+              "micro_interaction_accepted_fraction": [
+                "assimilation_event"
+              ],
+              "micro_interaction_backfire_fraction": [
+                "repulsion_event"
+              ],
+              "micro_interaction_rejected_fraction": [
+                "rejection_event"
+              ],
+              "micro_edge_rewired_fraction": [
+                "rewiring_event"
+              ],
+              "micro_sign_flip_fraction": [
+                "sign_crossing_event"
+              ],
+              "micro_abs_agent_shift_mean": [
+                "opinion_update"
+              ],
+              "micro_agent_shift_std": [
+                "opinion_update"
+              ],
+              "micro_accepted_shift_abs_mean": [
+                "assimilation_event",
+                "opinion_update"
+              ],
+              "micro_backfire_shift_abs_mean": [
+                "opinion_update",
+                "repulsion_event"
+              ],
+              "meso_neighborhood_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_variance": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_abs_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_shift_std": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "meso_neighborhood_shift_variance": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "meso_neighborhood_distance_std": [
+                "encounter_distance",
+                "network_topology"
+              ],
+              "meso_neighborhood_backfire_std": [
+                "network_topology",
+                "repulsion_event"
+              ],
+              "meso_neighborhood_accepted_std": [
+                "assimilation_event",
+                "network_topology"
+              ],
+              "macro_network_density": [
+                "network_topology"
+              ],
+              "macro_network_component_count": [
+                "network_topology"
+              ],
+              "macro_network_largest_component_fraction": [
+                "network_topology"
+              ],
+              "macro_network_assortativity_opinion": [
+                "network_topology",
+                "opinion_state"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 1,
+          "generation_role": "selection_eligible",
+          "status": "accepted",
+          "repair_rounds": 1,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 10,
+            "direct_micro_parameter_sources": {
+              "confidence_bound": [
+                "micro_accepted_fraction"
+              ],
+              "assimilation_strength": [
+                "micro_mean_abs_agent_shift"
+              ],
+              "backfire_threshold": [
+                "micro_backfire_fraction"
+              ]
+            },
+            "source_families": {
+              "micro_opinion_p25": [
+                "opinion_state"
+              ],
+              "micro_opinion_std": [
+                "opinion_state"
+              ],
+              "micro_median_opinion": [
+                "opinion_state"
+              ],
+              "micro_mean_interaction_distance": [
+                "encounter_distance"
+              ],
+              "micro_interaction_distance_std": [
+                "encounter_distance"
+              ],
+              "micro_accepted_fraction": [
+                "assimilation_event"
+              ],
+              "micro_backfire_fraction": [
+                "repulsion_event"
+              ],
+              "micro_rejected_fraction": [
+                "rejection_event"
+              ],
+              "micro_rewiring_fraction": [
+                "rewiring_event"
+              ],
+              "micro_mean_abs_agent_shift": [
+                "opinion_update"
+              ],
+              "micro_agent_shift_std": [
+                "opinion_update"
+              ],
+              "micro_sign_flip_fraction": [
+                "sign_crossing_event"
+              ],
+              "micro_extreme_agent_fraction": [
+                "opinion_state"
+              ],
+              "micro_mean_abs_opinion": [
+                "opinion_state"
+              ],
+              "micro_accepted_count": [
+                "assimilation_event"
+              ],
+              "micro_edge_rewired_count": [
+                "rewiring_event"
+              ],
+              "meso_neighborhood_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_variance": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_abs_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_abs_opinion_variance": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_interaction_distance_std": [
+                "encounter_distance",
+                "network_topology"
+              ],
+              "meso_neighborhood_interaction_distance_variance": [
+                "encounter_distance",
+                "network_topology"
+              ],
+              "meso_neighborhood_agent_shift_std": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "meso_neighborhood_agent_shift_variance": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "macro_opinion_global_mean": [
+                "opinion_state"
+              ],
+              "macro_opinion_global_variance": [
+                "opinion_state"
+              ],
+              "macro_network_largest_component_fraction": [
+                "network_topology"
+              ],
+              "macro_network_assortativity": [
+                "network_topology",
+                "opinion_state"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 2,
+          "generation_role": "selection_eligible",
+          "status": "accepted",
+          "repair_rounds": 1,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 10,
+            "direct_micro_parameter_sources": {
+              "confidence_bound": [
+                "micro_accepted_distance_mean",
+                "micro_assimilation_rate"
+              ],
+              "assimilation_strength": [
+                "micro_agent_shift_abs_mean"
+              ],
+              "backfire_threshold": [
+                "micro_backfire_distance_mean",
+                "micro_backfire_rate"
+              ]
+            },
+            "source_families": {
+              "micro_opinion_mean": [
+                "opinion_state"
+              ],
+              "micro_opinion_std": [
+                "opinion_state"
+              ],
+              "micro_opinion_abs_mean": [
+                "opinion_state"
+              ],
+              "micro_interaction_distance_mean": [
+                "encounter_distance"
+              ],
+              "micro_interaction_distance_std": [
+                "encounter_distance"
+              ],
+              "micro_assimilation_rate": [
+                "assimilation_event"
+              ],
+              "micro_backfire_rate": [
+                "repulsion_event"
+              ],
+              "micro_rejection_rate": [
+                "rejection_event"
+              ],
+              "micro_rewiring_rate": [
+                "rewiring_event"
+              ],
+              "micro_agent_shift_mean": [
+                "opinion_update"
+              ],
+              "micro_agent_shift_abs_mean": [
+                "opinion_update"
+              ],
+              "micro_agent_shift_std": [
+                "opinion_update"
+              ],
+              "micro_accepted_distance_mean": [
+                "assimilation_event",
+                "encounter_distance"
+              ],
+              "micro_backfire_distance_mean": [
+                "encounter_distance",
+                "repulsion_event"
+              ],
+              "micro_sign_flip_rate": [
+                "sign_crossing_event"
+              ],
+              "micro_extreme_opinion_fraction": [
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_entropy": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_abs_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_diversity": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_assimilation_exposure": [
+                "assimilation_event",
+                "network_topology"
+              ],
+              "meso_neighborhood_backfire_exposure": [
+                "network_topology",
+                "repulsion_event"
+              ],
+              "meso_neighborhood_rewiring_exposure": [
+                "network_topology",
+                "rewiring_event"
+              ],
+              "meso_neighborhood_distance_exposure": [
+                "encounter_distance",
+                "network_topology"
+              ],
+              "macro_opinion_entropy": [
+                "opinion_state"
+              ],
+              "macro_network_assortativity": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "macro_network_component_count": [
+                "network_topology"
+              ],
+              "macro_network_largest_component_fraction": [
+                "network_topology"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 3,
+          "generation_role": "replication_only",
+          "status": "accepted",
+          "repair_rounds": 3,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 11,
+            "direct_micro_parameter_sources": {
+              "confidence_bound": [
+                "mic_accepted_fraction"
+              ],
+              "assimilation_strength": [
+                "mic_mean_abs_agent_shift"
+              ],
+              "backfire_threshold": [
+                "mic_backfire_fraction"
+              ]
+            },
+            "source_families": {
+              "mic_mean_opinion": [
+                "opinion_state"
+              ],
+              "mic_opinion_std": [
+                "opinion_state"
+              ],
+              "mic_extreme_opinion_fraction": [
+                "opinion_state"
+              ],
+              "mic_mean_interaction_distance": [
+                "encounter_distance"
+              ],
+              "mic_interaction_distance_std": [
+                "encounter_distance"
+              ],
+              "mic_interaction_distance_median": [
+                "encounter_distance"
+              ],
+              "mic_accepted_fraction": [
+                "assimilation_event"
+              ],
+              "mic_backfire_fraction": [
+                "repulsion_event"
+              ],
+              "mic_rejected_fraction": [
+                "rejection_event"
+              ],
+              "mic_rewired_fraction": [
+                "rewiring_event"
+              ],
+              "mic_mean_abs_agent_shift": [
+                "opinion_update"
+              ],
+              "mic_agent_shift_std": [
+                "opinion_update"
+              ],
+              "mic_sign_flip_fraction": [
+                "sign_crossing_event"
+              ],
+              "mic_positive_shift_fraction": [
+                "opinion_update"
+              ],
+              "mic_opinion_shift_correlation": [
+                "opinion_state",
+                "opinion_update"
+              ],
+              "mic_opinion_binned_entropy": [
+                "opinion_state"
+              ],
+              "meso_neigh_mean_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neigh_extreme_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neigh_accepted_std": [
+                "assimilation_event",
+                "network_topology"
+              ],
+              "meso_neigh_rejection_std": [
+                "network_topology",
+                "rejection_event"
+              ],
+              "meso_neigh_rewiring_std": [
+                "network_topology",
+                "rewiring_event"
+              ],
+              "meso_neigh_mean_distance_std": [
+                "encounter_distance",
+                "network_topology"
+              ],
+              "meso_neigh_mean_shift_std": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "meso_neigh_opinion_dispersion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "macro_opinion_variance": [
+                "opinion_state"
+              ],
+              "macro_extreme_opinion_fraction": [
+                "extreme_opinion_state"
+              ],
+              "macro_network_largest_component_fraction": [
+                "network_topology"
+              ],
+              "macro_network_assortativity": [
+                "network_topology",
+                "opinion_state"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 4,
+          "generation_role": "replication_only",
+          "status": "accepted",
+          "repair_rounds": 1,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 10,
+            "direct_micro_parameter_sources": {
+              "confidence_bound": [
+                "micro_assimilation_fraction"
+              ],
+              "assimilation_strength": [
+                "micro_mean_abs_agent_shift",
+                "micro_mean_opinion"
+              ],
+              "backfire_threshold": [
+                "micro_backfire_fraction"
+              ]
+            },
+            "source_families": {
+              "micro_mean_opinion": [
+                "opinion_state"
+              ],
+              "micro_opinion_std": [
+                "opinion_state"
+              ],
+              "micro_opinion_iqr": [
+                "opinion_state"
+              ],
+              "micro_extreme_opinion_fraction": [
+                "opinion_state"
+              ],
+              "micro_opinion_binned_entropy": [
+                "opinion_state"
+              ],
+              "micro_mean_interaction_distance": [
+                "encounter_distance"
+              ],
+              "micro_interaction_distance_std": [
+                "encounter_distance"
+              ],
+              "micro_assimilation_fraction": [
+                "assimilation_event"
+              ],
+              "micro_backfire_fraction": [
+                "repulsion_event"
+              ],
+              "micro_rejection_fraction": [
+                "rejection_event"
+              ],
+              "micro_rewiring_fraction": [
+                "rewiring_event"
+              ],
+              "micro_mean_agent_shift": [
+                "opinion_update"
+              ],
+              "micro_mean_abs_agent_shift": [
+                "opinion_update"
+              ],
+              "micro_agent_shift_std": [
+                "opinion_update"
+              ],
+              "micro_sign_flip_fraction": [
+                "sign_crossing_event"
+              ],
+              "micro_opinion_shift_correlation": [
+                "opinion_state",
+                "opinion_update"
+              ],
+              "meso_neighborhood_mean_opinion_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_opinion_std_variance": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_neighborhood_assimilation_iqr": [
+                "assimilation_event",
+                "network_topology"
+              ],
+              "meso_neighborhood_backfire_entropy": [
+                "network_topology",
+                "repulsion_event"
+              ],
+              "meso_neighborhood_rejection_variance": [
+                "network_topology",
+                "rejection_event"
+              ],
+              "meso_neighborhood_rewiring_iqr": [
+                "network_topology",
+                "rewiring_event"
+              ],
+              "meso_neighborhood_shift_entropy": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "meso_neighborhood_extreme_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "macro_network_density": [
+                "network_topology"
+              ],
+              "macro_largest_component_fraction": [
+                "network_topology"
+              ],
+              "macro_network_component_count": [
+                "network_topology"
+              ],
+              "macro_network_assortativity": [
+                "network_topology",
+                "opinion_state"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 5,
+          "generation_role": "replication_only",
+          "status": "accepted",
+          "repair_rounds": 1,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 11,
+            "direct_micro_parameter_sources": {
+              "confidence_bound": [
+                "micro_assimilation_rate"
+              ],
+              "assimilation_strength": [
+                "micro_mean_abs_agent_shift"
+              ],
+              "backfire_threshold": [
+                "micro_backfire_rate"
+              ]
+            },
+            "source_families": {
+              "micro_interaction_distance_mean": [
+                "encounter_distance"
+              ],
+              "micro_interaction_distance_std": [
+                "encounter_distance"
+              ],
+              "micro_interaction_distance_q90": [
+                "encounter_distance"
+              ],
+              "micro_assimilation_rate": [
+                "assimilation_event"
+              ],
+              "micro_backfire_rate": [
+                "repulsion_event"
+              ],
+              "micro_rejection_rate": [
+                "rejection_event"
+              ],
+              "micro_rewiring_rate": [
+                "rewiring_event"
+              ],
+              "micro_mean_abs_agent_shift": [
+                "opinion_update"
+              ],
+              "micro_agent_shift_std": [
+                "opinion_update"
+              ],
+              "micro_opinion_mean": [
+                "opinion_state"
+              ],
+              "micro_opinion_std": [
+                "opinion_state"
+              ],
+              "micro_abs_opinion_mean": [
+                "opinion_state"
+              ],
+              "micro_extreme_opinion_fraction": [
+                "opinion_state"
+              ],
+              "micro_sign_flip_rate": [
+                "sign_crossing_event"
+              ],
+              "micro_opinion_entropy": [
+                "opinion_state"
+              ],
+              "micro_agent_shift_entropy": [
+                "opinion_update"
+              ],
+              "meso_nb_opinion_mean_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_nb_opinion_std_mean": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_nb_opinion_std_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_nb_update_mean_std": [
+                "network_topology",
+                "opinion_update"
+              ],
+              "meso_nb_extreme_fraction_std": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "meso_nb_assimilation_fraction_std": [
+                "assimilation_event",
+                "network_topology"
+              ],
+              "meso_nb_rejection_fraction_std": [
+                "network_topology",
+                "rejection_event"
+              ],
+              "meso_nb_opinion_mean_entropy": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "macro_network_assortativity": [
+                "network_topology",
+                "opinion_state"
+              ],
+              "macro_network_component_count": [
+                "network_topology"
+              ],
+              "macro_network_largest_component_fraction": [
+                "network_topology"
+              ],
+              "macro_extreme_agent_count": [
+                "extreme_opinion_state"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        }
+      ]
+    },
+    "schelling": {
+      "selected_indicator_generation": 1,
+      "indicator_selection_rule": "validity_then_source_field_diversity_then_parameter_micro_coverage_then_meso_structural_diversity_then_macro_concept_diversity_then_fewer_repairs_then_canonical_hash",
+      "indicator_selection_key": [
+        -12,
+        -3,
+        -8,
+        -4,
+        1,
+        "e8bf22736392ff1b49e8a923a374cfeaa351e9a1ca58477d538f69115470cc78"
+      ],
+      "selection_used_simulation_data": false,
+      "indicator_generations": [
+        {
+          "generation": 0,
+          "generation_role": "selection_eligible",
+          "status": "rejected",
+          "repair_rounds": 3,
+          "validation": {
+            "valid": false,
+            "errors": [
+              "indicator meso_district_similarity_entropy_dispersion: group_reduce entropy requires categorical values"
+            ]
+          }
+        },
+        {
+          "generation": 1,
+          "generation_role": "selection_eligible",
+          "status": "accepted",
+          "repair_rounds": 1,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 12,
+            "direct_micro_parameter_sources": {
+              "tolerance": [
+                "unhappy_fraction"
+              ],
+              "move_probability": [
+                "moved_fraction",
+                "relocation_response_fraction"
+              ],
+              "destination_preference": [
+                "mean_destination_similarity_movers"
+              ]
+            },
+            "source_families": {
+              "mean_local_similarity": [
+                "local_group_exposure"
+              ],
+              "std_local_similarity": [
+                "local_group_exposure"
+              ],
+              "mean_neighbour_count": [
+                "local_occupancy"
+              ],
+              "unhappy_fraction": [
+                "dissatisfaction_event"
+              ],
+              "unhappy_local_similarity_mean": [
+                "dissatisfaction_event",
+                "local_group_exposure"
+              ],
+              "moved_fraction": [
+                "relocation_event"
+              ],
+              "mean_move_distance": [
+                "relocation_distance",
+                "relocation_event"
+              ],
+              "mean_destination_similarity_movers": [
+                "destination_exposure",
+                "relocation_event"
+              ],
+              "boundary_fraction": [
+                "boundary_exposure"
+              ],
+              "std_destination_similarity": [
+                "destination_exposure"
+              ],
+              "quantile_25_local_similarity": [
+                "local_group_exposure"
+              ],
+              "quantile_75_local_similarity": [
+                "local_group_exposure"
+              ],
+              "local_similarity_entropy": [
+                "local_group_exposure"
+              ],
+              "move_distance_std": [
+                "relocation_distance"
+              ],
+              "std_neighbour_count": [
+                "local_occupancy"
+              ],
+              "relocation_response_fraction": [
+                "dissatisfaction_event",
+                "relocation_event"
+              ],
+              "meso_district_local_similarity_std": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_district_unhappy_fraction_std": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "meso_district_boundary_fraction_std": [
+                "boundary_exposure",
+                "district_membership"
+              ],
+              "meso_district_move_fraction_std": [
+                "district_membership",
+                "relocation_event"
+              ],
+              "meso_district_destination_similarity_std": [
+                "destination_exposure",
+                "district_membership"
+              ],
+              "meso_district_neighbour_count_std": [
+                "district_membership",
+                "local_occupancy"
+              ],
+              "meso_district_group_entropy_mean": [
+                "district_membership",
+                "social_group"
+              ],
+              "meso_district_move_distance_std": [
+                "district_membership",
+                "relocation_distance"
+              ],
+              "macro_global_unhappy_fraction": [
+                "dissatisfaction_event"
+              ],
+              "macro_global_moved_fraction": [
+                "relocation_event"
+              ],
+              "macro_global_connected_components": [
+                "spatial_configuration"
+              ],
+              "macro_global_spatial_neighbor_similarity": [
+                "spatial_configuration"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 2,
+          "generation_role": "selection_eligible",
+          "status": "accepted",
+          "repair_rounds": 3,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 11,
+            "direct_micro_parameter_sources": {
+              "tolerance": [
+                "micro_boundary_fraction",
+                "micro_local_similarity_mean",
+                "micro_unhappy_fraction"
+              ],
+              "move_probability": [
+                "micro_local_similarity_move_distance_correlation",
+                "micro_mean_move_distance",
+                "micro_moved_fraction"
+              ],
+              "destination_preference": [
+                "micro_destination_similarity_mean",
+                "micro_destination_similarity_std"
+              ]
+            },
+            "source_families": {
+              "micro_local_similarity_mean": [
+                "local_group_exposure"
+              ],
+              "micro_local_similarity_std": [
+                "local_group_exposure"
+              ],
+              "micro_local_similarity_median": [
+                "local_group_exposure"
+              ],
+              "micro_local_similarity_quantile_90": [
+                "local_group_exposure"
+              ],
+              "micro_unhappy_fraction": [
+                "dissatisfaction_event"
+              ],
+              "micro_moved_fraction": [
+                "relocation_event"
+              ],
+              "micro_boundary_fraction": [
+                "boundary_exposure"
+              ],
+              "micro_mean_move_distance": [
+                "relocation_distance"
+              ],
+              "micro_move_distance_std": [
+                "relocation_distance"
+              ],
+              "micro_destination_similarity_mean": [
+                "destination_exposure"
+              ],
+              "micro_destination_similarity_std": [
+                "destination_exposure"
+              ],
+              "micro_neighbour_count_mean": [
+                "local_occupancy"
+              ],
+              "micro_neighbour_count_std": [
+                "local_occupancy"
+              ],
+              "micro_local_similarity_binned_entropy": [
+                "local_group_exposure"
+              ],
+              "micro_local_similarity_quantile_10": [
+                "local_group_exposure"
+              ],
+              "micro_local_similarity_move_distance_correlation": [
+                "local_group_exposure",
+                "relocation_distance"
+              ],
+              "meso_district_local_similarity_std": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_district_unhappy_fraction_std": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "meso_district_boundary_fraction_std": [
+                "boundary_exposure",
+                "district_membership"
+              ],
+              "meso_district_move_distance_std": [
+                "district_membership",
+                "relocation_distance"
+              ],
+              "meso_district_destination_similarity_std": [
+                "destination_exposure",
+                "district_membership"
+              ],
+              "meso_district_neighbour_count_std": [
+                "district_membership",
+                "local_occupancy"
+              ],
+              "meso_district_local_similarity_entropy": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_district_unhappy_fraction_entropy": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "macro_global_unhappy_count": [
+                "dissatisfaction_event"
+              ],
+              "macro_global_move_count": [
+                "relocation_event"
+              ],
+              "macro_spatial_neighbor_similarity": [
+                "spatial_configuration"
+              ],
+              "macro_largest_component_fraction": [
+                "spatial_configuration"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 3,
+          "generation_role": "replication_only",
+          "status": "accepted",
+          "repair_rounds": 3,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 12,
+            "direct_micro_parameter_sources": {
+              "tolerance": [
+                "micro_fraction_unsatisfied",
+                "micro_mean_neighbour_count",
+                "micro_unsatisfied_agent_count"
+              ],
+              "move_probability": [
+                "micro_fraction_relocated",
+                "micro_mean_move_distance",
+                "micro_total_relocation_count"
+              ],
+              "destination_preference": [
+                "micro_fraction_boundary_agents",
+                "micro_mean_destination_similarity",
+                "micro_mean_local_similarity",
+                "micro_median_local_similarity",
+                "micro_total_boundary_agents"
+              ]
+            },
+            "source_families": {
+              "micro_unsatisfied_agent_count": [
+                "dissatisfaction_event"
+              ],
+              "micro_fraction_unsatisfied": [
+                "dissatisfaction_event"
+              ],
+              "micro_mean_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_std_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_median_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_entropy_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_mean_neighbour_count": [
+                "local_occupancy"
+              ],
+              "micro_std_neighbour_count": [
+                "local_occupancy"
+              ],
+              "micro_fraction_boundary_agents": [
+                "boundary_exposure"
+              ],
+              "micro_mean_move_distance": [
+                "relocation_distance"
+              ],
+              "micro_fraction_relocated": [
+                "relocation_event"
+              ],
+              "micro_total_relocation_count": [
+                "relocation_event"
+              ],
+              "micro_mean_destination_similarity": [
+                "destination_exposure"
+              ],
+              "micro_correlation_similarity_neighbour_count": [
+                "local_group_exposure",
+                "local_occupancy"
+              ],
+              "micro_correlation_similarity_move_distance": [
+                "local_group_exposure",
+                "relocation_distance"
+              ],
+              "micro_total_boundary_agents": [
+                "boundary_exposure"
+              ],
+              "meso_between_district_variation_local_similarity": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_between_district_variation_neighbour_count": [
+                "district_membership",
+                "local_occupancy"
+              ],
+              "meso_between_district_variation_unhappy_fraction": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "meso_between_district_variation_boundary_fraction": [
+                "boundary_exposure",
+                "district_membership"
+              ],
+              "meso_between_district_variation_move_fraction": [
+                "district_membership",
+                "relocation_event"
+              ],
+              "meso_between_district_variation_destination_similarity": [
+                "destination_exposure",
+                "district_membership"
+              ],
+              "meso_between_district_variation_internal_similarity_dispersion": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_district_group_composition_entropy": [
+                "district_membership",
+                "social_group"
+              ],
+              "macro_global_neighbor_similarity": [
+                "spatial_configuration"
+              ],
+              "macro_global_largest_component_fraction": [
+                "spatial_configuration"
+              ],
+              "macro_global_connected_component_count": [
+                "spatial_configuration"
+              ],
+              "macro_global_dissatisfaction_fraction": [
+                "dissatisfaction_event"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 4,
+          "generation_role": "replication_only",
+          "status": "accepted",
+          "repair_rounds": 1,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 10,
+            "direct_micro_parameter_sources": {
+              "tolerance": [
+                "micro_unhappy_fraction"
+              ],
+              "move_probability": [
+                "micro_moved_fraction",
+                "micro_relocation_propensity_unhappy"
+              ],
+              "destination_preference": [
+                "micro_mean_destination_similarity"
+              ]
+            },
+            "source_families": {
+              "micro_mean_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_unhappy_fraction": [
+                "dissatisfaction_event"
+              ],
+              "micro_mean_neighbour_count": [
+                "local_occupancy"
+              ],
+              "micro_moved_fraction": [
+                "relocation_event"
+              ],
+              "micro_mean_move_distance": [
+                "relocation_distance"
+              ],
+              "micro_mean_destination_similarity": [
+                "destination_exposure"
+              ],
+              "micro_boundary_agent_fraction": [
+                "boundary_exposure"
+              ],
+              "micro_local_similarity_std": [
+                "local_group_exposure"
+              ],
+              "micro_relocation_propensity_unhappy": [
+                "dissatisfaction_event",
+                "relocation_event"
+              ],
+              "micro_correlation_similarity_neighbour_count": [
+                "local_group_exposure",
+                "local_occupancy"
+              ],
+              "micro_correlation_similarity_destination": [
+                "destination_exposure",
+                "local_group_exposure"
+              ],
+              "micro_std_neighbour_count": [
+                "local_occupancy"
+              ],
+              "micro_variance_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_quantile_local_similarity_50": [
+                "local_group_exposure"
+              ],
+              "micro_local_similarity_binned_entropy": [
+                "local_group_exposure"
+              ],
+              "micro_neighbour_count_binned_entropy": [
+                "local_occupancy"
+              ],
+              "meso_between_district_local_similarity_std": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_between_district_unhappy_fraction_std": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "meso_between_district_relocation_rate_std": [
+                "district_membership",
+                "relocation_event"
+              ],
+              "meso_between_district_move_distance_std": [
+                "district_membership",
+                "relocation_distance"
+              ],
+              "meso_between_district_boundary_exposure_std": [
+                "boundary_exposure",
+                "district_membership"
+              ],
+              "meso_between_district_destination_similarity_std": [
+                "destination_exposure",
+                "district_membership"
+              ],
+              "meso_between_district_neighbour_count_std": [
+                "district_membership",
+                "local_occupancy"
+              ],
+              "meso_between_district_group_composition_entropy_std": [
+                "district_membership",
+                "social_group"
+              ],
+              "macro_spatial_neighbor_similarity": [
+                "spatial_configuration"
+              ],
+              "macro_connected_component_count": [
+                "spatial_configuration"
+              ],
+              "macro_largest_component_fraction": [
+                "spatial_configuration"
+              ],
+              "macro_group0_component_count": [
+                "spatial_configuration"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        },
+        {
+          "generation": 5,
+          "generation_role": "replication_only",
+          "status": "accepted",
+          "repair_rounds": 2,
+          "validation": {
+            "valid": true,
+            "errors": [],
+            "scale_counts": {
+              "micro": 16,
+              "meso": 8,
+              "macro": 4
+            },
+            "indicator_count": 28,
+            "source_field_diversity": 9,
+            "direct_micro_parameter_sources": {
+              "tolerance": [
+                "micro_frac_unhappy"
+              ],
+              "move_probability": [
+                "micro_frac_moved_among_unhappy"
+              ],
+              "destination_preference": [
+                "micro_mean_destination_similarity_movers"
+              ]
+            },
+            "source_families": {
+              "micro_mean_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_std_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_median_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_frac_unhappy": [
+                "dissatisfaction_event"
+              ],
+              "micro_count_unhappy": [
+                "dissatisfaction_event"
+              ],
+              "micro_mean_neighbour_count": [
+                "local_occupancy"
+              ],
+              "micro_frac_boundary_agents": [
+                "boundary_exposure"
+              ],
+              "micro_frac_moved": [
+                "relocation_event"
+              ],
+              "micro_frac_moved_among_unhappy": [
+                "dissatisfaction_event",
+                "relocation_event"
+              ],
+              "micro_mean_move_distance": [
+                "relocation_distance"
+              ],
+              "micro_mean_destination_similarity_movers": [
+                "destination_exposure",
+                "relocation_event"
+              ],
+              "micro_std_move_distance": [
+                "relocation_distance"
+              ],
+              "micro_corr_local_similarity_move_distance": [
+                "local_group_exposure",
+                "relocation_distance"
+              ],
+              "micro_var_local_similarity": [
+                "local_group_exposure"
+              ],
+              "micro_mean_local_similarity_unhappy": [
+                "dissatisfaction_event",
+                "local_group_exposure"
+              ],
+              "micro_frac_unhappy_boundary_agents": [
+                "boundary_exposure",
+                "dissatisfaction_event"
+              ],
+              "meso_std_district_local_similarity": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_binned_entropy_district_local_similarity": [
+                "district_membership",
+                "local_group_exposure"
+              ],
+              "meso_std_district_unhappy_frac": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "meso_binned_entropy_district_unhappy_frac": [
+                "dissatisfaction_event",
+                "district_membership"
+              ],
+              "meso_std_district_moved_frac": [
+                "district_membership",
+                "relocation_event"
+              ],
+              "meso_binned_entropy_district_moved_frac": [
+                "district_membership",
+                "relocation_event"
+              ],
+              "meso_std_district_destination_similarity": [
+                "destination_exposure",
+                "district_membership"
+              ],
+              "meso_binned_entropy_district_boundary_frac": [
+                "boundary_exposure",
+                "district_membership"
+              ],
+              "macro_mean_local_similarity": [
+                "local_group_exposure"
+              ],
+              "macro_spatial_neighbor_similarity": [
+                "spatial_configuration"
+              ],
+              "macro_largest_component_fraction": [
+                "spatial_configuration"
+              ],
+              "macro_connected_component_count": [
+                "spatial_configuration"
+              ]
+            },
+            "meso_structural_diversity": 8,
+            "macro_concept_diversity": 4
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+scenario,classification,count
+deffuant,inconclusive,4
+deffuant,supported,2
+schelling,inconclusive,1
+schelling,manipulation_failure,4
+schelling,supported,1

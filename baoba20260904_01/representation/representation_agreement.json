@@ -1,0 +1,19 @@
+{
+  "schema_version": "2.0",
+  "scenarios": {
+    "deffuant": {
+      "computation_agreement": 0.44895507534788665,
+      "scale_agreement": 0.43503604003350244,
+      "source_family_agreement": 0.6934560256851279,
+      "parameter_source_agreement": 0.07333333333333333,
+      "macro_concept_agreement": 0.073015873015873
+    },
+    "schelling": {
+      "computation_agreement": 0.4482727391322191,
+      "scale_agreement": 0.4440685349280149,
+      "source_family_agreement": 0.49494291376900074,
+      "parameter_source_agreement": 0.02746212121212121,
+      "macro_concept_agreement": 0.02857142857142857
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "stage": "indicator_freeze",
+  "status": "completed",
+  "duration_seconds": 0.014234299998861388,
+  "outputs": {
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333",
+    "representation/INDICATORS_FROZEN.sha256": "00c45a31ddfd81085c0cfbdccf9f515ee0417e07fc49b6331d02c5130da00b6f"
+  },
+  "details": {
+    "indicators_frozen": true,
+    "scenario_count": 2,
+    "indicators_frozen_sha256": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "stage": "temporal",
+  "status": "completed",
+  "duration_seconds": 508.4546059000004,
+  "outputs": {
+    "analysis/bootstrap_summary.json": "16a91396e41a8019308a95d1f5795e19573988aa61b7234406ee042d4bebda7a",
+    "analysis/controlled_recovery_graphs.jsonl": "725f27bb40e1db3dce0f05efab0230431607a0362dbfe44b44b095d9de7db064",
+    "analysis/controlled_recovery_runtime.csv": "311c6713dc4e0589370f8ff563ee592905859d4df90b96ee4d4a892056bb118d",
+    "analysis/main_graphs.jsonl": "1f3aeb1c085b4de636d0a3c5d7bdbaf6edc1bad6040fd466033c5b30b9f04e83",
+    "analysis/method_runtime.csv": "401e66c7e40fdfa73cb4de5957c84cd6609b43ca697e7c644ae4e77125244054",
+    "data/controlled_recovery_trajectories_baseline.manifest.json": "5aa1c90f07a9ff84ebe9bacb592d557ff39c49afc53dd2746c1569eed046b926",
+    "data/controlled_recovery_trajectories_baseline.parquet": "7525fee10feea84e913e2cca9d2aeb458a517ccbea7bb4fed531bed09a5aac95",
+    "data/indicator_trajectories_baseline.manifest.json": "e47207bc244f107d4e0bc7c1f0b6aba6e7b783aa4425ec3049e7354c44b1c28d",
+    "data/indicator_trajectories_baseline.parquet": "d90a58e3627321057ce0613389aa99cc5c92122df23cd0f33a94b873a08d17e6"
+  },
+  "details": {
+    "full_discovery_graph_records": 10,
+    "controlled_recovery_graph_records": 8
+  }
+}

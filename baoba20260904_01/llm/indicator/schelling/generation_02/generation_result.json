@@ -1,0 +1,1062 @@
+{
+  "status": "accepted",
+  "repair_rounds": 3,
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "scale_counts": {
+      "micro": 16,
+      "meso": 8,
+      "macro": 4
+    },
+    "indicator_count": 28,
+    "source_field_diversity": 11,
+    "direct_micro_parameter_sources": {
+      "tolerance": [
+        "micro_boundary_fraction",
+        "micro_local_similarity_mean",
+        "micro_unhappy_fraction"
+      ],
+      "move_probability": [
+        "micro_local_similarity_move_distance_correlation",
+        "micro_mean_move_distance",
+        "micro_moved_fraction"
+      ],
+      "destination_preference": [
+        "micro_destination_similarity_mean",
+        "micro_destination_similarity_std"
+      ]
+    },
+    "source_families": {
+      "micro_local_similarity_mean": [
+        "local_group_exposure"
+      ],
+      "micro_local_similarity_std": [
+        "local_group_exposure"
+      ],
+      "micro_local_similarity_median": [
+        "local_group_exposure"
+      ],
+      "micro_local_similarity_quantile_90": [
+        "local_group_exposure"
+      ],
+      "micro_unhappy_fraction": [
+        "dissatisfaction_event"
+      ],
+      "micro_moved_fraction": [
+        "relocation_event"
+      ],
+      "micro_boundary_fraction": [
+        "boundary_exposure"
+      ],
+      "micro_mean_move_distance": [
+        "relocation_distance"
+      ],
+      "micro_move_distance_std": [
+        "relocation_distance"
+      ],
+      "micro_destination_similarity_mean": [
+        "destination_exposure"
+      ],
+      "micro_destination_similarity_std": [
+        "destination_exposure"
+      ],
+      "micro_neighbour_count_mean": [
+        "local_occupancy"
+      ],
+      "micro_neighbour_count_std": [
+        "local_occupancy"
+      ],
+      "micro_local_similarity_binned_entropy": [
+        "local_group_exposure"
+      ],
+      "micro_local_similarity_quantile_10": [
+        "local_group_exposure"
+      ],
+      "micro_local_similarity_move_distance_correlation": [
+        "local_group_exposure",
+        "relocation_distance"
+      ],
+      "meso_district_local_similarity_std": [
+        "district_membership",
+        "local_group_exposure"
+      ],
+      "meso_district_unhappy_fraction_std": [
+        "dissatisfaction_event",
+        "district_membership"
+      ],
+      "meso_district_boundary_fraction_std": [
+        "boundary_exposure",
+        "district_membership"
+      ],
+      "meso_district_move_distance_std": [
+        "district_membership",
+        "relocation_distance"
+      ],
+      "meso_district_destination_similarity_std": [
+        "destination_exposure",
+        "district_membership"
+      ],
+      "meso_district_neighbour_count_std": [
+        "district_membership",
+        "local_occupancy"
+      ],
+      "meso_district_local_similarity_entropy": [
+        "district_membership",
+        "local_group_exposure"
+      ],
+      "meso_district_unhappy_fraction_entropy": [
+        "dissatisfaction_event",
+        "district_membership"
+      ],
+      "macro_global_unhappy_count": [
+        "dissatisfaction_event"
+      ],
+      "macro_global_move_count": [
+        "relocation_event"
+      ],
+      "macro_spatial_neighbor_similarity": [
+        "spatial_configuration"
+      ],
+      "macro_largest_component_fraction": [
+        "spatial_configuration"
+      ]
+    },
+    "meso_structural_diversity": 8,
+    "macro_concept_diversity": 4
+  },
+  "accepted_generation": {
+    "scenario": "schelling",
+    "phenomenon": "Schelling segregation dynamics",
+    "indicators": [
+      {
+        "id": "micro_local_similarity_mean",
+        "semantic_name": "Mean local same-group similarity",
+        "scientific_definition": "Average same-group fraction among occupied Moore neighbours across all agents at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "direct",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance changes the satisfaction threshold that triggers moves, so average local similarity may shift through relocation flows."
+          }
+        ],
+        "scientific_rationale": "This time series tracks average local group exposure, a basic primitive of the Schelling relocation rule."
+      },
+      {
+        "id": "micro_local_similarity_std",
+        "semantic_name": "Dispersion of local same-group similarity",
+        "scientific_definition": "Standard deviation across agents of local same-group similarity at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "A time series of individual local similarity dispersion reveals how homogeneous agent exposures are across the population."
+      },
+      {
+        "id": "micro_local_similarity_median",
+        "semantic_name": "Median local same-group similarity",
+        "scientific_definition": "Median same-group fraction among occupied Moore neighbours across all agents at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent",
+          "q": 0.5
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "The median local similarity gives a robust central tendency for individual local exposure without assuming interval averages."
+      },
+      {
+        "id": "micro_local_similarity_quantile_90",
+        "semantic_name": "90th percentile local same-group similarity",
+        "scientific_definition": "90th percentile of agent-level local same-group similarity at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent",
+          "q": 0.9
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "High quantile local similarity tracks the upper tail of individual local group exposure across the population."
+      },
+      {
+        "id": "micro_unhappy_fraction",
+        "semantic_name": "Unsatisfied agent fraction",
+        "scientific_definition": "Share of agents whose local same-group fraction is below tolerance at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "elementary_event",
+        "entities": "agents",
+        "source_fields": [
+          "unhappy"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "unhappy"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "A higher tolerance makes more agents classify as unsatisfied at the same local similarity, increasing the unsatisfied fraction."
+          }
+        ],
+        "scientific_rationale": "This observable tracks prevalence of the elementary dissatisfaction event that drives relocation in the model."
+      },
+      {
+        "id": "micro_moved_fraction",
+        "semantic_name": "Moved agent fraction",
+        "scientific_definition": "Share of agents that relocated during each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "elementary_event",
+        "entities": "agents",
+        "source_fields": [
+          "moved"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "moved"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "move_probability",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "Higher move probability increases the chance that unsatisfied agents attempt relocation, so the moved fraction rises."
+          }
+        ],
+        "scientific_rationale": "Moved fraction is a direct elementary event observable for relocation activity in the model."
+      },
+      {
+        "id": "micro_boundary_fraction",
+        "semantic_name": "Boundary-exposed agent fraction",
+        "scientific_definition": "Share of agents with at least one occupied different-group neighbour at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "agents",
+        "source_fields": [
+          "boundary_agent"
+        ],
+        "computation": {
+          "op": "fraction",
+          "input": {
+            "op": "field",
+            "name": "boundary_agent"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "direct",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance affects relocation which can alter the number of agents exposed to different-group neighbours."
+          }
+        ],
+        "scientific_rationale": "Boundary exposure is a local interaction primitive capturing contact between groups."
+      },
+      {
+        "id": "micro_mean_move_distance",
+        "semantic_name": "Mean relocation distance",
+        "scientific_definition": "Average periodic Manhattan distance moved by agents during each recorded step, with zeros for non-movers.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "elementary_event",
+        "entities": "agents",
+        "source_fields": [
+          "move_distance"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "move_distance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "move_probability",
+            "relationship": "direct",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Move probability affects how many agents move but not directly the distances they choose; the mean distance may change indirectly."
+          }
+        ],
+        "scientific_rationale": "This time series summarizes the microscopic relocation distance primitive across all agents."
+      },
+      {
+        "id": "micro_move_distance_std",
+        "semantic_name": "Dispersion of relocation distance",
+        "scientific_definition": "Standard deviation across agents of periodic Manhattan relocation distance at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "elementary_event",
+        "entities": "agents",
+        "source_fields": [
+          "move_distance"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "move_distance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Dispersion of relocation distance captures variability in the extent of individual moves."
+      },
+      {
+        "id": "micro_destination_similarity_mean",
+        "semantic_name": "Mean destination similarity",
+        "scientific_definition": "Average same-group neighbour fraction at selected destinations across all agents, with zeros for non-movers.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "agents",
+        "source_fields": [
+          "destination_similarity"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "destination_similarity"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "destination_preference",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "Higher destination preference biases movers toward the most similar sampled vacancy, increasing selected destination similarity."
+          }
+        ],
+        "scientific_rationale": "This observable tracks the local exposure obtained through destination selection, a key relocation interaction."
+      },
+      {
+        "id": "micro_destination_similarity_std",
+        "semantic_name": "Dispersion of destination similarity",
+        "scientific_definition": "Standard deviation across agents of same-group neighbour fraction at selected destinations, with zeros for non-movers.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "agents",
+        "source_fields": [
+          "destination_similarity"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "destination_similarity"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "destination_preference",
+            "relationship": "direct",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Higher destination preference can concentrate destination similarity values, changing their spread, but the direction depends on sampled vacancies."
+          }
+        ],
+        "scientific_rationale": "Dispersion of destination exposure reveals how variable relocation outcomes are across agents."
+      },
+      {
+        "id": "micro_neighbour_count_mean",
+        "semantic_name": "Mean occupied neighbour count",
+        "scientific_definition": "Average number of occupied Moore neighbours per agent at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "neighbour_count"
+        ],
+        "computation": {
+          "op": "mean",
+          "input": {
+            "op": "field",
+            "name": "neighbour_count"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Local occupancy is a local primitive that conditions neighbour similarity and satisfaction."
+      },
+      {
+        "id": "micro_neighbour_count_std",
+        "semantic_name": "Dispersion of occupied neighbour count",
+        "scientific_definition": "Standard deviation across agents of occupied Moore-neighbour count at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "neighbour_count"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "field",
+            "name": "neighbour_count"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Dispersion of local occupancy indicates heterogeneity in the crowdedness of agent neighbourhoods."
+      },
+      {
+        "id": "micro_local_similarity_binned_entropy",
+        "semantic_name": "Entropy of binned local similarity",
+        "scientific_definition": "Binned entropy of agent-level local same-group similarity at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "binned_entropy",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent",
+          "bins": 10
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Binned entropy captures distributional complexity of individual local similarity across the population."
+      },
+      {
+        "id": "micro_local_similarity_quantile_10",
+        "semantic_name": "10th percentile local same-group similarity",
+        "scientific_definition": "10th percentile of agent-level local same-group similarity at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "local_process",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "quantile",
+          "input": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "axis": "agent",
+          "q": 0.1
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "The lower tail of local similarity identifies how many agents reside in highly heterogeneous local environments."
+      },
+      {
+        "id": "micro_local_similarity_move_distance_correlation",
+        "semantic_name": "Correlation between local similarity and move distance",
+        "scientific_definition": "Cross-agent correlation between local same-group similarity and relocation distance at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "micro",
+        "entity_scope": "interaction",
+        "entities": "agents",
+        "source_fields": [
+          "local_similarity",
+          "move_distance"
+        ],
+        "computation": {
+          "op": "correlation",
+          "left": {
+            "op": "field",
+            "name": "local_similarity"
+          },
+          "right": {
+            "op": "field",
+            "name": "move_distance"
+          },
+          "axis": "agent"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "move_probability",
+            "relationship": "direct",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Move probability controls the volume of relocation, changing which pairs of local similarity and distance are observed."
+          }
+        ],
+        "scientific_rationale": "This interaction observable relates local dissatisfaction context to relocation distance at the agent level."
+      },
+      {
+        "id": "meso_district_local_similarity_std",
+        "semantic_name": "Between-district dispersion of local similarity",
+        "scientific_definition": "Standard deviation across fixed spatial districts of district-level mean local same-group similarity at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "mean"
+          },
+          "axis": "group"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance changes relocation pressure and may affect how district mean similarities diverge or converge."
+          }
+        ],
+        "scientific_rationale": "This observable captures whether local group exposure becomes more uneven across real public districts over time."
+      },
+      {
+        "id": "meso_district_unhappy_fraction_std",
+        "semantic_name": "Between-district dispersion of unsatisfied fraction",
+        "scientific_definition": "Standard deviation across fixed spatial districts of district-level unsatisfied agent fraction at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "unhappy"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "unhappy"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "fraction"
+          },
+          "axis": "group"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance directly changes individual dissatisfaction, but district-level averages also depend on relocation and sorting."
+          }
+        ],
+        "scientific_rationale": "Measures whether dissatisfaction is distributed unevenly across public spatial districts."
+      },
+      {
+        "id": "meso_district_boundary_fraction_std",
+        "semantic_name": "Between-district dispersion of boundary exposure",
+        "scientific_definition": "Standard deviation across fixed spatial districts of district-level fraction of agents with at least one different-group neighbour.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "boundary_agent"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "boundary_agent"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "fraction"
+          },
+          "axis": "group"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance affects relocation and therefore the amount of different-group contact within districts."
+          }
+        ],
+        "scientific_rationale": "District-level boundary exposure dispersion summarizes spatial inequality in local intergroup contact across public subdomains."
+      },
+      {
+        "id": "meso_district_move_distance_std",
+        "semantic_name": "Between-district dispersion of relocation distance",
+        "scientific_definition": "Standard deviation across fixed spatial districts of district-level mean relocation distance at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "move_distance"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "move_distance"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "mean"
+          },
+          "axis": "group"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "move_probability",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Move probability changes relocation volume which can alter district-level average distances."
+          }
+        ],
+        "scientific_rationale": "Captures whether relocation distances become more unequal across public spatial districts."
+      },
+      {
+        "id": "meso_district_destination_similarity_std",
+        "semantic_name": "Between-district dispersion of destination similarity",
+        "scientific_definition": "Standard deviation across fixed spatial districts of district-level mean destination same-group similarity at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "destination_similarity"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "destination_similarity"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "mean"
+          },
+          "axis": "group"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "destination_preference",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Destination preference affects where agents move within or between districts and thus district destination similarity."
+          }
+        ],
+        "scientific_rationale": "Measures whether district-level destination exposure becomes more spatially uneven over time."
+      },
+      {
+        "id": "meso_district_neighbour_count_std",
+        "semantic_name": "Between-district dispersion of occupied neighbour count",
+        "scientific_definition": "Standard deviation across fixed spatial districts of district-level mean occupied Moore-neighbour count at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "neighbour_count"
+        ],
+        "computation": {
+          "op": "std",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "neighbour_count"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "mean"
+          },
+          "axis": "group"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [],
+        "scientific_rationale": "Summarizes how much local occupancy varies across real public spatial districts."
+      },
+      {
+        "id": "meso_district_local_similarity_entropy",
+        "semantic_name": "Entropy of district mean local similarity",
+        "scientific_definition": "Binned entropy across fixed spatial districts of district-level mean local same-group similarity at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "local_similarity"
+        ],
+        "computation": {
+          "op": "binned_entropy",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "local_similarity"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "mean"
+          },
+          "axis": "group",
+          "bins": 10
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance changes relocation choices and may alter the distribution of district mean similarities."
+          }
+        ],
+        "scientific_rationale": "Binned entropy over district-level averages reveals how concentrated or dispersed local similarity is across the district system."
+      },
+      {
+        "id": "meso_district_unhappy_fraction_entropy",
+        "semantic_name": "Entropy of district unsatisfied fraction",
+        "scientific_definition": "Binned entropy across fixed spatial districts of district-level unsatisfied agent fraction at each step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "meso",
+        "entity_scope": "district",
+        "entities": "spatial districts",
+        "source_fields": [
+          "district_id",
+          "unhappy"
+        ],
+        "computation": {
+          "op": "binned_entropy",
+          "input": {
+            "op": "group_reduce",
+            "values": {
+              "op": "field",
+              "name": "unhappy"
+            },
+            "groups": {
+              "op": "field",
+              "name": "district_id"
+            },
+            "axis": "agent",
+            "reducer": "fraction"
+          },
+          "axis": "group",
+          "bins": 10
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance changes dissatisfaction thresholds and may alter how those fractions are distributed across districts."
+          }
+        ],
+        "scientific_rationale": "Binned entropy of district dissatisfaction prevalence reveals whether dissatisfaction is spread broadly or concentrated in certain public districts."
+      },
+      {
+        "id": "macro_global_unhappy_count",
+        "semantic_name": "Total unsatisfied agents",
+        "scientific_definition": "Number of unsatisfied agents in the whole system at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "whole system",
+        "source_fields": [
+          "unhappy_count"
+        ],
+        "computation": {
+          "op": "field",
+          "name": "unhappy_count"
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "Higher tolerance increases the number of agents classified as unsatisfied from identical local conditions."
+          }
+        ],
+        "scientific_rationale": "This whole-system aggregate tracks the total volume of dissatisfaction across the entire grid."
+      },
+      {
+        "id": "macro_global_move_count",
+        "semantic_name": "Total moves",
+        "scientific_definition": "Total number of agent relocations in the whole system during each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "whole system",
+        "source_fields": [
+          "moved",
+          "agent_count"
+        ],
+        "computation": {
+          "op": "multiply",
+          "left": {
+            "op": "fraction",
+            "input": {
+              "op": "field",
+              "name": "moved"
+            },
+            "axis": "agent"
+          },
+          "right": {
+            "op": "field",
+            "name": "agent_count"
+          }
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "move_probability",
+            "relationship": "direct",
+            "expected_indicator_direction": "increase",
+            "rationale": "Higher move probability increases relocation attempts among unsatisfied agents, increasing total system-wide moves."
+          }
+        ],
+        "scientific_rationale": "Total moves is a whole-system relocation outcome derived from the fraction of moved agents and the system population size."
+      },
+      {
+        "id": "macro_spatial_neighbor_similarity",
+        "semantic_name": "Global spatial neighbor similarity",
+        "scientific_definition": "Whole-system spatial neighbour similarity computed from the periodic occupancy grid at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "whole system grid",
+        "source_fields": [
+          "state_grid"
+        ],
+        "computation": {
+          "op": "spatial_neighbor_similarity",
+          "input": {
+            "op": "field",
+            "name": "state_grid"
+          }
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "destination_preference",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Destination preference alters where agents move, which can reshape global neighbor similarity without a fixed sign."
+          }
+        ],
+        "scientific_rationale": "This global structural observable measures whole-system spatial sorting directly from the occupancy grid."
+      },
+      {
+        "id": "macro_largest_component_fraction",
+        "semantic_name": "Largest same-group component fraction",
+        "scientific_definition": "Fraction of the grid occupied by the largest connected component of same-group occupied cells at each recorded step.",
+        "phenomenon": "Schelling segregation dynamics",
+        "scale": "macro",
+        "entity_scope": "whole_system",
+        "entities": "whole system grid",
+        "source_fields": [
+          "state_grid"
+        ],
+        "computation": {
+          "op": "largest_component_fraction",
+          "input": {
+            "op": "field",
+            "name": "state_grid"
+          }
+        },
+        "temporal_aggregation": {
+          "op": "identity"
+        },
+        "parameter_associations": [
+          {
+            "parameter": "tolerance",
+            "relationship": "indirect",
+            "expected_indicator_direction": "mixed",
+            "rationale": "Tolerance changes relocation pressure and may alter the size of dominant same-group connected components at the whole-system scale."
+          }
+        ],
+        "scientific_rationale": "Largest component fraction is a global structural statistic for whole-system spatial clustering."
+      }
+    ],
+    "interpretation_boundary": "These indicators are descriptive, executable observables only. They do not establish temporal precedence, statistical association, causal effects, or intervention outcomes. District-level indicators use the fixed public spatial district primitive and do not infer segregation outcomes or represent causal pathways."
+  },
+  "elapsed_seconds": 623.0219958999996
+}

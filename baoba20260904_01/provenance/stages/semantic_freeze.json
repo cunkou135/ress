@@ -1,0 +1,27 @@
+{
+  "stage": "semantic_freeze",
+  "status": "completed",
+  "duration_seconds": 0.016678300000421586,
+  "outputs": {
+    "representation/candidate_paths.json": "786a08db66d5c18428800774dca1e2240f3e5ae9adc94e2ee0310bb15db2dad4",
+    "representation/CANDIDATE_PATHS_FROZEN.sha256": "de5402c1ea166df4cec1c8684d680a6ee5b76fe0e7f4ec5404229d59d0c10934",
+    "representation/deffuant_representation.json": "7647960e393651dc26b0f608560ca9ec918bd1aa884b54c5955bfbd828254ead",
+    "representation/derived_candidate_edges.json": "f5d6880131932424cd5f31a8bc5086a45a0b153dbdac9147a0573b827895909e",
+    "representation/indicator_generation_validation.json": "7ae62a861dacbba97a0ee9b24e1eb983aadc175e82c27d6d07cfcf8f792658e0",
+    "representation/indicator_replication_pairwise.csv": "a1043e6128f4b92e5acf459049ff58bf8c939fd1a376e1038e574b0cf276394d",
+    "representation/indicator_selection.json": "21ad0c10779da0df481b25d8c616ba61a92bb0da05ba8c743c9c841ea64f58a7",
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333",
+    "representation/INDICATORS_FROZEN.sha256": "00c45a31ddfd81085c0cfbdccf9f515ee0417e07fc49b6331d02c5130da00b6f",
+    "representation/path_replication_agreement.json": "8038289b566dd17382894a0c5370cf232819dc8c7fd85eaca9646954601544ff",
+    "representation/path_replication_pairwise.csv": "e1a7c57963b79de3db75749c40715f0aa6011802f37714f1e6ad2d4f3e5b21b1",
+    "representation/prospective_predictions.json": "ddb3e4d0a3980408c7dc843824b0c8b468d27a25e128cd7ec7fdd83b95167253",
+    "representation/PROSPECTIVE_PREDICTIONS_FROZEN.sha256": "89c64455a9153ed2cc1ce335a4cc5f0592b00e6f93be60cf65ad8d9dbeb00dfb",
+    "representation/representation_agreement.json": "4e2fd9dc1fccd324c4e8101e3b8e020cdc6e17490f499d3b5008d6bafd6c2a14",
+    "representation/representation_validation.json": "f4f37df9e738a506b0ea5242ef874add43f960f6c8cda128623ec888d6d816bf",
+    "representation/schelling_representation.json": "29665fe8e9880c007944409a49580c700fb62316b363a8fdecd16baea66b3736"
+  },
+  "details": {
+    "semantic_scenarios": 2,
+    "all_semantics_frozen_before_baseline": true
+  }
+}

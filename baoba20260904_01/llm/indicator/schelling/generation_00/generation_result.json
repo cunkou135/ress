@@ -1,0 +1,12 @@
+{
+  "status": "rejected",
+  "repair_rounds": 3,
+  "validation": {
+    "valid": false,
+    "errors": [
+      "indicator meso_district_similarity_entropy_dispersion: group_reduce entropy requires categorical values"
+    ]
+  },
+  "accepted_generation": null,
+  "elapsed_seconds": 698.0002643000007
+}

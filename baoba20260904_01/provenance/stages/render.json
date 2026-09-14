@@ -1,0 +1,72 @@
+{
+  "stage": "render",
+  "status": "completed",
+  "duration_seconds": 11.470283100001325,
+  "outputs": {
+    "figures/figure_2_simulation_dynamics.pdf": "4815b7daa4d7743a01a80f36c0c5c162b0c723fe690fc6f9b438620eda4ead2f",
+    "figures/figure_2_simulation_dynamics.png": "3dc91bd27536f582b55ddafccaf8e59fff2e8f914c4e00d5444bce6baeccd765",
+    "figures/figure_2_simulation_dynamics.svg": "1ac75ac3ecaa0e9e70f2d8dfbeeff882cad877a0d207618e840b7adbea4e19c5",
+    "figures/figure_3_graph_recovery.pdf": "545208e0acfbf5f53c80d3cde815c79e8ca194913bcefe08eff9c030556b670b",
+    "figures/figure_3_graph_recovery.png": "ec5d96c5eb9b7ab355fab0918facac738a7944241a06e307174b735ed9189848",
+    "figures/figure_3_graph_recovery.svg": "12c97bbba971db950661a0d2d3e0a4e9f785ec18e829e68d272bd9992c3955d5",
+    "figures/figure_4_data_efficiency.pdf": "c4f918bd741af4f1dff6f5702ce1669bb4d5356f5e0e6c1a719ee6ca8eb87bf5",
+    "figures/figure_4_data_efficiency.png": "2e501802dd1625788cfb8f4cbf0aec45f493f2a278f7631cfd9f745ecacdf8dd",
+    "figures/figure_4_data_efficiency.svg": "d5d185dcd61ea7c850d9e50b9c4860024859689dce8cda6192103c076bb9252c",
+    "figures/figure_5_intervention_timing.pdf": "0d9c1a1b39fad0f8a8cdc114130e23e8154d6bcc6a2712d77303a43bf8b9390f",
+    "figures/figure_5_intervention_timing.png": "a883dbd089959b58001ddafd5f89a7dc31f0bd14aeb171de2bb4dc9ab9431b77",
+    "figures/figure_5_intervention_timing.svg": "ddc172068e5d8c13ae84110a7f30b6afc9b5368e531128f0724162674393aea9",
+    "figures/figure_6_effect_matrix.pdf": "45671b6d38c661a4e9cdf7d8bf32f89dbf1ced68e05a41f432a8a72f61bc9511",
+    "figures/figure_6_effect_matrix.png": "32bf8b521394488ae99fc5ce509344c5d66a127592f2e64194aef5916520ce63",
+    "figures/figure_6_effect_matrix.svg": "bd8bd25c360c5d2786060fa375374143504068aaf94fc1772bad673258924545",
+    "figures/figure_7_multiscale_propagation.pdf": "99afc432556884ace85be0b7b6f18a8eb9d1ee357c9411e811e415f20765ee36",
+    "figures/figure_7_multiscale_propagation.png": "6b975cac27ca4b792d8113d90517dc39adbcc40499abd1edb70a3edd97f2d912",
+    "figures/figure_7_multiscale_propagation.svg": "d3d82197f3158ed7eea390ef9dc4e39229e43fd680c2d2174a3efacea6aaa6e9",
+    "figures/figure_8_robustness_efficiency.pdf": "d4bcd8ddaffef5d6e21adbd4c9c31773ddb5769bd839561c20ad0591071c031d",
+    "figures/figure_8_robustness_efficiency.png": "aadf783dc8f8d912625fd5de29e00b7fc286849dda855206f70d2d7ac11b53fa",
+    "figures/figure_8_robustness_efficiency.svg": "8898694fac73caa320b7e40c66cb5153704d7252132a8bae07fb777074fdecad",
+    "figures/render_manifest.json": "606747419d51b9ddc528236c6b98a1ab3dd999d5bdbdf5e8d341c91dcde0b51c",
+    "visualization_input/render_manifest.json": "606747419d51b9ddc528236c6b98a1ab3dd999d5bdbdf5e8d341c91dcde0b51c"
+  },
+  "details": {
+    "schema_version": "1.0",
+    "status": "completed",
+    "source_run": "baoba20260904_01",
+    "formats": [
+      "png",
+      "svg",
+      "pdf"
+    ],
+    "style_reference": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\llm-agentic-dis\\config\\figure_config.json",
+    "style_reference_sha256": "43407b94e3c384fe3c5f1bf40fa9cfc032a9d56cf5e79829861644d664cc280f",
+    "scientific_parameters_source": "frozen experiment config snapshot",
+    "scientific_render_contract": {
+      "graph_error_edge_alpha": 0.85,
+      "effect_curve_centre": "mean",
+      "effect_matrix_colour_range": "full_data_range",
+      "undisclosed_clipping": false
+    },
+    "outputs": {
+      "figures/figure_2_simulation_dynamics.png": "3dc91bd27536f582b55ddafccaf8e59fff2e8f914c4e00d5444bce6baeccd765",
+      "figures/figure_2_simulation_dynamics.svg": "1ac75ac3ecaa0e9e70f2d8dfbeeff882cad877a0d207618e840b7adbea4e19c5",
+      "figures/figure_2_simulation_dynamics.pdf": "4815b7daa4d7743a01a80f36c0c5c162b0c723fe690fc6f9b438620eda4ead2f",
+      "figures/figure_3_graph_recovery.png": "ec5d96c5eb9b7ab355fab0918facac738a7944241a06e307174b735ed9189848",
+      "figures/figure_3_graph_recovery.svg": "12c97bbba971db950661a0d2d3e0a4e9f785ec18e829e68d272bd9992c3955d5",
+      "figures/figure_3_graph_recovery.pdf": "545208e0acfbf5f53c80d3cde815c79e8ca194913bcefe08eff9c030556b670b",
+      "figures/figure_4_data_efficiency.png": "2e501802dd1625788cfb8f4cbf0aec45f493f2a278f7631cfd9f745ecacdf8dd",
+      "figures/figure_4_data_efficiency.svg": "d5d185dcd61ea7c850d9e50b9c4860024859689dce8cda6192103c076bb9252c",
+      "figures/figure_4_data_efficiency.pdf": "c4f918bd741af4f1dff6f5702ce1669bb4d5356f5e0e6c1a719ee6ca8eb87bf5",
+      "figures/figure_5_intervention_timing.png": "a883dbd089959b58001ddafd5f89a7dc31f0bd14aeb171de2bb4dc9ab9431b77",
+      "figures/figure_5_intervention_timing.svg": "ddc172068e5d8c13ae84110a7f30b6afc9b5368e531128f0724162674393aea9",
+      "figures/figure_5_intervention_timing.pdf": "0d9c1a1b39fad0f8a8cdc114130e23e8154d6bcc6a2712d77303a43bf8b9390f",
+      "figures/figure_6_effect_matrix.png": "32bf8b521394488ae99fc5ce509344c5d66a127592f2e64194aef5916520ce63",
+      "figures/figure_6_effect_matrix.svg": "bd8bd25c360c5d2786060fa375374143504068aaf94fc1772bad673258924545",
+      "figures/figure_6_effect_matrix.pdf": "45671b6d38c661a4e9cdf7d8bf32f89dbf1ced68e05a41f432a8a72f61bc9511",
+      "figures/figure_7_multiscale_propagation.png": "6b975cac27ca4b792d8113d90517dc39adbcc40499abd1edb70a3edd97f2d912",
+      "figures/figure_7_multiscale_propagation.svg": "d3d82197f3158ed7eea390ef9dc4e39229e43fd680c2d2174a3efacea6aaa6e9",
+      "figures/figure_7_multiscale_propagation.pdf": "99afc432556884ace85be0b7b6f18a8eb9d1ee357c9411e811e415f20765ee36",
+      "figures/figure_8_robustness_efficiency.png": "aadf783dc8f8d912625fd5de29e00b7fc286849dda855206f70d2d7ac11b53fa",
+      "figures/figure_8_robustness_efficiency.svg": "8898694fac73caa320b7e40c66cb5153704d7252132a8bae07fb777074fdecad",
+      "figures/figure_8_robustness_efficiency.pdf": "d4bcd8ddaffef5d6e21adbd4c9c31773ddb5769bd839561c20ad0591071c031d"
+    }
+  }
+}

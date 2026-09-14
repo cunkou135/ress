@@ -1,0 +1,13 @@
+{
+  "stage": "path_intervention_classification",
+  "status": "completed",
+  "duration_seconds": 0.19858579999890935,
+  "outputs": {
+    "analysis/path_intervention_classification.csv": "ab2fcc5c6b3a7d065d8dba5c193a368b7da9dc1781dc2ce6c9724086c1a7c440",
+    "analysis/representative_path_selection.json": "5831c57b788a7ab1a2724f698691e625283c1612c19a575071e7703fd5cfc486"
+  },
+  "details": {
+    "classified_paths": 34,
+    "supported_paths": 6
+  }
+}

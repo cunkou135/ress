@@ -1,0 +1,28 @@
+{
+  "stage": "holdout_confirmation",
+  "status": "completed",
+  "duration_seconds": 123.78305030000047,
+  "outputs": {
+    "analysis/holdout_effect_curves.parquet": "3aec4805fe0759d3c64e22cd8d836461ccc400fd67abfbcb3c7f228f182fff78",
+    "analysis/holdout_intervention_classifications.csv": "758741a110ff41b2d3937d392a73b1a1faa4cfe81812e3c6431e0e879938a54e",
+    "analysis/holdout_mechanism_confirmation.csv": "37fd9cb595a3fabd87f59f11c30f62a386432656862da2cbd8594b232c12be88",
+    "analysis/holdout_paired_effects.parquet": "d0aac4b07a7d8b8683f924e39e6aaa7e85fc11ee801f53239d37f5def672633f",
+    "analysis/holdout_path_confirmation.csv": "3921db52a3075c2d8601d99966b148fc962a28f8dba9c12e3d712a9822e087b1",
+    "analysis/holdout_prospective_confirmation.csv": "bcdc317edc5043d532a7f9fdabcb0831bce3d37c3a145b52ccdc2f6ca5173300",
+    "analysis/path_funnel_summary.csv": "82c1dc58f4cfb10c82ca478e01b7fe64f971eda2ea68f89cc1ed730085466a3e",
+    "analysis/representative_path_selection.json": "e98421067930ba17a2a89c81b58f3b9af995f6267e9024f3fa09939f2225232c",
+    "data/holdout_indicator_trajectories_complete.manifest.json": "e261756d8dbc432f1c0928cc7c0155ace931c1561cd4d5ddad8dfe4f5df920a9",
+    "data/holdout_indicator_trajectories_complete.parquet": "f77dc887b40ca8a7b72fe3b2e584e84e592cd32472f6b15389752341262906ae"
+  },
+  "details": {
+    "evaluation_track": "holdout_confirmation",
+    "effect_rows": 336,
+    "classification_rows": 106,
+    "path_confirmation_rows": 6,
+    "holdout_path_classification_rows": 34,
+    "prospective_confirmation_rows": 12,
+    "mechanism_confirmation_rows": 39,
+    "primary_result_unchanged": true,
+    "stage3_method_version": "intervention_path_classification_v2"
+  }
+}

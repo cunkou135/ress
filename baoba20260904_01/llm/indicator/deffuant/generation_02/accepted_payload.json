@@ -1,0 +1,863 @@
+{
+  "scenario": "deffuant",
+  "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+  "indicators": [
+    {
+      "id": "micro_opinion_mean",
+      "semantic_name": "Mean opinion",
+      "scientific_definition": "Cross-agent average of state_opinion at each recorded step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Tracks the central tendency of individual opinions as a baseline for convergence."
+    },
+    {
+      "id": "micro_opinion_std",
+      "semantic_name": "Opinion standard deviation",
+      "scientific_definition": "Cross-agent standard deviation of state_opinion at each recorded step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures dispersion across individual opinions, reflecting opinion heterogeneity."
+    },
+    {
+      "id": "micro_opinion_abs_mean",
+      "semantic_name": "Mean absolute opinion",
+      "scientific_definition": "Cross-agent average of the absolute value of state_opinion at each recorded step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "abs",
+          "input": {
+            "op": "field",
+            "name": "state_opinion"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures individual opinion extremity without regard to sign."
+    },
+    {
+      "id": "micro_interaction_distance_mean",
+      "semantic_name": "Mean interaction distance",
+      "scientific_definition": "Cross-agent average absolute opinion distance in sampled interactions at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_distance"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "interaction_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures the typical local opinion distance encountered by agents during interactions."
+    },
+    {
+      "id": "micro_interaction_distance_std",
+      "semantic_name": "Interaction distance standard deviation",
+      "scientific_definition": "Cross-agent standard deviation of interaction_distance at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_distance"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "interaction_distance"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures variability in local opinion distances across sampled interactions."
+    },
+    {
+      "id": "micro_assimilation_rate",
+      "semantic_name": "Assimilation encounter rate",
+      "scientific_definition": "Fraction of sampled interactions that produce assimilation at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_accepted"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "interaction_accepted"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "confidence_bound",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "A wider confidence bound makes more sampled opinion distances qualify for assimilation, raising the per-step accepted interaction fraction."
+        }
+      ],
+      "scientific_rationale": "Directly measures the prevalence of the assimilation mechanism at the interaction level."
+    },
+    {
+      "id": "micro_backfire_rate",
+      "semantic_name": "Backfire encounter rate",
+      "scientific_definition": "Fraction of sampled interactions that trigger repulsive updating at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_backfire"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "interaction_backfire"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "backfire_threshold",
+          "relationship": "direct",
+          "expected_indicator_direction": "decrease",
+          "rationale": "Raising the backfire threshold shrinks the range of opinion distances that qualify for repulsive updating, reducing the backfire event fraction."
+        }
+      ],
+      "scientific_rationale": "Directly measures the prevalence of repulsive encounter events."
+    },
+    {
+      "id": "micro_rejection_rate",
+      "semantic_name": "Rejection encounter rate",
+      "scientific_definition": "Fraction of sampled interactions that produce neither assimilation nor repulsion at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "sampled pairwise interactions",
+      "source_fields": [
+        "interaction_rejected"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "interaction_rejected"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures the prevalence of rejected encounters that may drive adaptive rewiring."
+    },
+    {
+      "id": "micro_rewiring_rate",
+      "semantic_name": "Rewiring rate",
+      "scientific_definition": "Fraction of sampled interactions in which the focal tie is successfully rewired at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "local_process",
+      "entities": "sampled ties undergoing rewiring",
+      "source_fields": [
+        "edge_rewired"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "edge_rewired"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Tracks the frequency of local network restructuring from rejected or backfire encounters."
+    },
+    {
+      "id": "micro_agent_shift_mean",
+      "semantic_name": "Mean signed opinion shift",
+      "scientific_definition": "Cross-agent average of signed opinion update agent_shift at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "field",
+          "name": "agent_shift"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measuring signed shifts reveals whether updates are biased toward one opinion direction across individuals."
+    },
+    {
+      "id": "micro_agent_shift_abs_mean",
+      "semantic_name": "Mean absolute opinion shift",
+      "scientific_definition": "Cross-agent average of the absolute value of agent_shift at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "abs",
+          "input": {
+            "op": "field",
+            "name": "agent_shift"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "assimilation_strength",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Stronger assimilation applies a larger fraction of the partner difference during accepted encounters, increasing the magnitude of individual opinion updates."
+        }
+      ],
+      "scientific_rationale": "Captures the typical magnitude of individual opinion change regardless of direction."
+    },
+    {
+      "id": "micro_agent_shift_std",
+      "semantic_name": "Opinion shift standard deviation",
+      "scientific_definition": "Cross-agent standard deviation of agent_shift at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "individual",
+      "entities": "individual agents",
+      "source_fields": [
+        "agent_shift"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "field",
+          "name": "agent_shift"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures heterogeneity in individual opinion updates across the population."
+    },
+    {
+      "id": "micro_accepted_distance_mean",
+      "semantic_name": "Mean accepted interaction distance",
+      "scientific_definition": "Cross-agent average of interaction_distance only for interactions with interaction_accepted true.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "accepted sampled interactions",
+      "source_fields": [
+        "interaction_accepted",
+        "interaction_distance"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "where",
+          "condition": {
+            "op": "field",
+            "name": "interaction_accepted"
+          },
+          "input": {
+            "op": "field",
+            "name": "interaction_distance"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "confidence_bound",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "A larger confidence bound permits assimilation at larger opinion distances, increasing the average distance among accepted interactions."
+        }
+      ],
+      "scientific_rationale": "Characterizes the distance range over which assimilation actually occurs."
+    },
+    {
+      "id": "micro_backfire_distance_mean",
+      "semantic_name": "Mean backfire interaction distance",
+      "scientific_definition": "Cross-agent average of interaction_distance only for interactions with interaction_backfire true.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "interaction",
+      "entities": "backfire sampled interactions",
+      "source_fields": [
+        "interaction_backfire",
+        "interaction_distance"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "where",
+          "condition": {
+            "op": "field",
+            "name": "interaction_backfire"
+          },
+          "input": {
+            "op": "field",
+            "name": "interaction_distance"
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [
+        {
+          "parameter": "backfire_threshold",
+          "relationship": "direct",
+          "expected_indicator_direction": "increase",
+          "rationale": "Raising the repulsion threshold removes lower-distance backfire cases, so the average distance among remaining backfire events increases."
+        }
+      ],
+      "scientific_rationale": "Captures the opinion distance range where repulsive updating actually occurs."
+    },
+    {
+      "id": "micro_sign_flip_rate",
+      "semantic_name": "Sign flip rate",
+      "scientific_definition": "Fraction of individual agents whose opinion update crosses zero at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual agents",
+      "source_fields": [
+        "sign_flip"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "field",
+          "name": "sign_flip"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Detects whether updates move individuals across the neutral opinion boundary."
+    },
+    {
+      "id": "micro_extreme_opinion_fraction",
+      "semantic_name": "Extreme opinion fraction",
+      "scientific_definition": "Fraction of agents with absolute opinion at least 0.75 at each step, computed directly from individual state_opinion.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "micro",
+      "entity_scope": "elementary_event",
+      "entities": "individual agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "fraction",
+        "input": {
+          "op": "greater_equal",
+          "left": {
+            "op": "abs",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            }
+          },
+          "right": {
+            "op": "constant",
+            "value": 0.75
+          }
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures the prevalence of individual agents holding strongly non-neutral opinions using the individual opinion primitive."
+    },
+    {
+      "id": "meso_neighborhood_opinion_entropy",
+      "semantic_name": "Entropy of neighborhood mean opinion",
+      "scientific_definition": "Binned Shannon entropy across agents of the mean state_opinion in each agent's network neighborhood at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "mean"
+        },
+        "axis": "agent",
+        "bins": 12
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Uses the current network structure to summarize the distribution of local opinion consensus across neighborhoods without reducing it to a single mean."
+    },
+    {
+      "id": "meso_neighborhood_opinion_std",
+      "semantic_name": "Neighborhood mean opinion standard deviation",
+      "scientific_definition": "Cross-agent standard deviation of neighborhood mean state_opinion at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "mean"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Captures variation across neighborhoods in their local average opinion, reflecting meso-scale opinion organization."
+    },
+    {
+      "id": "meso_neighborhood_opinion_abs_std",
+      "semantic_name": "Neighborhood absolute opinion standard deviation",
+      "scientific_definition": "Cross-agent standard deviation of neighborhood mean absolute state_opinion at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "abs",
+            "input": {
+              "op": "field",
+              "name": "state_opinion"
+            }
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "mean"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures how neighborhood-level opinion extremity varies across local domains without relying on a simple average."
+    },
+    {
+      "id": "meso_neighborhood_opinion_diversity",
+      "semantic_name": "Mean within-neighborhood opinion diversity",
+      "scientific_definition": "Cross-agent average of the within-neighborhood standard deviation of state_opinion at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "mean",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "state_opinion"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "std"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Quantifies how diverse opinions are within local network neighborhoods, capturing internal neighborhood organization."
+    },
+    {
+      "id": "meso_neighborhood_assimilation_exposure",
+      "semantic_name": "Neighborhood assimilation exposure variation",
+      "scientific_definition": "Cross-agent standard deviation of the neighborhood fraction of interaction_accepted at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "interaction_accepted",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "interaction_accepted"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "fraction"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures whether accepted interactions cluster unevenly across network neighborhoods, indicating local assimilation organization."
+    },
+    {
+      "id": "meso_neighborhood_backfire_exposure",
+      "semantic_name": "Neighborhood backfire exposure variation",
+      "scientific_definition": "Cross-agent standard deviation of the neighborhood fraction of interaction_backfire at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "interaction_backfire",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "interaction_backfire"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "fraction"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures whether repulsive encounters cluster unevenly across network neighborhoods, indicating local repulsion organization."
+    },
+    {
+      "id": "meso_neighborhood_rewiring_exposure",
+      "semantic_name": "Neighborhood rewiring exposure variation",
+      "scientific_definition": "Cross-agent standard deviation of the neighborhood fraction of edge_rewired at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "edge_rewired",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "edge_rewired"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "fraction"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures whether adaptive rewiring events cluster unevenly across network neighborhoods, indicating local rewiring organization."
+    },
+    {
+      "id": "meso_neighborhood_distance_exposure",
+      "semantic_name": "Neighborhood interaction distance exposure variation",
+      "scientific_definition": "Cross-agent standard deviation of the neighborhood mean of interaction_distance at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "meso",
+      "entity_scope": "neighborhood",
+      "entities": "current network neighborhoods",
+      "source_fields": [
+        "interaction_distance",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "std",
+        "input": {
+          "op": "network_neighborhood_reduce",
+          "values": {
+            "op": "field",
+            "name": "interaction_distance"
+          },
+          "edges": {
+            "op": "field",
+            "name": "network_edges"
+          },
+          "reducer": "mean"
+        },
+        "axis": "agent"
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures whether sampled opinion distances cluster unevenly across network neighborhoods, indicating local distance organization."
+    },
+    {
+      "id": "macro_opinion_entropy",
+      "semantic_name": "Opinion binned entropy",
+      "scientific_definition": "Shannon entropy of state_opinion values across agents with 20 equal-width bins at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "all agents",
+      "source_fields": [
+        "state_opinion"
+      ],
+      "computation": {
+        "op": "binned_entropy",
+        "input": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "axis": "agent",
+        "bins": 20
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "A system-level entropy measure responds to consensus or multiple opinion clusters without assuming a particular distribution."
+    },
+    {
+      "id": "macro_network_assortativity",
+      "semantic_name": "Opinion assortativity",
+      "scientific_definition": "Whole-network correlation of state_opinion between connected agent pairs at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "network edges and agent opinions",
+      "source_fields": [
+        "state_opinion",
+        "network_edges"
+      ],
+      "computation": {
+        "op": "network_assortativity",
+        "values": {
+          "op": "field",
+          "name": "state_opinion"
+        },
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Whole-system assortativity captures whether similarly opinionated agents connect, a signature of homophilous network structure."
+    },
+    {
+      "id": "macro_network_component_count",
+      "semantic_name": "Network component count",
+      "scientific_definition": "Number of connected components in the current undirected network at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "network components",
+      "source_fields": [
+        "network_edges",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "network_component_count",
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        },
+        "node_count": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Component count tracks whole-system fragmentation from adaptive rewiring."
+    },
+    {
+      "id": "macro_network_largest_component_fraction",
+      "semantic_name": "Largest component fraction",
+      "scientific_definition": "Fraction of all agents in the largest connected component of the current network at each step.",
+      "phenomenon": "Deffuant opinion dynamics on adaptive degree-eight network",
+      "scale": "macro",
+      "entity_scope": "whole_system",
+      "entities": "largest network component",
+      "source_fields": [
+        "network_edges",
+        "agent_count"
+      ],
+      "computation": {
+        "op": "network_largest_component_fraction",
+        "edges": {
+          "op": "field",
+          "name": "network_edges"
+        },
+        "node_count": {
+          "op": "field",
+          "name": "agent_count"
+        }
+      },
+      "temporal_aggregation": {
+        "op": "identity"
+      },
+      "parameter_associations": [],
+      "scientific_rationale": "Measures global connectivity retention and the breadth of the largest connected component."
+    }
+  ],
+  "interpretation_boundary": "These indicators are observational descriptors computed solely from raw-log fields at each recorded step. They do not infer temporal causal direction, intervention effects, or statistical significance, and no path or prediction evidence is derived from simulation outcomes."
+}
