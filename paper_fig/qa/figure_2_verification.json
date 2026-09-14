@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "style_reproduction": {
+    "reference_dimensions": [
+      2111,
+      1500
+    ],
+    "pixel_mae_0_255": 0.0,
+    "maximum_channel_difference": 0,
+    "identical_pixel_fraction": 1.0
+  },
+  "new_data_checks": {
+    "schelling": {
+      "rows": 160,
+      "source_hash_unchanged": true,
+      "all_trace_values_match_raw_data": true
+    },
+    "deffuant": {
+      "rows": 120,
+      "source_hash_unchanged": true,
+      "all_trace_values_match_raw_data": true
+    }
+  },
+  "pdf_pages": 1,
+  "svg_editable_text_nodes": 66,
+  "tiff": {
+    "dimensions": [
+      4221,
+      2999
+    ],
+    "dpi": [
+      600.0,
+      600.0
+    ]
+  },
+  "visual_review": "PNG inspected; original panel layout, labels, legends and margins preserved; no observed overlap or clipping",
+  "scope": "Only paper_fig outputs written; source run read without scientific rerun"
+}

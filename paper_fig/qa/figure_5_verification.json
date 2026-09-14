@@ -1,0 +1,292 @@
+{
+  "status": "passed",
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/representative_path_selection.json": "e98421067930ba17a2a89c81b58f3b9af995f6267e9024f3fa09939f2225232c",
+    "analysis/path_intervention_classification.csv": "ab2fcc5c6b3a7d065d8dba5c193a368b7da9dc1781dc2ce6c9724086c1a7c440",
+    "analysis/holdout_path_confirmation.csv": "3921db52a3075c2d8601d99966b148fc962a28f8dba9c12e3d712a9822e087b1",
+    "analysis/path_timing_summary.csv": "b35961ed6b2921b643af5f078da8a681003ff7a08e5a968e28b1ba2c740e4ea2",
+    "analysis/effect_curves.parquet": "2f660319cfd342a63d1ae06adb1a94cc2ef6067fbcedadd54711ea5cffc30b56",
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333"
+  },
+  "input_unchanged": true,
+  "representatives": {
+    "schelling": {
+      "path_id": "tol_minus_unhappy_to_move_std_to_spatial_sim",
+      "holdout_confirmed": true,
+      "saved_evidence_scope": "holdout_confirmed",
+      "path_label": "Tol− | spatial sim."
+    },
+    "deffuant": {
+      "path_id": "cb_minus_accept_absovar_assort",
+      "holdout_confirmed": true,
+      "saved_evidence_scope": "holdout_confirmed",
+      "path_label": "CB− | assortativity"
+    }
+  },
+  "saved_selection_rule": "supported_and_holdout_confirmed_then_lexical_path_id_else_primary_supported_then_lexical_path_id",
+  "panels": {
+    "a": {
+      "scenario": "schelling",
+      "representative_path": "tol_minus_unhappy_to_move_std_to_spatial_sim",
+      "statistic": "mean",
+      "curves": {
+        "micro": {
+          "point_count": 31,
+          "first_time": 0.0,
+          "last_time": 30.0,
+          "onset": 0.0
+        },
+        "meso": {
+          "point_count": 31,
+          "first_time": 0.0,
+          "last_time": 30.0,
+          "onset": 0.0
+        },
+        "macro": {
+          "point_count": 31,
+          "first_time": 0.0,
+          "last_time": 30.0,
+          "onset": 1.0
+        }
+      },
+      "curve_legend_location": "centred below the panel",
+      "onset_labels": [
+        {
+          "time": 0.0,
+          "label": "Micro/Meso",
+          "scales": [
+            "micro",
+            "meso"
+          ],
+          "text_offset_points": 3,
+          "text_y_axes": 1.01,
+          "onset_line_x": 0.0
+        },
+        {
+          "time": 1.0,
+          "label": "Macro",
+          "scales": [
+            "macro"
+          ],
+          "text_offset_points": 3,
+          "text_y_axes": 0.995,
+          "onset_line_x": 1.0
+        }
+      ],
+      "unique_onset_lines": [
+        {
+          "time": 0.0,
+          "scales": [
+            "micro",
+            "meso"
+          ]
+        },
+        {
+          "time": 1.0,
+          "scales": [
+            "macro"
+          ]
+        }
+      ]
+    },
+    "b": {
+      "scenario": "schelling",
+      "path_ids": [
+        "tol_minus_unhappy_to_move_std_to_spatial_sim",
+        "tol_minus_unhappy_to_unhappy_std_to_components",
+        "tol_plus_unhappy_to_move_std_to_global_moved"
+      ],
+      "path_count": 3,
+      "x_jitter": false,
+      "y_jitter": false,
+      "quantity": "onset time relative to Micro onset",
+      "delay_count": 6,
+      "segment_coordinates": "Micro 0 to Meso; Meso to Macro, both relative to Micro onset",
+      "x_limits": [
+        -0.12,
+        2.16
+      ]
+    },
+    "c": {
+      "scenario": "deffuant",
+      "representative_path": "cb_minus_accept_absovar_assort",
+      "statistic": "mean",
+      "curves": {
+        "micro": {
+          "point_count": 31,
+          "first_time": 0.0,
+          "last_time": 30.0,
+          "onset": 0.0
+        },
+        "meso": {
+          "point_count": 31,
+          "first_time": 0.0,
+          "last_time": 30.0,
+          "onset": 1.0
+        },
+        "macro": {
+          "point_count": 31,
+          "first_time": 0.0,
+          "last_time": 30.0,
+          "onset": 16.0
+        }
+      },
+      "curve_legend_location": "centred below the panel",
+      "onset_labels": [
+        {
+          "time": 0.0,
+          "label": "Micro",
+          "scales": [
+            "micro"
+          ],
+          "text_offset_points": 3,
+          "text_y_axes": 1.01,
+          "onset_line_x": 0.0
+        },
+        {
+          "time": 1.0,
+          "label": "Meso",
+          "scales": [
+            "meso"
+          ],
+          "text_offset_points": 3,
+          "text_y_axes": 0.995,
+          "onset_line_x": 1.0
+        },
+        {
+          "time": 16.0,
+          "label": "Macro",
+          "scales": [
+            "macro"
+          ],
+          "text_offset_points": 3,
+          "text_y_axes": 1.01,
+          "onset_line_x": 16.0
+        }
+      ],
+      "unique_onset_lines": [
+        {
+          "time": 0.0,
+          "scales": [
+            "micro"
+          ]
+        },
+        {
+          "time": 1.0,
+          "scales": [
+            "meso"
+          ]
+        },
+        {
+          "time": 16.0,
+          "scales": [
+            "macro"
+          ]
+        }
+      ]
+    },
+    "d": {
+      "scenario": "deffuant",
+      "path_ids": [
+        "cb_minus_accept_absovar_assort",
+        "cb_minus_accept_ovar_gvar",
+        "cb_plus_accept_ostd_gvar"
+      ],
+      "path_count": 3,
+      "x_jitter": false,
+      "y_jitter": false,
+      "quantity": "onset time relative to Micro onset",
+      "delay_count": 6,
+      "segment_coordinates": "Micro 0 to Meso; Meso to Macro, both relative to Micro onset",
+      "x_limits": [
+        -0.96,
+        17.28
+      ]
+    }
+  },
+  "supported_path_count": 6,
+  "plotted_delay_count": 12,
+  "effect_points": 186,
+  "experiment_recalculation": false,
+  "rendering_derived_quantity": "segment start/end coordinates relative to saved Micro onset",
+  "column_width_fractions": [
+    0.44,
+    0.56
+  ],
+  "figure_legend_count": 1,
+  "delay_uncertainty_shown": false,
+  "alternating_row_shading": false,
+  "delay_horizontal_jitter": false,
+  "delay_vertical_jitter": false,
+  "script_sha256": "bebeaeb524cfddd6604938b48a7a0fb39c3d30d1ddb9bed667577067057c721b",
+  "outputs": {
+    "figure_5_intervention_timing.svg": "9717a334087a3a4bede4a6fb4f472260b6b09f3006d7579fba2e5c80978820e1",
+    "figure_5_intervention_timing.png": "652c78520a9157eafc31139b8067b640ebbcbb31fe1e6d86ff3a39b1d2a0782f"
+  },
+  "independent_revision_verification": {
+    "left_svg_axes_byte_identical": true,
+    "saved_selection_and_onsets_unchanged": true,
+    "svg_timeline_segments_verified": 12,
+    "svg_relative_onset_markers_verified": 18,
+    "zero_length_segments_preserved": 6,
+    "relative_timelines": [
+      {
+        "scenario": "schelling",
+        "path_id": "tol_minus_unhappy_to_move_std_to_spatial_sim",
+        "relative_onsets": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "scenario": "schelling",
+        "path_id": "tol_minus_unhappy_to_unhappy_std_to_components",
+        "relative_onsets": [
+          0.0,
+          0.0,
+          2.0
+        ]
+      },
+      {
+        "scenario": "schelling",
+        "path_id": "tol_plus_unhappy_to_move_std_to_global_moved",
+        "relative_onsets": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "scenario": "deffuant",
+        "path_id": "cb_minus_accept_absovar_assort",
+        "relative_onsets": [
+          0.0,
+          1.0,
+          16.0
+        ]
+      },
+      {
+        "scenario": "deffuant",
+        "path_id": "cb_minus_accept_ovar_gvar",
+        "relative_onsets": [
+          0.0,
+          4.0,
+          4.0
+        ]
+      },
+      {
+        "scenario": "deffuant",
+        "path_id": "cb_plus_accept_ostd_gvar",
+        "relative_onsets": [
+          0.0,
+          2.0,
+          2.0
+        ]
+      }
+    ],
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}

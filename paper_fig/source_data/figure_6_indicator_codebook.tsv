@@ -1,0 +1,57 @@
+scenario	column	node_id	scale	code	semantic_name
+schelling	0	boundary_fraction	micro	Mi01	Fraction of boundary agents
+schelling	1	local_similarity_entropy	micro	Mi02	Entropy of local similarity distribution
+schelling	2	mean_destination_similarity_movers	micro	Mi03	Mean destination similarity among movers
+schelling	3	mean_local_similarity	micro	Mi04	Mean local same-group similarity
+schelling	4	mean_move_distance	micro	Mi05	Mean relocation distance among movers
+schelling	5	mean_neighbour_count	micro	Mi06	Mean local neighbour count
+schelling	6	move_distance_std	micro	Mi07	Dispersion of relocation distance
+schelling	7	moved_fraction	micro	Mi08	Fraction of agents relocating
+schelling	8	quantile_25_local_similarity	micro	Mi09	25th percentile local similarity
+schelling	9	quantile_75_local_similarity	micro	Mi10	75th percentile local similarity
+schelling	10	relocation_response_fraction	micro	Mi11	Relocation response fraction
+schelling	11	std_destination_similarity	micro	Mi12	Dispersion of destination similarity
+schelling	12	std_local_similarity	micro	Mi13	Standard deviation of local same-group similarity
+schelling	13	std_neighbour_count	micro	Mi14	Dispersion of local neighbour count
+schelling	14	unhappy_fraction	micro	Mi15	Fraction of unsatisfied agents
+schelling	15	unhappy_local_similarity_mean	micro	Mi16	Mean local similarity among unsatisfied agents
+schelling	16	meso_district_boundary_fraction_std	meso	Me01	Between-district standard deviation of boundary-agent fraction
+schelling	17	meso_district_destination_similarity_std	meso	Me02	Between-district standard deviation of destination similarity
+schelling	18	meso_district_group_entropy_mean	meso	Me03	Mean district group-composition entropy
+schelling	19	meso_district_local_similarity_std	meso	Me04	Between-district standard deviation of mean local similarity
+schelling	20	meso_district_move_distance_std	meso	Me05	Between-district standard deviation of mean move distance
+schelling	21	meso_district_move_fraction_std	meso	Me06	Between-district standard deviation of moving fraction
+schelling	22	meso_district_neighbour_count_std	meso	Me07	Between-district standard deviation of mean neighbour count
+schelling	23	meso_district_unhappy_fraction_std	meso	Me08	Between-district standard deviation of unsatisfied fraction
+schelling	24	macro_global_connected_components	macro	Ma01	Count of same-group spatial components
+schelling	25	macro_global_moved_fraction	macro	Ma02	Global relocation fraction
+schelling	26	macro_global_spatial_neighbor_similarity	macro	Ma03	Global spatial neighbour similarity
+schelling	27	macro_global_unhappy_fraction	macro	Ma04	Global unsatisfied fraction
+deffuant	0	micro_accepted_count	micro	Mi01	Accepted interaction count
+deffuant	1	micro_accepted_fraction	micro	Mi02	Assimilation encounter fraction
+deffuant	2	micro_agent_shift_std	micro	Mi03	Opinion update standard deviation
+deffuant	3	micro_backfire_fraction	micro	Mi04	Backfire encounter fraction
+deffuant	4	micro_edge_rewired_count	micro	Mi05	Rewired tie count
+deffuant	5	micro_extreme_agent_fraction	micro	Mi06	Extreme opinion fraction
+deffuant	6	micro_interaction_distance_std	micro	Mi07	Sampled interaction distance standard deviation
+deffuant	7	micro_mean_abs_agent_shift	micro	Mi08	Mean absolute opinion update
+deffuant	8	micro_mean_abs_opinion	micro	Mi09	Mean absolute agent opinion
+deffuant	9	micro_mean_interaction_distance	micro	Mi10	Mean sampled interaction opinion distance
+deffuant	10	micro_median_opinion	micro	Mi11	Median agent opinion
+deffuant	11	micro_opinion_p25	micro	Mi12	25th percentile agent opinion
+deffuant	12	micro_opinion_std	micro	Mi13	Agent opinion standard deviation
+deffuant	13	micro_rejected_fraction	micro	Mi14	Rejected encounter fraction
+deffuant	14	micro_rewiring_fraction	micro	Mi15	Tie rewiring fraction
+deffuant	15	micro_sign_flip_fraction	micro	Mi16	Opinion sign-flip fraction
+deffuant	16	meso_neighborhood_abs_opinion_std	meso	Me01	Mean neighborhood absolute opinion standard deviation
+deffuant	17	meso_neighborhood_abs_opinion_variance	meso	Me02	Mean neighborhood absolute opinion variance
+deffuant	18	meso_neighborhood_agent_shift_std	meso	Me03	Mean neighborhood opinion shift standard deviation
+deffuant	19	meso_neighborhood_agent_shift_variance	meso	Me04	Mean neighborhood opinion shift variance
+deffuant	20	meso_neighborhood_interaction_distance_std	meso	Me05	Mean neighborhood interaction distance standard deviation
+deffuant	21	meso_neighborhood_interaction_distance_variance	meso	Me06	Mean neighborhood interaction distance variance
+deffuant	22	meso_neighborhood_opinion_std	meso	Me07	Mean neighborhood opinion standard deviation
+deffuant	23	meso_neighborhood_opinion_variance	meso	Me08	Mean neighborhood opinion variance
+deffuant	24	macro_network_assortativity	macro	Ma01	Network opinion assortativity
+deffuant	25	macro_network_largest_component_fraction	macro	Ma02	Largest network component fraction
+deffuant	26	macro_opinion_global_mean	macro	Ma03	Whole-system mean opinion
+deffuant	27	macro_opinion_global_variance	macro	Ma04	Whole-system opinion variance

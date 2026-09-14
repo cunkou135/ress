@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "figure": 10,
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/representation_robustness.csv": "1d28bf7c002bc09fc1da5eaeb0833a7457f74856485ef0ea85db7c303b444289"
+  },
+  "source_unchanged": true,
+  "experiment_recalculation": false,
+  "outputs": {
+    "figure_10_representation_robustness.png": "578f96a2fa86394bae433cb1bbf131d54080741cfd05836aab98bfc28d1bb269",
+    "figure_10_representation_robustness.svg": "261ec923f838b21d26bee1ac9a201bbbf1382cd1cc90e1dcb8bbe84dabfeaa8e"
+  },
+  "source_tables": {
+    "figure_10_plotted_summary.tsv": "c64c0ebf71eab50a9939f1a4e1406527e7938c0ebcefecd3d560d8b8e0e2ee4b",
+    "figure_10_saved_repetitions.tsv": "ee2528523c71677f566a78fae33a687e775ce0e60ca6dd4be6a87dedad15e366"
+  },
+  "script_sha256": "196574bd31fa8167d7afd3bafbc25ba0e2539d51bfe912b277597341c8b30be8",
+  "helper_sha256": "588d621bcbd909b73bb11436aaabc465d76c70b56bb6cc2a06df4c845710bd7d",
+  "input_rows": 480,
+  "condition_count": 40,
+  "summary_points": 80,
+  "repetitions_per_condition": [
+    12
+  ],
+  "y_limits": {
+    "temporal_qualification_rate": [
+      0.4030800500312695,
+      1
+    ],
+    "stability": [
+      0.9145395369737475,
+      0.9906498886104147
+    ]
+  },
+  "statistic": "median and IQR across saved repetitions",
+  "missing_metrics": {
+    "temporal_qualification_rate": 0,
+    "stability": 0
+  },
+  "independent_verification": {
+    "summary_points_verified": 80,
+    "svg_median_vertices_verified": 80,
+    "svg_iqr_bounds_verified": 160,
+    "all_repeated_records_used": 480,
+    "protected_existing_files_unchanged": 241,
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}

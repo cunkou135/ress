@@ -1,0 +1,184 @@
+{
+  "status": "passed",
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/observation_robustness.csv": "c5d70e1d669a0130caea930dd6da7c4cbed7ad3bf415074a93583bb6ffb07c35",
+    "analysis/causal_scalability.csv": "b8ac032b70e608be2347f1d22345accfb4a85fb1ea6445f00ef0770540ab9f48"
+  },
+  "input_rows": {
+    "analysis/observation_robustness.csv": 208,
+    "analysis/causal_scalability.csv": 40
+  },
+  "panel_conditions": {
+    "a": {
+      "factor": "observation_noise",
+      "source": "analysis/observation_robustness.csv",
+      "x_column": "noise_level",
+      "metric": "temporal_qualification_rate",
+      "fixed_settings": [
+        {
+          "missing_fraction": 0.0,
+          "support_threshold": 0.65
+        }
+      ]
+    },
+    "b": {
+      "factor": "observation_noise",
+      "source": "analysis/observation_robustness.csv",
+      "x_column": "noise_level",
+      "metric": "stability",
+      "fixed_settings": [
+        {
+          "missing_fraction": 0.0,
+          "support_threshold": 0.65
+        }
+      ]
+    },
+    "c": {
+      "factor": "missing_values",
+      "source": "analysis/observation_robustness.csv",
+      "x_column": "missing_fraction",
+      "metric": "temporal_qualification_rate",
+      "fixed_settings": [
+        {
+          "noise_level": 0.0,
+          "support_threshold": 0.65
+        }
+      ]
+    },
+    "d": {
+      "factor": "missing_values",
+      "source": "analysis/observation_robustness.csv",
+      "x_column": "missing_fraction",
+      "metric": "stability",
+      "fixed_settings": [
+        {
+          "noise_level": 0.0,
+          "support_threshold": 0.65
+        }
+      ]
+    },
+    "e": {
+      "factor": null,
+      "source": "analysis/causal_scalability.csv",
+      "x_column": "candidate_indicator_count",
+      "metric": "runtime_seconds",
+      "fixed_settings": []
+    },
+    "f": {
+      "factor": null,
+      "source": "analysis/causal_scalability.csv",
+      "x_column": "candidate_indicator_count",
+      "metric": "discovered_edge_count",
+      "fixed_settings": []
+    },
+    "g": {
+      "factor": "support_threshold",
+      "source": "analysis/observation_robustness.csv",
+      "x_column": "support_threshold",
+      "metric": "retained_edge_count",
+      "fixed_settings": [
+        {
+          "noise_level": 0.0,
+          "missing_fraction": 0.0
+        }
+      ]
+    },
+    "h": {
+      "factor": "support_threshold",
+      "source": "analysis/observation_robustness.csv",
+      "x_column": "support_threshold",
+      "metric": "stability",
+      "fixed_settings": [
+        {
+          "noise_level": 0.0,
+          "missing_fraction": 0.0
+        }
+      ]
+    }
+  },
+  "summary_points": 68,
+  "plotted_observations": 496,
+  "repetition_counts_by_panel": {
+    "a": [
+      8
+    ],
+    "b": [
+      8
+    ],
+    "c": [
+      8
+    ],
+    "d": [
+      8
+    ],
+    "e": [
+      5
+    ],
+    "f": [
+      5
+    ],
+    "g": [
+      8
+    ],
+    "h": [
+      8
+    ]
+  },
+  "centre": "median",
+  "shading": "25th-75th percentile IQR across saved repetitions",
+  "quantile_method": "linear",
+  "missing_observations": 0,
+  "metric_axis_limits": {
+    "temporal_qualification_rate": [
+      0.4043411330049261,
+      1.0
+    ],
+    "stability": [
+      0.8995085470085471,
+      0.9913034188034189
+    ],
+    "runtime_seconds": [
+      0.0,
+      21.833559930000224
+    ],
+    "discovered_edge_count": [
+      0.0,
+      921.7
+    ],
+    "retained_edge_count": [
+      11.225,
+      29.525
+    ]
+  },
+  "scenario_colours": {
+    "schelling": "#2B5D7E",
+    "deffuant": "#B84A3C"
+  },
+  "runtime_scope": "Stage 2 target-block preparation plus point-estimate graph discovery",
+  "axes_count": 8,
+  "legend_count": 1,
+  "input_unchanged": true,
+  "experiment_recalculation": false,
+  "script_sha256": "106590aecbc99381bb0ee2fc11cd2cc1d7230684c26f9d70535d9c8e620c1eda",
+  "outputs": {
+    "figure_8_robustness_efficiency.svg": "f2be3dac74d1677a2a1a5c412cfaf8a1dacdffda829fe5b7386aa585890be893",
+    "figure_8_robustness_efficiency.png": "347111ffbcaf99991c9b22d1d89a3879ed18ead752c9d9f906cb0ad642bd8f5d"
+  },
+  "source_tables": {
+    "figure_8_plotted_summary.tsv": "5e611480806ec37fea365f06434138cec6ac7735bf87be95959b1b68ec838c92",
+    "figure_8_plotted_repetitions.tsv": "697743873baa059ef2a034f68c649eaa619e582392d8ae3108ccc1a3200cf274"
+  },
+  "independent_verification": {
+    "all_input_rows_used_for_both_requested_metrics": true,
+    "summary_quantiles_exact": true,
+    "raw_observations_verified": 496,
+    "svg_median_points_verified": 68,
+    "svg_iqr_bounds_verified": 136,
+    "all_iqr_bands_inside_axes": true,
+    "shared_legend_and_scenario_colours_verified": true,
+    "protected_files_unchanged": 232,
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "status": "passed",
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/paired_effects.parquet": "fffdebf6152bd4c4705cdd4a196f4ae07033910cfd4ac413136cc07ac61c3ae9",
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333",
+    "config/experiment_config.snapshot.json": "5107ec5178898e526a0200f9e9cb099ea3d32e6d4ab0fc801fa435200fd38225"
+  },
+  "source_rows": 336,
+  "finite_effect_count": 330,
+  "undefined_effect_count": 6,
+  "actual_finite_range": [
+    -5.807183236127382,
+    13.595203796439504
+  ],
+  "max_abs_effect": 13.595203796439504,
+  "colour_limits": [
+    -13.595203796439504,
+    13.595203796439504
+  ],
+  "normalisation_center": 0.0,
+  "shared_normalisation": true,
+  "shared_colourbar_count": 1,
+  "percentile_clipping": false,
+  "undefined_as_zero": false,
+  "undefined_display": "zero-colour background with a small light-grey upper-right slash",
+  "undefined_rgba": [
+    0.959923106497501,
+    0.9388081507112649,
+    0.8996232218377547,
+    1.0
+  ],
+  "zero_rgba": [
+    0.959923106497501,
+    0.9388081507112649,
+    0.8996232218377547,
+    1.0
+  ],
+  "significance_rule": "unchanged saved significant flags",
+  "saved_confidence_level": 0.95,
+  "significance_dot_count": 189,
+  "saved_ci_excludes_zero_count": 252,
+  "panels": {
+    "a": {
+      "scenario": "schelling",
+      "shape": [
+        6,
+        28
+      ],
+      "scale_counts": {
+        "micro": 16,
+        "meso": 8,
+        "macro": 4
+      },
+      "na_count": 6,
+      "significance_dot_count": 110,
+      "na_cells": [
+        {
+          "parameter": "destination_preference",
+          "direction": "minus",
+          "node_id": "quantile_75_local_similarity",
+          "code": "Mi10",
+          "row": 0,
+          "column": 9
+        },
+        {
+          "parameter": "destination_preference",
+          "direction": "plus",
+          "node_id": "quantile_75_local_similarity",
+          "code": "Mi10",
+          "row": 1,
+          "column": 9
+        },
+        {
+          "parameter": "move_probability",
+          "direction": "minus",
+          "node_id": "quantile_75_local_similarity",
+          "code": "Mi10",
+          "row": 2,
+          "column": 9
+        },
+        {
+          "parameter": "move_probability",
+          "direction": "plus",
+          "node_id": "quantile_75_local_similarity",
+          "code": "Mi10",
+          "row": 3,
+          "column": 9
+        },
+        {
+          "parameter": "tolerance",
+          "direction": "minus",
+          "node_id": "quantile_75_local_similarity",
+          "code": "Mi10",
+          "row": 4,
+          "column": 9
+        },
+        {
+          "parameter": "tolerance",
+          "direction": "plus",
+          "node_id": "quantile_75_local_similarity",
+          "code": "Mi10",
+          "row": 5,
+          "column": 9
+        }
+      ]
+    },
+    "b": {
+      "scenario": "deffuant",
+      "shape": [
+        6,
+        28
+      ],
+      "scale_counts": {
+        "micro": 16,
+        "meso": 8,
+        "macro": 4
+      },
+      "na_count": 0,
+      "significance_dot_count": 79,
+      "na_cells": []
+    }
+  },
+  "input_unchanged": true,
+  "experiment_recalculation": false,
+  "script_sha256": "17af84db3a34f7577eab77bd1175a95de9567bffb40c6a3b88f480a6095572b8",
+  "outputs": {
+    "figure_6_effect_matrix.svg": "c03f8172b3265cbc6c97a2a441009c61b332d1a28c8e89a0b1a8c958e7165cbb",
+    "figure_6_effect_matrix.png": "86a7d4255edd0457de44ec126138543c6df72c3386b0330ef4a06f02c835c2c2"
+  }
+}

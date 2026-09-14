@@ -1,0 +1,113 @@
+scenario	stage	source	target	path_reuse_count	path_ids	holdout_path_ids	terminal_holdout_marker
+schelling	1	mean_destination_similarity_movers	meso_district_boundary_fraction_std	1	"[""dest_plus_dest_sim_to_boundary_std_to_global_unhappy""]"	[]	False
+schelling	1	mean_destination_similarity_movers	meso_district_destination_similarity_std	2	"[""dest_minus_dest_sim_to_dest_std_to_global_unhappy"", ""dest_plus_dest_sim_to_dest_std_to_spatial_sim""]"	[]	False
+schelling	1	mean_destination_similarity_movers	meso_district_group_entropy_mean	1	"[""dest_plus_dest_sim_to_group_entropy_to_components""]"	[]	False
+schelling	1	mean_destination_similarity_movers	meso_district_move_distance_std	1	"[""dest_minus_dest_sim_to_move_std_to_components""]"	[]	False
+schelling	1	meso_district_boundary_fraction_std	macro_global_connected_components	1	"[""move_minus_moved_to_boundary_std_to_components""]"	[]	False
+schelling	1	meso_district_boundary_fraction_std	macro_global_spatial_neighbor_similarity	1	"[""tol_plus_unhappy_to_boundary_std_to_spatial_sim""]"	[]	False
+schelling	1	meso_district_boundary_fraction_std	macro_global_unhappy_fraction	1	"[""dest_plus_dest_sim_to_boundary_std_to_global_unhappy""]"	[]	False
+schelling	1	meso_district_destination_similarity_std	macro_global_connected_components	1	"[""tol_plus_unhappy_to_dest_std_to_components""]"	[]	False
+schelling	1	meso_district_destination_similarity_std	macro_global_spatial_neighbor_similarity	2	"[""dest_plus_dest_sim_to_dest_std_to_spatial_sim"", ""move_plus_moved_to_dest_std_to_spatial_sim""]"	[]	False
+schelling	1	meso_district_destination_similarity_std	macro_global_unhappy_fraction	1	"[""dest_minus_dest_sim_to_dest_std_to_global_unhappy""]"	[]	False
+schelling	1	meso_district_group_entropy_mean	macro_global_connected_components	2	"[""dest_plus_dest_sim_to_group_entropy_to_components"", ""tol_plus_unhappy_to_group_entropy_to_components""]"	[]	False
+schelling	1	meso_district_move_distance_std	macro_global_connected_components	1	"[""dest_minus_dest_sim_to_move_std_to_components""]"	[]	False
+schelling	1	meso_district_move_fraction_std	macro_global_moved_fraction	2	"[""move_plus_response_to_move_std_to_global_moved"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	[]	False
+schelling	1	meso_district_move_fraction_std	macro_global_spatial_neighbor_similarity	1	"[""tol_minus_unhappy_to_move_std_to_spatial_sim""]"	[]	False
+schelling	1	meso_district_neighbour_count_std	macro_global_unhappy_fraction	1	"[""move_plus_moved_to_neighbour_std_to_global_unhappy""]"	[]	False
+schelling	1	meso_district_unhappy_fraction_std	macro_global_connected_components	1	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	[]	False
+schelling	1	meso_district_unhappy_fraction_std	macro_global_unhappy_fraction	1	"[""move_minus_response_to_unhappy_std_to_global_unhappy""]"	[]	False
+schelling	1	moved_fraction	meso_district_boundary_fraction_std	1	"[""move_minus_moved_to_boundary_std_to_components""]"	[]	False
+schelling	1	moved_fraction	meso_district_destination_similarity_std	1	"[""move_plus_moved_to_dest_std_to_spatial_sim""]"	[]	False
+schelling	1	moved_fraction	meso_district_neighbour_count_std	1	"[""move_plus_moved_to_neighbour_std_to_global_unhappy""]"	[]	False
+schelling	1	parameter:destination_preference	mean_destination_similarity_movers	5	"[""dest_minus_dest_sim_to_dest_std_to_global_unhappy"", ""dest_minus_dest_sim_to_move_std_to_components"", ""dest_plus_dest_sim_to_boundary_std_to_global_unhappy"", ""dest_plus_dest_sim_to_dest_std_to_spatial_sim"", ""dest_plus_dest_sim_to_group_entropy_to_components""]"	[]	False
+schelling	1	parameter:move_probability	moved_fraction	3	"[""move_minus_moved_to_boundary_std_to_components"", ""move_plus_moved_to_dest_std_to_spatial_sim"", ""move_plus_moved_to_neighbour_std_to_global_unhappy""]"	[]	False
+schelling	1	parameter:move_probability	relocation_response_fraction	2	"[""move_minus_response_to_unhappy_std_to_global_unhappy"", ""move_plus_response_to_move_std_to_global_moved""]"	[]	False
+schelling	1	parameter:tolerance	unhappy_fraction	6	"[""tol_minus_unhappy_to_move_std_to_spatial_sim"", ""tol_minus_unhappy_to_unhappy_std_to_components"", ""tol_plus_unhappy_to_boundary_std_to_spatial_sim"", ""tol_plus_unhappy_to_dest_std_to_components"", ""tol_plus_unhappy_to_group_entropy_to_components"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	[]	False
+schelling	1	relocation_response_fraction	meso_district_move_fraction_std	1	"[""move_plus_response_to_move_std_to_global_moved""]"	[]	False
+schelling	1	relocation_response_fraction	meso_district_unhappy_fraction_std	1	"[""move_minus_response_to_unhappy_std_to_global_unhappy""]"	[]	False
+schelling	1	unhappy_fraction	meso_district_boundary_fraction_std	1	"[""tol_plus_unhappy_to_boundary_std_to_spatial_sim""]"	[]	False
+schelling	1	unhappy_fraction	meso_district_destination_similarity_std	1	"[""tol_plus_unhappy_to_dest_std_to_components""]"	[]	False
+schelling	1	unhappy_fraction	meso_district_group_entropy_mean	1	"[""tol_plus_unhappy_to_group_entropy_to_components""]"	[]	False
+schelling	1	unhappy_fraction	meso_district_move_fraction_std	2	"[""tol_minus_unhappy_to_move_std_to_spatial_sim"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	[]	False
+schelling	1	unhappy_fraction	meso_district_unhappy_fraction_std	1	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	[]	False
+schelling	2	mean_destination_similarity_movers	meso_district_boundary_fraction_std	1	"[""dest_plus_dest_sim_to_boundary_std_to_global_unhappy""]"	[]	False
+schelling	2	mean_destination_similarity_movers	meso_district_destination_similarity_std	2	"[""dest_minus_dest_sim_to_dest_std_to_global_unhappy"", ""dest_plus_dest_sim_to_dest_std_to_spatial_sim""]"	[]	False
+schelling	2	mean_destination_similarity_movers	meso_district_group_entropy_mean	1	"[""dest_plus_dest_sim_to_group_entropy_to_components""]"	[]	False
+schelling	2	mean_destination_similarity_movers	meso_district_move_distance_std	1	"[""dest_minus_dest_sim_to_move_std_to_components""]"	[]	False
+schelling	2	meso_district_boundary_fraction_std	macro_global_connected_components	1	"[""move_minus_moved_to_boundary_std_to_components""]"	[]	False
+schelling	2	meso_district_boundary_fraction_std	macro_global_unhappy_fraction	1	"[""dest_plus_dest_sim_to_boundary_std_to_global_unhappy""]"	[]	False
+schelling	2	meso_district_destination_similarity_std	macro_global_connected_components	1	"[""tol_plus_unhappy_to_dest_std_to_components""]"	[]	False
+schelling	2	meso_district_destination_similarity_std	macro_global_spatial_neighbor_similarity	2	"[""dest_plus_dest_sim_to_dest_std_to_spatial_sim"", ""move_plus_moved_to_dest_std_to_spatial_sim""]"	[]	False
+schelling	2	meso_district_destination_similarity_std	macro_global_unhappy_fraction	1	"[""dest_minus_dest_sim_to_dest_std_to_global_unhappy""]"	[]	False
+schelling	2	meso_district_group_entropy_mean	macro_global_connected_components	2	"[""dest_plus_dest_sim_to_group_entropy_to_components"", ""tol_plus_unhappy_to_group_entropy_to_components""]"	[]	False
+schelling	2	meso_district_move_distance_std	macro_global_connected_components	1	"[""dest_minus_dest_sim_to_move_std_to_components""]"	[]	False
+schelling	2	meso_district_move_fraction_std	macro_global_moved_fraction	2	"[""move_plus_response_to_move_std_to_global_moved"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	[]	False
+schelling	2	meso_district_move_fraction_std	macro_global_spatial_neighbor_similarity	1	"[""tol_minus_unhappy_to_move_std_to_spatial_sim""]"	[]	False
+schelling	2	meso_district_neighbour_count_std	macro_global_unhappy_fraction	1	"[""move_plus_moved_to_neighbour_std_to_global_unhappy""]"	[]	False
+schelling	2	meso_district_unhappy_fraction_std	macro_global_connected_components	1	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	[]	False
+schelling	2	meso_district_unhappy_fraction_std	macro_global_unhappy_fraction	1	"[""move_minus_response_to_unhappy_std_to_global_unhappy""]"	[]	False
+schelling	2	moved_fraction	meso_district_boundary_fraction_std	1	"[""move_minus_moved_to_boundary_std_to_components""]"	[]	False
+schelling	2	moved_fraction	meso_district_destination_similarity_std	1	"[""move_plus_moved_to_dest_std_to_spatial_sim""]"	[]	False
+schelling	2	moved_fraction	meso_district_neighbour_count_std	1	"[""move_plus_moved_to_neighbour_std_to_global_unhappy""]"	[]	False
+schelling	2	relocation_response_fraction	meso_district_move_fraction_std	1	"[""move_plus_response_to_move_std_to_global_moved""]"	[]	False
+schelling	2	relocation_response_fraction	meso_district_unhappy_fraction_std	1	"[""move_minus_response_to_unhappy_std_to_global_unhappy""]"	[]	False
+schelling	2	unhappy_fraction	meso_district_destination_similarity_std	1	"[""tol_plus_unhappy_to_dest_std_to_components""]"	[]	False
+schelling	2	unhappy_fraction	meso_district_group_entropy_mean	1	"[""tol_plus_unhappy_to_group_entropy_to_components""]"	[]	False
+schelling	2	unhappy_fraction	meso_district_move_fraction_std	2	"[""tol_minus_unhappy_to_move_std_to_spatial_sim"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	[]	False
+schelling	2	unhappy_fraction	meso_district_unhappy_fraction_std	1	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	[]	False
+schelling	3	meso_district_move_fraction_std	macro_global_moved_fraction	1	"[""tol_plus_unhappy_to_move_std_to_global_moved""]"	[]	False
+schelling	3	meso_district_move_fraction_std	macro_global_spatial_neighbor_similarity	1	"[""tol_minus_unhappy_to_move_std_to_spatial_sim""]"	"[""tol_minus_unhappy_to_move_std_to_spatial_sim""]"	True
+schelling	3	meso_district_unhappy_fraction_std	macro_global_connected_components	1	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	True
+schelling	3	parameter:tolerance	unhappy_fraction	3	"[""tol_minus_unhappy_to_move_std_to_spatial_sim"", ""tol_minus_unhappy_to_unhappy_std_to_components"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	"[""tol_minus_unhappy_to_move_std_to_spatial_sim"", ""tol_minus_unhappy_to_unhappy_std_to_components""]"	False
+schelling	3	unhappy_fraction	meso_district_move_fraction_std	2	"[""tol_minus_unhappy_to_move_std_to_spatial_sim"", ""tol_plus_unhappy_to_move_std_to_global_moved""]"	"[""tol_minus_unhappy_to_move_std_to_spatial_sim""]"	False
+schelling	3	unhappy_fraction	meso_district_unhappy_fraction_std	1	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	"[""tol_minus_unhappy_to_unhappy_std_to_components""]"	False
+deffuant	1	meso_neighborhood_abs_opinion_std	macro_network_assortativity	1	"[""bt_minus_backfire_absostd_assort""]"	[]	False
+deffuant	1	meso_neighborhood_abs_opinion_std	macro_opinion_global_mean	2	"[""as_minus_shift_absostd_gmean"", ""cb_plus_accept_absostd_gmean""]"	[]	False
+deffuant	1	meso_neighborhood_abs_opinion_variance	macro_network_assortativity	1	"[""cb_minus_accept_absovar_assort""]"	[]	False
+deffuant	1	meso_neighborhood_abs_opinion_variance	macro_network_largest_component_fraction	1	"[""as_minus_shift_absovar_lcc""]"	[]	False
+deffuant	1	meso_neighborhood_agent_shift_std	macro_opinion_global_mean	2	"[""as_plus_shift_shiftstd_gmean"", ""bt_plus_backfire_shiftstd_gmean""]"	[]	False
+deffuant	1	meso_neighborhood_interaction_distance_std	macro_network_assortativity	2	"[""as_plus_shift_diststd_assort"", ""bt_minus_backfire_diststd_assort""]"	[]	False
+deffuant	1	meso_neighborhood_interaction_distance_std	macro_network_largest_component_fraction	1	"[""cb_minus_accept_diststd_lcc""]"	[]	False
+deffuant	1	meso_neighborhood_interaction_distance_variance	macro_network_largest_component_fraction	2	"[""bt_plus_backfire_distvar_lcc"", ""cb_plus_accept_distvar_lcc""]"	[]	False
+deffuant	1	meso_neighborhood_opinion_std	macro_opinion_global_variance	3	"[""as_plus_shift_ostd_gvar"", ""bt_minus_backfire_ostd_gvar"", ""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	1	meso_neighborhood_opinion_variance	macro_opinion_global_variance	3	"[""as_minus_shift_ovar_gvar"", ""bt_plus_backfire_ovar_gvar"", ""cb_minus_accept_ovar_gvar""]"	[]	False
+deffuant	1	micro_accepted_fraction	meso_neighborhood_abs_opinion_std	1	"[""cb_plus_accept_absostd_gmean""]"	[]	False
+deffuant	1	micro_accepted_fraction	meso_neighborhood_abs_opinion_variance	1	"[""cb_minus_accept_absovar_assort""]"	[]	False
+deffuant	1	micro_accepted_fraction	meso_neighborhood_interaction_distance_std	1	"[""cb_minus_accept_diststd_lcc""]"	[]	False
+deffuant	1	micro_accepted_fraction	meso_neighborhood_interaction_distance_variance	1	"[""cb_plus_accept_distvar_lcc""]"	[]	False
+deffuant	1	micro_accepted_fraction	meso_neighborhood_opinion_std	1	"[""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	1	micro_accepted_fraction	meso_neighborhood_opinion_variance	1	"[""cb_minus_accept_ovar_gvar""]"	[]	False
+deffuant	1	micro_backfire_fraction	meso_neighborhood_abs_opinion_std	1	"[""bt_minus_backfire_absostd_assort""]"	[]	False
+deffuant	1	micro_backfire_fraction	meso_neighborhood_agent_shift_std	1	"[""bt_plus_backfire_shiftstd_gmean""]"	[]	False
+deffuant	1	micro_backfire_fraction	meso_neighborhood_interaction_distance_std	1	"[""bt_minus_backfire_diststd_assort""]"	[]	False
+deffuant	1	micro_backfire_fraction	meso_neighborhood_interaction_distance_variance	1	"[""bt_plus_backfire_distvar_lcc""]"	[]	False
+deffuant	1	micro_backfire_fraction	meso_neighborhood_opinion_std	1	"[""bt_minus_backfire_ostd_gvar""]"	[]	False
+deffuant	1	micro_backfire_fraction	meso_neighborhood_opinion_variance	1	"[""bt_plus_backfire_ovar_gvar""]"	[]	False
+deffuant	1	micro_mean_abs_agent_shift	meso_neighborhood_abs_opinion_std	1	"[""as_minus_shift_absostd_gmean""]"	[]	False
+deffuant	1	micro_mean_abs_agent_shift	meso_neighborhood_abs_opinion_variance	1	"[""as_minus_shift_absovar_lcc""]"	[]	False
+deffuant	1	micro_mean_abs_agent_shift	meso_neighborhood_agent_shift_std	1	"[""as_plus_shift_shiftstd_gmean""]"	[]	False
+deffuant	1	micro_mean_abs_agent_shift	meso_neighborhood_interaction_distance_std	1	"[""as_plus_shift_diststd_assort""]"	[]	False
+deffuant	1	micro_mean_abs_agent_shift	meso_neighborhood_opinion_std	1	"[""as_plus_shift_ostd_gvar""]"	[]	False
+deffuant	1	micro_mean_abs_agent_shift	meso_neighborhood_opinion_variance	1	"[""as_minus_shift_ovar_gvar""]"	[]	False
+deffuant	1	parameter:assimilation_strength	micro_mean_abs_agent_shift	6	"[""as_minus_shift_absostd_gmean"", ""as_minus_shift_absovar_lcc"", ""as_minus_shift_ovar_gvar"", ""as_plus_shift_diststd_assort"", ""as_plus_shift_ostd_gvar"", ""as_plus_shift_shiftstd_gmean""]"	[]	False
+deffuant	1	parameter:backfire_threshold	micro_backfire_fraction	6	"[""bt_minus_backfire_absostd_assort"", ""bt_minus_backfire_diststd_assort"", ""bt_minus_backfire_ostd_gvar"", ""bt_plus_backfire_distvar_lcc"", ""bt_plus_backfire_ovar_gvar"", ""bt_plus_backfire_shiftstd_gmean""]"	[]	False
+deffuant	1	parameter:confidence_bound	micro_accepted_fraction	6	"[""cb_minus_accept_absovar_assort"", ""cb_minus_accept_diststd_lcc"", ""cb_minus_accept_ovar_gvar"", ""cb_plus_accept_absostd_gmean"", ""cb_plus_accept_distvar_lcc"", ""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	2	meso_neighborhood_abs_opinion_variance	macro_network_assortativity	1	"[""cb_minus_accept_absovar_assort""]"	[]	False
+deffuant	2	meso_neighborhood_agent_shift_std	macro_opinion_global_mean	1	"[""bt_plus_backfire_shiftstd_gmean""]"	[]	False
+deffuant	2	meso_neighborhood_interaction_distance_std	macro_network_assortativity	1	"[""as_plus_shift_diststd_assort""]"	[]	False
+deffuant	2	meso_neighborhood_opinion_std	macro_opinion_global_variance	2	"[""as_plus_shift_ostd_gvar"", ""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	2	meso_neighborhood_opinion_variance	macro_opinion_global_variance	2	"[""as_minus_shift_ovar_gvar"", ""cb_minus_accept_ovar_gvar""]"	[]	False
+deffuant	2	micro_accepted_fraction	meso_neighborhood_abs_opinion_variance	1	"[""cb_minus_accept_absovar_assort""]"	[]	False
+deffuant	2	micro_accepted_fraction	meso_neighborhood_opinion_std	1	"[""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	2	micro_accepted_fraction	meso_neighborhood_opinion_variance	1	"[""cb_minus_accept_ovar_gvar""]"	[]	False
+deffuant	2	micro_backfire_fraction	meso_neighborhood_agent_shift_std	1	"[""bt_plus_backfire_shiftstd_gmean""]"	[]	False
+deffuant	2	micro_mean_abs_agent_shift	meso_neighborhood_interaction_distance_std	1	"[""as_plus_shift_diststd_assort""]"	[]	False
+deffuant	2	micro_mean_abs_agent_shift	meso_neighborhood_opinion_std	1	"[""as_plus_shift_ostd_gvar""]"	[]	False
+deffuant	2	micro_mean_abs_agent_shift	meso_neighborhood_opinion_variance	1	"[""as_minus_shift_ovar_gvar""]"	[]	False
+deffuant	3	meso_neighborhood_abs_opinion_variance	macro_network_assortativity	1	"[""cb_minus_accept_absovar_assort""]"	"[""cb_minus_accept_absovar_assort""]"	True
+deffuant	3	meso_neighborhood_opinion_std	macro_opinion_global_variance	1	"[""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	3	meso_neighborhood_opinion_variance	macro_opinion_global_variance	1	"[""cb_minus_accept_ovar_gvar""]"	"[""cb_minus_accept_ovar_gvar""]"	True
+deffuant	3	micro_accepted_fraction	meso_neighborhood_abs_opinion_variance	1	"[""cb_minus_accept_absovar_assort""]"	"[""cb_minus_accept_absovar_assort""]"	False
+deffuant	3	micro_accepted_fraction	meso_neighborhood_opinion_std	1	"[""cb_plus_accept_ostd_gvar""]"	[]	False
+deffuant	3	micro_accepted_fraction	meso_neighborhood_opinion_variance	1	"[""cb_minus_accept_ovar_gvar""]"	"[""cb_minus_accept_ovar_gvar""]"	False
+deffuant	3	parameter:confidence_bound	micro_accepted_fraction	3	"[""cb_minus_accept_absovar_assort"", ""cb_minus_accept_ovar_gvar"", ""cb_plus_accept_ostd_gvar""]"	"[""cb_minus_accept_absovar_assort"", ""cb_minus_accept_ovar_gvar""]"	False

@@ -1,0 +1,74 @@
+{
+  "paper_figure": 2,
+  "source_run": "qwen_longdyn_001",
+  "simulation_seed": 1101,
+  "inputs": [
+    {
+      "scenario": "schelling",
+      "seed": 1101,
+      "path": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\combined_single_tex_reproducible\\code\\experiments\\runs\\qwen_longdyn_001\\data\\raw_logs\\schelling\\baseline\\seed_1101.npz",
+      "sha256": "f01f21573b687c06f360c57adfd2058b6f614010fa242fc19d69d3baf82cc1a1",
+      "state_shape": [
+        160,
+        30,
+        30
+      ]
+    },
+    {
+      "scenario": "deffuant",
+      "seed": 1101,
+      "path": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\combined_single_tex_reproducible\\code\\experiments\\runs\\qwen_longdyn_001\\data\\raw_logs\\deffuant\\baseline\\seed_1101.npz",
+      "sha256": "c2dcb1aa83b1662138990e7f1767b00563dd742d50999853c6ca10891b2e75da",
+      "state_shape": [
+        120,
+        240
+      ]
+    }
+  ],
+  "script_sha256": "79189c84505e2b060c0621e2293861845c6a0edec7af43be3143de2e71796b08",
+  "style": {
+    "original_module_sha256": "8b9040819ca9c744c0300cdb02876123924940082220eaf9ae1318c20ce2fe54",
+    "figure_size_inches": [
+      7.2,
+      5.15
+    ],
+    "font": [
+      "Arial",
+      "DejaVu Sans",
+      "Liberation Sans"
+    ],
+    "font_size": 7,
+    "background": "#FCFBF8",
+    "blue": "#2B5D7E",
+    "red": "#B84A3C",
+    "schelling_snapshots": [
+      0,
+      20,
+      60,
+      120
+    ],
+    "deffuant_snapshots": [
+      0,
+      40,
+      80,
+      119
+    ],
+    "opinion_display_jitter_seed": 1101,
+    "png_dpi": 300,
+    "tiff_dpi": 600
+  },
+  "metric_definitions": {
+    "unhappy_agent_fraction": "unhappy_count / agent_count",
+    "changed_cell_fraction": "fraction of grid cells differing from the preceding saved state; first value set to 0",
+    "opinion_dispersion": "numpy.std of agent opinions per time step, ddof=0",
+    "extreme_agent_fraction": "archived extreme_agent_count / agent_count",
+    "uncertainty": "single representative baseline trajectory; no confidence bands"
+  },
+  "outputs": {
+    "figure_2_simulation_dynamics.png": "fa6cbe6c923ec216154505bb15aa212d16513841b84930a7d32e48a20fdaff8d"
+  },
+  "source_data": {
+    "source_data\\figure_2_dynamics.csv": "c4ec4c27d37c1760fef605f861e57af2a4041fdf8460f172681a84be96e142c8"
+  },
+  "matplotlib_version": "3.9.3"
+}

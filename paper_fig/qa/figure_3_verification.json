@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "source_run": "baoba20260904_01",
+  "input_sha256": {
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333",
+    "representation/candidate_paths.json": "786a08db66d5c18428800774dca1e2240f3e5ae9adc94e2ee0310bb15db2dad4",
+    "analysis/path_temporal_qualification.csv": "a1c7439ec18c9b895a9006690b0330260e8f9a1d25065c2ba714d8e724eb5409",
+    "analysis/path_intervention_classification.csv": "ab2fcc5c6b3a7d065d8dba5c193a368b7da9dc1781dc2ce6c9724086c1a7c440",
+    "analysis/holdout_path_confirmation.csv": "3921db52a3075c2d8601d99966b148fc962a28f8dba9c12e3d712a9822e087b1"
+  },
+  "script_sha256": "2d318b9b0ea3653815bcfa0235ad71193e1b83ab46042af50ac3f30916d042be",
+  "counts": {
+    "schelling": {
+      "1": {
+        "paths": 16,
+        "unique_edges": 31,
+        "nodes": 31,
+        "holdout_confirmed": null
+      },
+      "2": {
+        "paths": 15,
+        "unique_edges": 25,
+        "nodes": 31,
+        "holdout_confirmed": null
+      },
+      "3": {
+        "paths": 3,
+        "unique_edges": 6,
+        "nodes": 31,
+        "holdout_confirmed": 2
+      }
+    },
+    "deffuant": {
+      "1": {
+        "paths": 18,
+        "unique_edges": 31,
+        "nodes": 31,
+        "holdout_confirmed": null
+      },
+      "2": {
+        "paths": 7,
+        "unique_edges": 12,
+        "nodes": 31,
+        "holdout_confirmed": null
+      },
+      "3": {
+        "paths": 3,
+        "unique_edges": 7,
+        "nodes": 31,
+        "holdout_confirmed": 2
+      }
+    }
+  },
+  "stage_predicates": {
+    "1": "all candidate_paths",
+    "2": "path_temporally_qualified == True",
+    "3": "path_classification == \"supported\""
+  },
+  "holdout_predicate": "classification == \"confirmed\", cross-checked against holdout_confirmed",
+  "fixed_layout": "frozen indicator file order; candidate parameter first occurrence; computed once per scenario",
+  "label_overflow": [],
+  "outputs": {
+    "figure_3_graph_recovery.svg": "f8ce04f66024d0046303bd062c396934486fbecb492e7902048df5352c6ee4a5",
+    "figure_3_graph_recovery.png": "47900b53975cccd8116a71807869cd4932eaf2cc9b29551c57516a4f685c1fcd"
+  },
+  "protected_inputs_unchanged": true,
+  "runtime": {
+    "matplotlib": "3.9.3",
+    "numpy": "1.26.4"
+  },
+  "artifact_audit": {
+    "actual_svg_panels": {
+      "a": {
+        "scenario": "schelling",
+        "stage": 1,
+        "paths": 16,
+        "unique_edges": 31,
+        "nodes": 31,
+        "holdout_markers": 0
+      },
+      "b": {
+        "scenario": "schelling",
+        "stage": 2,
+        "paths": 15,
+        "unique_edges": 25,
+        "nodes": 31,
+        "holdout_markers": 0
+      },
+      "c": {
+        "scenario": "schelling",
+        "stage": 3,
+        "paths": 3,
+        "unique_edges": 6,
+        "nodes": 31,
+        "holdout_markers": 2
+      },
+      "d": {
+        "scenario": "deffuant",
+        "stage": 1,
+        "paths": 18,
+        "unique_edges": 31,
+        "nodes": 31,
+        "holdout_markers": 0
+      },
+      "e": {
+        "scenario": "deffuant",
+        "stage": 2,
+        "paths": 7,
+        "unique_edges": 12,
+        "nodes": 31,
+        "holdout_markers": 0
+      },
+      "f": {
+        "scenario": "deffuant",
+        "stage": 3,
+        "paths": 3,
+        "unique_edges": 7,
+        "nodes": 31,
+        "holdout_markers": 2
+      }
+    },
+    "svg_editable_text_nodes": 328,
+    "duplicate_or_unexpected_edges": 0,
+    "omitted_frozen_nodes": 0,
+    "max_node_geometry_difference_after_panel_translation_svg_units": 1.0000001111620804e-06,
+    "visual_review": "Full PNG inspected: six panels, original muted node/edge style, legible abbreviations, no node-label overflow, no old comparison metrics"
+  },
+  "protected_scope_audit": {
+    "sha256_files_unchanged": 175,
+    "changed_files": [],
+    "formal_run_file_stats_unchanged": 3805,
+    "formal_run_file_set_unchanged": true
+  }
+}

@@ -1,0 +1,9 @@
+scenario	stage_index	stage	path_count
+schelling	0	Candidate paths	16
+schelling	1	Temporal-qualified paths	15
+schelling	2	Primary-supported paths	3
+schelling	3	Holdout-confirmed paths	2
+deffuant	0	Candidate paths	18
+deffuant	1	Temporal-qualified paths	7
+deffuant	2	Primary-supported paths	3
+deffuant	3	Holdout-confirmed paths	2

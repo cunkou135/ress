@@ -1,0 +1,13 @@
+panel	scenario	path_id	path_label	source_scale	target_scale	source_onset	target_onset	delay	micro_onset	display_start_x	display_end_x	display_x	display_y
+b	schelling	tol_minus_unhappy_to_move_std_to_spatial_sim	Tol− | spatial sim.	micro	meso	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0
+b	schelling	tol_minus_unhappy_to_move_std_to_spatial_sim	Tol− | spatial sim.	meso	macro	0.0	1.0	1.0	0.0	0.0	1.0	1.0	0
+b	schelling	tol_minus_unhappy_to_unhappy_std_to_components	Tol− | components	micro	meso	0.0	0.0	0.0	0.0	0.0	0.0	0.0	1
+b	schelling	tol_minus_unhappy_to_unhappy_std_to_components	Tol− | components	meso	macro	0.0	2.0	2.0	0.0	0.0	2.0	2.0	1
+b	schelling	tol_plus_unhappy_to_move_std_to_global_moved	Tol+ | relocation	micro	meso	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2
+b	schelling	tol_plus_unhappy_to_move_std_to_global_moved	Tol+ | relocation	meso	macro	0.0	0.0	0.0	0.0	0.0	0.0	0.0	2
+d	deffuant	cb_minus_accept_absovar_assort	CB− | assortativity	micro	meso	0.0	1.0	1.0	0.0	0.0	1.0	1.0	0
+d	deffuant	cb_minus_accept_absovar_assort	CB− | assortativity	meso	macro	1.0	16.0	15.0	0.0	1.0	16.0	16.0	0
+d	deffuant	cb_minus_accept_ovar_gvar	CB− | global var.	micro	meso	0.0	4.0	4.0	0.0	0.0	4.0	4.0	1
+d	deffuant	cb_minus_accept_ovar_gvar	CB− | global var.	meso	macro	4.0	4.0	0.0	0.0	4.0	4.0	4.0	1
+d	deffuant	cb_plus_accept_ostd_gvar	CB+ | global var.	micro	meso	0.0	2.0	2.0	0.0	0.0	2.0	2.0	2
+d	deffuant	cb_plus_accept_ostd_gvar	CB+ | global var.	meso	macro	2.0	2.0	0.0	0.0	2.0	2.0	2.0	2

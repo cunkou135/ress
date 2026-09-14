@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "figure": 9,
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/functional_ablations.csv": "f383c34b71c667ed7e08a2c51d27357c01ee2f28ada8ebe22097c2fa72257a06"
+  },
+  "source_unchanged": true,
+  "experiment_recalculation": false,
+  "outputs": {
+    "figure_9_functional_ablations.png": "f3f02487ded7339208d00c81814a441e87bf83a04f1be79e97c470109e2c7e9e",
+    "figure_9_functional_ablations.svg": "07faf5074b9b752a047a9568d18b1bd8c92a7ae3e39cb115b878de738f3c46f1"
+  },
+  "source_tables": {
+    "figure_9_plotted_values.tsv": "4276a4e21f4882479ab5399ed3e1963d6a628ea12e0263fd032af907ef7acca0"
+  },
+  "script_sha256": "005b3f8144e6f5df4dfd8a5bf6d5fb1fd3774acf4dc2f00627e22a900cdb5c35",
+  "helper_sha256": "588d621bcbd909b73bb11436aaabc465d76c70b56bb6cc2a06df4c845710bd7d",
+  "input_rows": 12,
+  "selected_rows": 10,
+  "variants": [
+    "full_method",
+    "without_joint_trajectories",
+    "without_bootstrap",
+    "without_structured_representation",
+    "without_paired_seeds"
+  ],
+  "panels": {
+    "a": {
+      "metric": "stability",
+      "records": 10,
+      "defined": 6,
+      "missing": [
+        {
+          "scenario": "deffuant",
+          "variant": "without_joint_trajectories"
+        },
+        {
+          "scenario": "deffuant",
+          "variant": "without_bootstrap"
+        },
+        {
+          "scenario": "schelling",
+          "variant": "without_joint_trajectories"
+        },
+        {
+          "scenario": "schelling",
+          "variant": "without_bootstrap"
+        }
+      ]
+    },
+    "b": {
+      "metric": "intervention_support_rate",
+      "records": 10,
+      "defined": 10,
+      "missing": []
+    },
+    "c": {
+      "metric": "mean_ci_width",
+      "records": 10,
+      "defined": 10,
+      "missing": []
+    }
+  },
+  "statistic": "saved summary value; no new averaging",
+  "uncertainty_added": false,
+  "independent_verification": {
+    "saved_values_verified": 30,
+    "finite_values": 26,
+    "missing_values": 4,
+    "protected_existing_files_unchanged": 241,
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}

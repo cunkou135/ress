@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "figure": 12,
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/path_timing_concordance.csv": "7b4bd27e58e2692f8fc4d077444413990cf512a7e6b24c64c6d4ee7cc6f8f116",
+    "analysis/path_temporal_qualification.csv": "a1c7439ec18c9b895a9006690b0330260e8f9a1d25065c2ba714d8e724eb5409"
+  },
+  "source_unchanged": true,
+  "experiment_recalculation": false,
+  "outputs": {
+    "figure_12_timing_concordance.png": "d151025ccb9c1282ec5ae194a4f2e5411f5cf42c6e454f0d5787d391acc71ef2",
+    "figure_12_timing_concordance.svg": "341a73f1461db26031122f4a7cacc021c00edeabc102280fa206209f710a4c14"
+  },
+  "source_tables": {
+    "figure_12_plotted_coordinates.tsv": "3735c17b2517fd62ebaf26bd3a238df0766c028978623edd21c7aea24a9a09df",
+    "figure_12_qualified_path_records.tsv": "7c4cf86cba065323da9f070c8a5a6f5126349e2a7e53d82fa3604b0c9e5d099e"
+  },
+  "script_sha256": "d278bf1fca236dca279d0b9a9eb5fd72d349f135ae7c78a0ed5e267885660d3b",
+  "helper_sha256": "588d621bcbd909b73bb11436aaabc465d76c70b56bb6cc2a06df4c845710bd7d",
+  "eligible_paths": 22,
+  "eligible_by_scenario": {
+    "deffuant": 7,
+    "schelling": 15
+  },
+  "panels": {
+    "a": {
+      "title": "Micro→Meso",
+      "x_field": "micro_meso_observational_lag",
+      "y_field": "micro_meso_intervention_delay",
+      "eligible_paths": 22,
+      "finite_pairs": 14,
+      "missing_pairs": 8,
+      "finite_by_scenario": {
+        "deffuant": 4,
+        "schelling": 10
+      },
+      "missing_by_scenario": {
+        "deffuant": 3,
+        "schelling": 5
+      },
+      "negative_delays": 0,
+      "supported_plotted": 6,
+      "x_limits": [
+        -0.4,
+        5.4
+      ],
+      "y_limits": [
+        -3.7,
+        40.7
+      ]
+    },
+    "b": {
+      "title": "Meso→Macro",
+      "x_field": "meso_macro_observational_lag",
+      "y_field": "meso_macro_intervention_delay",
+      "eligible_paths": 22,
+      "finite_pairs": 14,
+      "missing_pairs": 8,
+      "finite_by_scenario": {
+        "deffuant": 4,
+        "schelling": 10
+      },
+      "missing_by_scenario": {
+        "deffuant": 3,
+        "schelling": 5
+      },
+      "negative_delays": 3,
+      "supported_plotted": 6,
+      "x_limits": [
+        -0.4,
+        5.4
+      ],
+      "y_limits": [
+        -47.2,
+        87.2
+      ]
+    },
+    "c": {
+      "title": "Total timing",
+      "x_field": "observational_total_lag",
+      "y_field": "intervention_total_latency",
+      "eligible_paths": 22,
+      "finite_pairs": 16,
+      "missing_pairs": 6,
+      "finite_by_scenario": {
+        "deffuant": 4,
+        "schelling": 12
+      },
+      "missing_by_scenario": {
+        "deffuant": 3,
+        "schelling": 3
+      },
+      "negative_delays": 0,
+      "supported_plotted": 6,
+      "x_limits": [
+        -0.72,
+        9.72
+      ],
+      "y_limits": [
+        -7.6000000000000005,
+        83.6
+      ]
+    }
+  },
+  "statistic": "unaggregated saved coordinates",
+  "timing_equality_gate": false,
+  "coordinate_jitter": false,
+  "total_observational_field": "observational_total_lag",
+  "independent_verification": {
+    "coordinate_rows_verified": 66,
+    "finite_svg_coordinates_verified": 44,
+    "missing_pairs_preserved": 22,
+    "all_supported_paths_retained": true,
+    "reference_line_is_y_equals_x": true,
+    "protected_existing_files_unchanged": 241,
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}

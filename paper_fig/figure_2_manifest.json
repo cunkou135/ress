@@ -1,0 +1,77 @@
+{
+  "paper_figure": 2,
+  "source_run": "baoba20260904_01",
+  "simulation_seed": 3101,
+  "inputs": [
+    {
+      "scenario": "schelling",
+      "seed": 3101,
+      "path": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01\\data\\primary\\raw_logs\\schelling\\baseline\\seed_3101.npz",
+      "sha256": "431900c166be96dc693ba2bc921e465b3b940e61ab7d9368b5826ed28f0af6be",
+      "state_shape": [
+        160,
+        30,
+        30
+      ]
+    },
+    {
+      "scenario": "deffuant",
+      "seed": 3101,
+      "path": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01\\data\\primary\\raw_logs\\deffuant\\baseline\\seed_3101.npz",
+      "sha256": "0ebe4fe0d4ef31a1c8e464ed2f8edcef04ce4144653869f1cacb59955d717ea8",
+      "state_shape": [
+        120,
+        240
+      ]
+    }
+  ],
+  "script_sha256": "79189c84505e2b060c0621e2293861845c6a0edec7af43be3143de2e71796b08",
+  "style": {
+    "original_module_sha256": "8b9040819ca9c744c0300cdb02876123924940082220eaf9ae1318c20ce2fe54",
+    "figure_size_inches": [
+      7.2,
+      5.15
+    ],
+    "font": [
+      "Arial",
+      "DejaVu Sans",
+      "Liberation Sans"
+    ],
+    "font_size": 7,
+    "background": "#FCFBF8",
+    "blue": "#2B5D7E",
+    "red": "#B84A3C",
+    "schelling_snapshots": [
+      0,
+      20,
+      60,
+      120
+    ],
+    "deffuant_snapshots": [
+      0,
+      40,
+      80,
+      119
+    ],
+    "opinion_display_jitter_seed": 1101,
+    "png_dpi": 300,
+    "tiff_dpi": 600
+  },
+  "metric_definitions": {
+    "unhappy_agent_fraction": "unhappy_count / agent_count",
+    "changed_cell_fraction": "fraction of grid cells differing from the preceding saved state; first value set to 0",
+    "opinion_dispersion": "numpy.std of agent opinions per time step, ddof=0",
+    "extreme_agent_fraction": "archived extreme_agent_count / agent_count",
+    "uncertainty": "single representative baseline trajectory; no confidence bands"
+  },
+  "outputs": {
+    "figure_2_simulation_dynamics.png": "c8deef06cf408fc3064d6f5ec68f4cc4d084c780bb1b2a6fb36fff0e162c3426",
+    "figure_2_simulation_dynamics.svg": "41fcb33cc89a3cedd386a3b956fb863b5aeacbd094b7dbabc2d730fddb2ead8e",
+    "figure_2_simulation_dynamics.pdf": "ed028e8bc435699d01e92f1b7e3d25ff4a3a7ed22f5972a3ecd78b4531e52c8c",
+    "figure_2_simulation_dynamics.tiff": "50333b5bf71dbdd89699af9bdfe1ce5490cff09faf1332ff0832262c46ba8e5a"
+  },
+  "source_data": {
+    "source_data\\figure_2_dynamics.csv": "8e75975de9cf13482f6e119ef85c031db9f65a83f578b93a5991e4dfd5dea7d9"
+  },
+  "matplotlib_version": "3.9.3"
+}

@@ -1,0 +1,284 @@
+{
+  "status": "passed",
+  "source_run": "baoba20260904_01",
+  "source_csv": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01\\analysis\\data_efficiency_repeated_subsampling.csv",
+  "input_sha256": "cdaad610af695fee4e7917cf3fa7d79e451ee70565fc5c002a6353c63a7aaefc",
+  "input_rows": 384,
+  "columns_used": [
+    "scenario",
+    "method",
+    "trajectory_count",
+    "repetition",
+    "temporal_qualification_rate",
+    "stability",
+    "stability_estimable"
+  ],
+  "trajectory_counts": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    16,
+    20,
+    24
+  ],
+  "repeated_subsample_counts": [
+    12
+  ],
+  "aggregation": "median and 25th-75th percentiles of finite repeated-subsample values; entirely missing groups remain NA",
+  "quantile_interpolation": "linear",
+  "band_meaning": "repeated-subsample variability (IQR), not a confidence interval",
+  "bootstrap_ci_columns_used": false,
+  "new_resampling": false,
+  "interval_imputation": false,
+  "point_imputation": false,
+  "panels": {
+    "a": {
+      "scenario": "schelling",
+      "y_limits": [
+        0.5,
+        1.0
+      ],
+      "methods": {
+        "full_method": {
+          "temporal_qualification_rate": {
+            "point_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [],
+            "iqr_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": []
+          },
+          "stability": {
+            "point_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [
+              1
+            ],
+            "iqr_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": [
+              1
+            ]
+          }
+        },
+        "trajectory_vote": {
+          "temporal_qualification_rate": {
+            "point_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [],
+            "iqr_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": []
+          },
+          "stability": {
+            "point_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [
+              1
+            ],
+            "iqr_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": [
+              1
+            ]
+          }
+        }
+      }
+    },
+    "b": {
+      "scenario": "deffuant",
+      "y_limits": [
+        0.0,
+        1.0
+      ],
+      "methods": {
+        "full_method": {
+          "temporal_qualification_rate": {
+            "point_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [],
+            "iqr_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": []
+          },
+          "stability": {
+            "point_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [
+              1
+            ],
+            "iqr_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": [
+              1
+            ]
+          }
+        },
+        "trajectory_vote": {
+          "temporal_qualification_rate": {
+            "point_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [],
+            "iqr_counts": [
+              1,
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": []
+          },
+          "stability": {
+            "point_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_point_counts": [
+              1
+            ],
+            "iqr_counts": [
+              2,
+              4,
+              8,
+              12,
+              16,
+              20,
+              24
+            ],
+            "na_iqr_counts": [
+              1
+            ]
+          }
+        }
+      }
+    }
+  },
+  "script_sha256": "4ffecfd71da25a4c4745fb939111041c99d03a43c464c722e8ada967bb687a3b",
+  "outputs": {
+    "figure_4_data_efficiency.svg": "1394d44ddf68e0ab975e2b6be7a25ce97b36b744c7535013cbe076d1b167fcfe",
+    "figure_4_data_efficiency.png": "921e00ce98d301f26c014d9789ad18a5eec955f5a87d509043512f155b95fd7a"
+  },
+  "plotted_summary_sha256": "834bae8e40927437f98b733e225f7495c16c4e37829f761f7385635dd2e2b695",
+  "input_unchanged": true,
+  "matplotlib_version": "3.9.3",
+  "axis_revision_check": {
+    "panel_a_ylim": [
+      0.5,
+      1.0
+    ],
+    "panel_b_ylim": [
+      0.0,
+      1.0
+    ],
+    "source_csv_unchanged": true,
+    "all_plotted_medians_and_iqrs_unchanged": true
+  }
+}

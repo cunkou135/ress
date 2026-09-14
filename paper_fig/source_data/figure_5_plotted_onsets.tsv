@@ -1,0 +1,19 @@
+panel	scenario	path_id	path_label	scale	node_id	onset_time	onset_ci_low	onset_ci_high	display_x	display_y
+b	schelling	tol_minus_unhappy_to_move_std_to_spatial_sim	Tol− | spatial sim.	micro	unhappy_fraction	0	0.0	0.0	0	-0.075
+b	schelling	tol_minus_unhappy_to_move_std_to_spatial_sim	Tol− | spatial sim.	meso	meso_district_move_fraction_std	0	0.0	0.0	0	0.075
+b	schelling	tol_minus_unhappy_to_move_std_to_spatial_sim	Tol− | spatial sim.	macro	macro_global_spatial_neighbor_similarity	1	1.0	1.0	1	0.0
+b	schelling	tol_minus_unhappy_to_unhappy_std_to_components	Tol− | components	micro	unhappy_fraction	0	0.0	0.0	0	0.925
+b	schelling	tol_minus_unhappy_to_unhappy_std_to_components	Tol− | components	meso	meso_district_unhappy_fraction_std	0	0.0	0.0	0	1.075
+b	schelling	tol_minus_unhappy_to_unhappy_std_to_components	Tol− | components	macro	macro_global_connected_components	2	1.0	2.0	2	1.0
+b	schelling	tol_plus_unhappy_to_move_std_to_global_moved	Tol+ | relocation	micro	unhappy_fraction	0	0.0	0.0	0	1.85
+b	schelling	tol_plus_unhappy_to_move_std_to_global_moved	Tol+ | relocation	meso	meso_district_move_fraction_std	0	0.0	0.0	0	2.0
+b	schelling	tol_plus_unhappy_to_move_std_to_global_moved	Tol+ | relocation	macro	macro_global_moved_fraction	0	0.0	0.0	0	2.15
+d	deffuant	cb_minus_accept_absovar_assort	CB− | assortativity	micro	micro_accepted_fraction	0	0.0	0.0	0	0.0
+d	deffuant	cb_minus_accept_absovar_assort	CB− | assortativity	meso	meso_neighborhood_abs_opinion_variance	1	1.0	1.0	1	0.0
+d	deffuant	cb_minus_accept_absovar_assort	CB− | assortativity	macro	macro_network_assortativity	16	9.0	16.0	16	0.0
+d	deffuant	cb_minus_accept_ovar_gvar	CB− | global var.	micro	micro_accepted_fraction	0	0.0	0.0	0	1.0
+d	deffuant	cb_minus_accept_ovar_gvar	CB− | global var.	meso	meso_neighborhood_opinion_variance	4	3.0	4.0	4	0.925
+d	deffuant	cb_minus_accept_ovar_gvar	CB− | global var.	macro	macro_opinion_global_variance	4	3.0	4.0	4	1.075
+d	deffuant	cb_plus_accept_ostd_gvar	CB+ | global var.	micro	micro_accepted_fraction	0	0.0	0.0	0	2.0
+d	deffuant	cb_plus_accept_ostd_gvar	CB+ | global var.	meso	meso_neighborhood_opinion_std	2	2.0	2.0	2	1.925
+d	deffuant	cb_plus_accept_ostd_gvar	CB+ | global var.	macro	macro_opinion_global_variance	2	2.0	2.0	2	2.075

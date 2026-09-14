@@ -1,0 +1,95 @@
+scenario	node_id	x	y	width	height	scale	order	semantic_name	label
+schelling	parameter:tolerance	0.52	0.902	0.92	0.042	parameter	0	tolerance	Tolerance
+schelling	parameter:move_probability	0.52	0.501	0.92	0.042	parameter	1	move probability	Move probability
+schelling	parameter:destination_preference	0.52	0.1	0.92	0.046	parameter	2	destination preference	"Destination
+preference"
+schelling	mean_local_similarity	1.77	0.902	1.04	0.046	micro	0	Mean local same-group similarity	"Mean local same-grp.
+sim."
+schelling	std_local_similarity	1.77	0.8485333333333334	1.04	0.042	micro	1	Standard deviation of local same-group similarity	SD local same-grp. sim.
+schelling	mean_neighbour_count	1.77	0.7950666666666667	1.04	0.042	micro	2	Mean local neighbour count	Mean local nbr. count
+schelling	unhappy_fraction	1.77	0.7416	1.04	0.042	micro	3	Fraction of unsatisfied agents	Unsatisfied frac.
+schelling	unhappy_local_similarity_mean	1.77	0.6881333333333334	1.04	0.046	micro	4	Mean local similarity among unsatisfied agents	"Mean local sim.
+(unsatisfied)"
+schelling	moved_fraction	1.77	0.6346666666666667	1.04	0.042	micro	5	Fraction of agents relocating	Relocating frac.
+schelling	mean_move_distance	1.77	0.5811999999999999	1.04	0.046	micro	6	Mean relocation distance among movers	"Mean reloc. distance
+(movers)"
+schelling	mean_destination_similarity_movers	1.77	0.5277333333333334	1.04	0.046	micro	7	Mean destination similarity among movers	"Mean dest. sim.
+(movers)"
+schelling	boundary_fraction	1.77	0.47426666666666667	1.04	0.042	micro	8	Fraction of boundary agents	Frac. boundary agents
+schelling	std_destination_similarity	1.77	0.4208	1.04	0.042	micro	9	Dispersion of destination similarity	Dispersion dest. sim.
+schelling	quantile_25_local_similarity	1.77	0.3673333333333333	1.04	0.042	micro	10	25th percentile local similarity	P25 local sim.
+schelling	quantile_75_local_similarity	1.77	0.3138666666666666	1.04	0.042	micro	11	75th percentile local similarity	P75 local sim.
+schelling	local_similarity_entropy	1.77	0.26039999999999996	1.04	0.046	micro	12	Entropy of local similarity distribution	"Entropy local sim.
+distr."
+schelling	move_distance_std	1.77	0.2069333333333333	1.04	0.046	micro	13	Dispersion of relocation distance	"Dispersion reloc.
+distance"
+schelling	std_neighbour_count	1.77	0.15346666666666664	1.04	0.046	micro	14	Dispersion of local neighbour count	"Dispersion local nbr.
+count"
+schelling	relocation_response_fraction	1.77	0.1	1.04	0.042	micro	15	Relocation response fraction	Reloc. response frac.
+schelling	meso_district_local_similarity_std	3.08	0.902	1.15	0.046	meso	0	Between-district standard deviation of mean local similarity	"District SD mean local
+sim."
+schelling	meso_district_unhappy_fraction_std	3.08	0.7874285714285715	1.15	0.046	meso	1	Between-district standard deviation of unsatisfied fraction	"District SD unsatisfied
+frac."
+schelling	meso_district_boundary_fraction_std	3.08	0.6728571428571428	1.15	0.046	meso	2	Between-district standard deviation of boundary-agent fraction	"District SD boundary
+frac."
+schelling	meso_district_move_fraction_std	3.08	0.5582857142857143	1.15	0.046	meso	3	Between-district standard deviation of moving fraction	"District SD moving
+frac."
+schelling	meso_district_destination_similarity_std	3.08	0.4437142857142857	1.15	0.042	meso	4	Between-district standard deviation of destination similarity	District SD dest. sim.
+schelling	meso_district_neighbour_count_std	3.08	0.3291428571428572	1.15	0.046	meso	5	Between-district standard deviation of mean neighbour count	"District SD mean nbr.
+count"
+schelling	meso_district_group_entropy_mean	3.08	0.21457142857142852	1.15	0.046	meso	6	Mean district group-composition entropy	"Mean district group
+entropy"
+schelling	meso_district_move_distance_std	3.08	0.1	1.15	0.046	meso	7	Between-district standard deviation of mean move distance	"District SD mean move
+distance"
+schelling	macro_global_unhappy_fraction	4.42	0.902	1.1	0.046	macro	0	Global unsatisfied fraction	"Global unsatisfied
+frac."
+schelling	macro_global_moved_fraction	4.42	0.6346666666666667	1.1	0.042	macro	1	Global relocation fraction	Global reloc. frac.
+schelling	macro_global_connected_components	4.42	0.3673333333333333	1.1	0.046	macro	2	Count of same-group spatial components	"Count same-grp.
+spatial components"
+schelling	macro_global_spatial_neighbor_similarity	4.42	0.1	1.1	0.046	macro	3	Global spatial neighbour similarity	"Global spatial nbr.
+sim."
+deffuant	parameter:confidence_bound	0.52	0.902	0.92	0.042	parameter	0	confidence bound	Confidence bound
+deffuant	parameter:assimilation_strength	0.52	0.501	0.92	0.042	parameter	1	assimilation strength	Assimilation strength
+deffuant	parameter:backfire_threshold	0.52	0.1	0.92	0.042	parameter	2	backfire threshold	Backfire threshold
+deffuant	micro_opinion_p25	1.77	0.902	1.04	0.042	micro	0	25th percentile agent opinion	P25 agent opinion
+deffuant	micro_opinion_std	1.77	0.8485333333333334	1.04	0.042	micro	1	Agent opinion standard deviation	Agent opinion SD
+deffuant	micro_median_opinion	1.77	0.7950666666666667	1.04	0.042	micro	2	Median agent opinion	Median agent opinion
+deffuant	micro_mean_interaction_distance	1.77	0.7416	1.04	0.046	micro	3	Mean sampled interaction opinion distance	"Mean interact. opinion
+distance"
+deffuant	micro_interaction_distance_std	1.77	0.6881333333333334	1.04	0.042	micro	4	Sampled interaction distance standard deviation	Interact. distance SD
+deffuant	micro_accepted_fraction	1.77	0.6346666666666667	1.04	0.046	micro	5	Assimilation encounter fraction	"Assimilation encounter
+frac."
+deffuant	micro_backfire_fraction	1.77	0.5811999999999999	1.04	0.046	micro	6	Backfire encounter fraction	"Backfire encounter
+frac."
+deffuant	micro_rejected_fraction	1.77	0.5277333333333334	1.04	0.046	micro	7	Rejected encounter fraction	"Rejected encounter
+frac."
+deffuant	micro_rewiring_fraction	1.77	0.47426666666666667	1.04	0.042	micro	8	Tie rewiring fraction	Tie rewiring frac.
+deffuant	micro_mean_abs_agent_shift	1.77	0.4208	1.04	0.046	micro	9	Mean absolute opinion update	"Mean abs. opinion
+update"
+deffuant	micro_agent_shift_std	1.77	0.3673333333333333	1.04	0.042	micro	10	Opinion update standard deviation	Opinion update SD
+deffuant	micro_sign_flip_fraction	1.77	0.3138666666666666	1.04	0.042	micro	11	Opinion sign-flip fraction	Opinion sign-flip frac.
+deffuant	micro_extreme_agent_fraction	1.77	0.26039999999999996	1.04	0.042	micro	12	Extreme opinion fraction	Extreme opinion frac.
+deffuant	micro_mean_abs_opinion	1.77	0.2069333333333333	1.04	0.042	micro	13	Mean absolute agent opinion	Mean abs. agent opinion
+deffuant	micro_accepted_count	1.77	0.15346666666666664	1.04	0.046	micro	14	Accepted interaction count	"Accepted interact.
+count"
+deffuant	micro_edge_rewired_count	1.77	0.1	1.04	0.042	micro	15	Rewired tie count	Rewired tie count
+deffuant	meso_neighborhood_opinion_std	3.08	0.902	1.15	0.042	meso	0	Mean neighborhood opinion standard deviation	Mean nbr. opinion SD
+deffuant	meso_neighborhood_opinion_variance	3.08	0.7874285714285715	1.15	0.042	meso	1	Mean neighborhood opinion variance	Mean nbr. opinion var.
+deffuant	meso_neighborhood_abs_opinion_std	3.08	0.6728571428571428	1.15	0.046	meso	2	Mean neighborhood absolute opinion standard deviation	"Mean nbr. abs. opinion
+SD"
+deffuant	meso_neighborhood_abs_opinion_variance	3.08	0.5582857142857143	1.15	0.046	meso	3	Mean neighborhood absolute opinion variance	"Mean nbr. abs. opinion
+var."
+deffuant	meso_neighborhood_interaction_distance_std	3.08	0.4437142857142857	1.15	0.046	meso	4	Mean neighborhood interaction distance standard deviation	"Mean nbr. interact.
+distance SD"
+deffuant	meso_neighborhood_interaction_distance_variance	3.08	0.3291428571428572	1.15	0.046	meso	5	Mean neighborhood interaction distance variance	"Mean nbr. interact.
+distance var."
+deffuant	meso_neighborhood_agent_shift_std	3.08	0.21457142857142852	1.15	0.046	meso	6	Mean neighborhood opinion shift standard deviation	"Mean nbr. opinion shift
+SD"
+deffuant	meso_neighborhood_agent_shift_variance	3.08	0.1	1.15	0.046	meso	7	Mean neighborhood opinion shift variance	"Mean nbr. opinion shift
+var."
+deffuant	macro_opinion_global_mean	4.42	0.902	1.1	0.042	macro	0	Whole-system mean opinion	Global mean opinion
+deffuant	macro_opinion_global_variance	4.42	0.6346666666666667	1.1	0.042	macro	1	Whole-system opinion variance	Global opinion var.
+deffuant	macro_network_largest_component_fraction	4.42	0.3673333333333333	1.1	0.046	macro	2	Largest network component fraction	"Largest network
+component frac."
+deffuant	macro_network_assortativity	4.42	0.1	1.1	0.046	macro	3	Network opinion assortativity	"Network opinion
+assortativity"

@@ -1,0 +1,7 @@
+scenario	path_code	path_id	path_label	primary_classification	holdout_status	holdout_confirmed
+schelling	S01	tol_minus_unhappy_to_move_std_to_spatial_sim	S01  Tol− | spatial sim.	supported	confirmed	True
+schelling	S02	tol_minus_unhappy_to_unhappy_std_to_components	S02  Tol− | components	supported	confirmed	True
+schelling	S03	tol_plus_unhappy_to_move_std_to_global_moved	S03  Tol+ | relocation	supported	inconclusive	False
+deffuant	D01	cb_minus_accept_absovar_assort	D01  CB− | assortativity	supported	confirmed	True
+deffuant	D02	cb_minus_accept_ovar_gvar	D02  CB− | global var.	supported	confirmed	True
+deffuant	D03	cb_plus_accept_ostd_gvar	D03  CB+ | global var.	supported	inconclusive	False

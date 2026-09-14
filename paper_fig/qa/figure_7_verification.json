@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "analysis/path_temporal_qualification.csv": "a1c7439ec18c9b895a9006690b0330260e8f9a1d25065c2ba714d8e724eb5409",
+    "analysis/path_intervention_classification.csv": "ab2fcc5c6b3a7d065d8dba5c193a368b7da9dc1781dc2ce6c9724086c1a7c440",
+    "analysis/intervention_classifications.csv": "e33eca88f38f8edc3162470e1f31b49c40bbd4548d77790ce75f957bfbfa140c",
+    "analysis/holdout_path_confirmation.csv": "3921db52a3075c2d8601d99966b148fc962a28f8dba9c12e3d712a9822e087b1",
+    "representation/candidate_paths.json": "786a08db66d5c18428800774dca1e2240f3e5ae9adc94e2ee0310bb15db2dad4",
+    "representation/indicators_frozen.json": "7a235487b341b128b7a1fa93ec2bb109ab7c867824d7734f9c884b1a275e7333"
+  },
+  "selection_rule": "all path_temporally_qualified == True; ascending path_id within scenario",
+  "panels": {
+    "schelling": {
+      "path_count": 15,
+      "path_ids_in_order": [
+        "dest_minus_dest_sim_to_dest_std_to_global_unhappy",
+        "dest_minus_dest_sim_to_move_std_to_components",
+        "dest_plus_dest_sim_to_boundary_std_to_global_unhappy",
+        "dest_plus_dest_sim_to_dest_std_to_spatial_sim",
+        "dest_plus_dest_sim_to_group_entropy_to_components",
+        "move_minus_moved_to_boundary_std_to_components",
+        "move_minus_response_to_unhappy_std_to_global_unhappy",
+        "move_plus_moved_to_dest_std_to_spatial_sim",
+        "move_plus_moved_to_neighbour_std_to_global_unhappy",
+        "move_plus_response_to_move_std_to_global_moved",
+        "tol_minus_unhappy_to_move_std_to_spatial_sim",
+        "tol_minus_unhappy_to_unhappy_std_to_components",
+        "tol_plus_unhappy_to_dest_std_to_components",
+        "tol_plus_unhappy_to_group_entropy_to_components",
+        "tol_plus_unhappy_to_move_std_to_global_moved"
+      ],
+      "final_status_counts": {
+        "manipulation_failure": 5,
+        "inconclusive": 4,
+        "contradicted": 3,
+        "supported": 3
+      },
+      "holdout_star_count": 2
+    },
+    "deffuant": {
+      "path_count": 7,
+      "path_ids_in_order": [
+        "as_minus_shift_ovar_gvar",
+        "as_plus_shift_diststd_assort",
+        "as_plus_shift_ostd_gvar",
+        "bt_plus_backfire_shiftstd_gmean",
+        "cb_minus_accept_absovar_assort",
+        "cb_minus_accept_ovar_gvar",
+        "cb_plus_accept_ostd_gvar"
+      ],
+      "final_status_counts": {
+        "inconclusive": 3,
+        "supported": 3,
+        "manipulation_failure": 1
+      },
+      "holdout_star_count": 2
+    }
+  },
+  "path_count": 22,
+  "segment_count": 66,
+  "display_status_mapping": {
+    "supported": "supported",
+    "contradicted": "contradicted",
+    "inconclusive": "inconclusive",
+    "manipulation_failure": "manipulation_failure",
+    "no_stable_downstream_effect": "inconclusive"
+  },
+  "parameter_marker": "single open square for direct_root",
+  "node_style": {
+    "fill": "white",
+    "edge": "#20282E",
+    "significance_encoded": false
+  },
+  "scope_counts": {
+    "direct_root": 22,
+    "upstream_mediated": 22
+  },
+  "segment_raw_status_counts": {
+    "supported": 17,
+    "True": 16,
+    "no_stable_downstream_effect": 13,
+    "manipulation_failure": 12,
+    "False": 6,
+    "inconclusive": 2
+  },
+  "row_pitch_inches": 0.145,
+  "figure_inches": [
+    7.2,
+    4.687299999999999
+  ],
+  "legend_count": 1,
+  "classification_recomputed": false,
+  "experiment_recalculation": false,
+  "input_unchanged": true,
+  "script_sha256": "181e05075410adbb43209a7b875c8cf69a5a88a800e9ca577f0fe959f658aabb",
+  "outputs": {
+    "figure_7_multiscale_propagation.svg": "ecd0a4bd01db7c97c19b76953fd8176df198143e9f49e657ee8e8eca766b1cd6",
+    "figure_7_multiscale_propagation.png": "2c815d6f2d2798e3cf2db01e68b3e44b07fae14b1215dc47697a54ecedcaa432"
+  },
+  "source_tables": {
+    "figure_7_path_codebook.tsv": "e6b975e5a8753fca2aa8c872b893138209138a7ad1f693df863607c812d9eb44",
+    "figure_7_plotted_segments.tsv": "191aa3bb3bb1b4a73c99051991a30621923fff8739d083128004bd8defdb310d"
+  },
+  "independent_revision_verification": {
+    "all_nodes_neutral": true,
+    "neutral_node_count": 88,
+    "source_tables_byte_identical": true,
+    "classification_and_holdout_unchanged": true,
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}

@@ -1,0 +1,69 @@
+panel	source_file	factor	scenario	x_column	x	metric	n_total	n_finite	n_missing	repetitions	median	q25	q75	iqr_available
+a	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.0	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.5714285714285714	0.5714285714285714	0.5714285714285714	True
+a	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.05	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.5	0.4910714285714286	0.5446428571428571	True
+a	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.1	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.4642857142857143	0.45535714285714285	0.5178571428571428	True
+a	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.2	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.48214285714285715	0.4642857142857143	0.5089285714285714	True
+a	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.0	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9655172413793104	0.9655172413793104	0.9655172413793104	True
+a	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.05	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.8275862068965517	0.7931034482758621	0.8620689655172413	True
+a	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.1	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.7413793103448276	0.6896551724137931	0.8017241379310345	True
+a	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.2	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.7068965517241379	0.6810344827586208	0.7586206896551724	True
+b	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.0	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9447916666666666	0.9385416666666666	0.9463541666666666	True
+b	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.05	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9242063492063493	0.9151736111111111	0.9311965811965812	True
+b	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.1	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9197802197802201	0.9145032051282052	0.9285256410256413	True
+b	analysis/observation_robustness.csv	observation_noise	deffuant	noise_level	0.2	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9154761904761906	0.9071581196581198	0.9313194444444445	True
+b	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.0	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9696428571428571	0.9660714285714287	0.9726190476190476	True
+b	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.05	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9618450390189521	0.9578804347826088	0.9670000000000001	True
+b	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.1	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9543055555555555	0.9472332015810275	0.9641666666666665	True
+b	analysis/observation_robustness.csv	observation_noise	schelling	noise_level	0.2	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9477498093058734	0.9437499999999999	0.9529761904761903	True
+c	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.0	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.5714285714285714	0.5357142857142857	0.5714285714285714	True
+c	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.05	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.625	0.5982142857142857	0.6875	True
+c	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.1	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.6785714285714286	0.6428571428571429	0.7142857142857143	True
+c	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.2	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.6428571428571429	0.6339285714285714	0.6517857142857143	True
+c	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.0	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9655172413793104	0.9655172413793104	0.9655172413793104	True
+c	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.05	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9310344827586208	0.9310344827586208	0.9396551724137931	True
+c	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.1	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.896551724137931	0.896551724137931	0.9051724137931034	True
+c	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.2	temporal_qualification_rate	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.8620689655172413	0.853448275862069	0.8706896551724137	True
+d	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.0	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9505555555555556	0.9442708333333333	0.953541666666667	True
+d	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.05	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9344362745098038	0.9281127450980391	0.9462499999999999	True
+d	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.1	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9332010582010581	0.9274122807017543	0.9567708333333333	True
+d	analysis/observation_robustness.csv	missing_values	deffuant	missing_fraction	0.2	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9450779727095517	0.9405555555555557	0.9513931888544891	True
+d	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.0	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9714285714285715	0.9708333333333332	0.9741071428571431	True
+d	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.05	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9735992402659069	0.9700617283950619	0.9762345679012346	True
+d	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.1	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9705641025641025	0.9605998168498168	0.9775641025641024	True
+d	analysis/observation_robustness.csv	missing_values	schelling	missing_fraction	0.2	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9694166666666666	0.9660493827160495	0.9736666666666667	True
+e	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	8.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	0.1043934000008448	0.1024479999996401	0.1065333000005921	True
+e	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	16.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	0.6464096999989124	0.6328433999988192	0.6515746000004583	True
+e	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	32.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	4.119703399999708	4.118182000000161	4.193381000000954	True
+e	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	64.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	18.539245500000103	18.525316200000816	18.546747099999266	True
+e	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	8.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	0.1303664000006392	0.1298459999998158	0.133452699999907	True
+e	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	16.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	0.6855766000007861	0.6741093999989971	0.696541299999808	True
+e	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	32.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	4.592818999999508	4.557224700000006	4.607795299998543	True
+e	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	64.0	runtime_seconds	5	5	0	[0, 1, 2, 3, 4]	19.76394940000137	19.648256599999517	19.85800430000017	True
+f	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	8.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	23.0	23.0	23.0	True
+f	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	16.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	129.0	129.0	129.0	True
+f	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	32.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	316.0	306.0	317.0	True
+f	analysis/causal_scalability.csv	NA	deffuant	candidate_indicator_count	64.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	437.0	433.0	444.0	True
+f	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	8.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	36.0	36.0	36.0	True
+f	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	16.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	133.0	133.0	133.0	True
+f	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	32.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	542.0	535.0	548.0	True
+f	analysis/causal_scalability.csv	NA	schelling	candidate_indicator_count	64.0	discovered_edge_count	5	5	0	[0, 1, 2, 3, 4]	823.0	813.0	840.0	True
+g	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.5	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	16.0	16.0	16.0	True
+g	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.6	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	16.0	16.0	16.0	True
+g	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.65	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	16.0	16.0	16.0	True
+g	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.75	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	15.0	15.0	16.0	True
+g	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.85	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	13.5	12.75	14.25	True
+g	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.5	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	28.0	28.0	28.0	True
+g	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.6	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	28.0	28.0	28.0	True
+g	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.65	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	28.0	28.0	28.0	True
+g	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.75	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	27.0	27.0	28.0	True
+g	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.85	retained_edge_count	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	25.5	25.0	26.25	True
+h	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.5	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9479166666666669	0.9479166666666667	0.9505208333333333	True
+h	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.6	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9427083333333334	0.9390624999999999	0.9442708333333333	True
+h	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.65	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9427083333333334	0.9374999999999999	0.9463541666666666	True
+h	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.75	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9515972222222223	0.9511111111111112	0.9545138888888889	True
+h	analysis/observation_robustness.csv	support_threshold	deffuant	support_threshold	0.85	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9735714285714288	0.9666666666666668	0.9836538461538462	True
+h	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.5	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.969047619047619	0.9672619047619047	0.9714285714285714	True
+h	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.6	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9690476190476189	0.9648809523809523	0.9714285714285714	True
+h	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.65	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9672619047619048	0.9657738095238095	0.969047619047619	True
+h	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.75	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.978152557319224	0.9746362433862434	0.9809472934472936	True
+h	analysis/observation_robustness.csv	support_threshold	schelling	support_threshold	0.85	stability	8	8	0	[0, 1, 2, 3, 4, 5, 6, 7]	0.9806666666666667	0.9777896486229819	0.9825384615384615	True

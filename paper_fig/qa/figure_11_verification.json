@@ -1,0 +1,49 @@
+{
+  "status": "passed",
+  "figure": 11,
+  "source_run": "E:\\work\\毕业论文相关\\数据驱动方法\\(ACL 2026)CAMO\\小论文\\91exp\\_code\\runs\\baoba20260904_01",
+  "source_sha256": {
+    "representation/candidate_paths.json": "786a08db66d5c18428800774dca1e2240f3e5ae9adc94e2ee0310bb15db2dad4",
+    "analysis/path_temporal_qualification.csv": "a1c7439ec18c9b895a9006690b0330260e8f9a1d25065c2ba714d8e724eb5409",
+    "analysis/path_intervention_classification.csv": "ab2fcc5c6b3a7d065d8dba5c193a368b7da9dc1781dc2ce6c9724086c1a7c440",
+    "analysis/holdout_path_confirmation.csv": "3921db52a3075c2d8601d99966b148fc962a28f8dba9c12e3d712a9822e087b1"
+  },
+  "source_unchanged": true,
+  "experiment_recalculation": false,
+  "outputs": {
+    "figure_11_holdout_confirmation.png": "fcc9b57f7bc8c6bdae7a14bfe6bca4de6a7244cbedeee593129febb6565594b4",
+    "figure_11_holdout_confirmation.svg": "94e425a3cd2effa43cac6d293623ade375aaef67921a76696860f7d91843699b"
+  },
+  "source_tables": {
+    "figure_11_path_funnel.tsv": "837d91003e59a3b4253da41f41463706456bf809f07f0c4ea7bc349574da452b",
+    "figure_11_confirmation_matrix.tsv": "52f2ac161e87830e034f529fbbafcc63341396eb65858322d76dfdb997b56ba3",
+    "figure_11_path_membership.tsv": "45021633d42de2bd1349332d09a3bbcc965cb1fa2772d0f3a38a9d74aea8c55d"
+  },
+  "script_sha256": "020174117b2a14987fcd6f2e64b01bf0789c2cecc57bb570094c4a250152c62d",
+  "helper_sha256": "588d621bcbd909b73bb11436aaabc465d76c70b56bb6cc2a06df4c845710bd7d",
+  "candidate_count": 34,
+  "primary_supported_matrix_rows": 6,
+  "funnel": {
+    "schelling": [
+      16,
+      15,
+      3,
+      2
+    ],
+    "deffuant": [
+      18,
+      7,
+      3,
+      2
+    ]
+  },
+  "holdout_rows": 6,
+  "statistic": "exact saved path membership counts",
+  "independent_verification": {
+    "funnel_counts_verified": 8,
+    "all_primary_supported_rows_verified": 6,
+    "protected_existing_files_unchanged": 241,
+    "run_files_unchanged": 3805,
+    "visual_review": "passed"
+  }
+}
